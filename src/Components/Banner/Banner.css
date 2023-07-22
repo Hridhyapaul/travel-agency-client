@@ -1,0 +1,15 @@
+.slick-prev:before,
+.slick-next:before {
+  color: red;
+}
+
+/* To change the dots style */
+.slick-dots li button:before{
+    color:aliceblue;
+    font-size: 15px;
+}
+
+.slick-dots li.slick-active button:before {
+    opacity: .75;
+    color: rgb(245, 245, 245);
+}

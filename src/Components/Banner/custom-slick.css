@@ -1,0 +1,40 @@
+.slick-active {
+    /* Add your custom styles here */
+    /* For example, to remove any background color */
+    background-color: transparent;
+    /* Add any other styles you want to remove here */
+}
+
+.slick-list {
+    position: static;
+}
+
+.slick-slider {
+    position: static;
+}
+
+.slick-dots {
+    bottom: -150px;
+    left: 10px;
+    display: block;
+}
+
+@media (max-width: 767px) {
+    .slick-dots {
+        bottom: 10px;
+        left: 0px;
+        /* Add any other mobile-specific styles here */
+    }
+}
+
+@media (max-width: 767px) {
+    .slick-list {
+        position: relative;
+    }
+}
+
+@media (max-width: 767px) {
+    .slick-slider {
+        position: relative;
+    }
+}
