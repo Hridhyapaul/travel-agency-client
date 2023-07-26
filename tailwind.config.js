@@ -9,13 +9,6 @@ export default {
       fontFamily: {
         body: ['Poppins', 'sans-serif'],
       },
-      // listStyleType: {
-      //   none: 'none',
-      //   disc: 'disc',
-      //   tick: '\xb9',
-      //   square: 'square',
-      //   roman: 'upper-roman',
-      // },
       colors: {
         bodyColor: '#0a0a0a',
         bgColor: '#FFFFFF',
