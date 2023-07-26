@@ -1,7 +1,14 @@
+import Banner from "../../Components/Banner/Banner";
+import Search from "./Search";
+
 const Home = () => {
     return (
         <div>
-            <h1>This is Home Page</h1>
+            <Banner></Banner>
+            <Search></Search>
+            {/* <Special></Special>
+            <About></About>
+            <MostVisitedPlace></MostVisitedPlace> */}
         </div>
     );
 };

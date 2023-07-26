@@ -21,7 +21,7 @@
 
 @media (max-width: 767px) {
     .slick-dots {
-        bottom: 10px;
+        bottom: 20px;
         left: 0px;
         /* Add any other mobile-specific styles here */
     }

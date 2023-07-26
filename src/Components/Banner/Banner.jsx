@@ -4,7 +4,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../Banner/Banner.css"
 import "../Banner/custom-slick.css"
-import Header from '../Header/Header';
 // import Container from '../../Shared/Container';
 
 const Banner = () => {
@@ -94,12 +93,6 @@ const Banner = () => {
 
     return (
         <div>
-            <div className=''>
-                <div className='fixed z-10 w-full'>
-                    <Header></Header>
-                </div>
-            </div>
-
             {/* Start Mobile Screen */}
 
             <div className='lg:hidden block'>
@@ -110,7 +103,7 @@ const Banner = () => {
 
                             {/* ====== Start Background shadow ====== */}
 
-                            <div className='bg-black w-full h-[400px] absolute inset-0 index-1 bg-opacity-30'></div>
+                            <div className='bg-black w-full h-[400px] absolute inset-0 index-1 bg-opacity-50'></div>
 
                             {/* ====== End Background shadow ====== */}
 

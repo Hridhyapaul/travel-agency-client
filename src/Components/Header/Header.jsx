@@ -39,7 +39,7 @@ const Header = () => {
 
     return (
         <>
-            <div className='bg-white bg-opacity-25 lg:py-4'>
+            <div className='bg-white bg-opacity-25 lg:py-4 fixed z-10 w-full'>
                 <div className="lg:mt-0 lg:max-w-[1280px] mx-auto">
                     <div className="text-white font-semibold relative">
                         {/* Large Screen */}

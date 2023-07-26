@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
 // import Header from "../Components/Header/Header";
 import Footer from "../Components/Footer/Footer";
-import Banner from "../Components/Banner/Banner";
+import Header from "../Components/Header/Header";
 
 const Main = () => {
     return (
         <div>
-            <Banner></Banner>
+            <Header></Header>
             <Outlet></Outlet>
             <Footer></Footer>
         </div>

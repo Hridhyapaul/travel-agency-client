@@ -9,12 +9,19 @@ export default {
       fontFamily: {
         body: ['Poppins', 'sans-serif'],
       },
+      // listStyleType: {
+      //   none: 'none',
+      //   disc: 'disc',
+      //   tick: '\xb9',
+      //   square: 'square',
+      //   roman: 'upper-roman',
+      // },
       colors: {
         bodyColor: '#0a0a0a',
         bgColor: '#FFFFFF',
         lightText: '#c4cfde',
         boxBg: 'linear-gradient(145deg, #1e2024, #23272b)',
-        designColor: '#E60042',
+        designColor: '#F43F5E',
         hoverColor: "rgba(100,255,218,0.1)"
       },
       boxShadow: {
