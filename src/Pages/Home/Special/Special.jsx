@@ -1,10 +1,28 @@
+import { useEffect, useState } from "react";
 import Container from "../../../Shared/Container";
 import SectionTitle from "../../../Shared/SectionTitle";
-import { travelServices } from '../Special/Services';
 import SpecialCard from "./SpecialCard";
 
 const Special = () => {
+
+    const [travelServices, setTravelServices] = useState([]);
+
+    useEffect(() => {
+        fetchTravelServices();
+    }, []);
+
+    const fetchTravelServices = async () => {
+        try {
+            const response = await fetch('Services.json');
+            const data = await response.json();
+            setTravelServices(data);
+        } catch (error) {
+            console.error('Error fetching travel services:', error);
+        }
+    };
+
     console.log(travelServices)
+
     return (
         <div className="my-28">
             <Container>

@@ -89,10 +89,10 @@ const Register = () => {
 
                                 <div className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]">
                                     <div className="bg-white px-5 py-2 rounded-lg">
-                                        <h1 className="text-[28px] text-bodyColor font-bold">Registration Form</h1>
+                                        <h1 className="text-[28px] text-center text-bodyColor font-bold">Registration Form</h1>
 
                                         <div className='flex justify-center mt-3 mb-2'>
-                                            <p className='text-[16px]'>Already have an account? <Link to='/login' className='text-white bg-designColor px-3 py-1 rounded font-semibold'>Login</Link></p>
+                                            <p className='text-[16px]'>Already have an account? <Link to='/login' className='text-white bg-designColor px-3 py-1 rounded-full font-semibold'>Login</Link></p>
                                         </div>
                                     </div>
                                 </div>
@@ -289,7 +289,7 @@ const Register = () => {
                                     </div>
                                     <button
                                         type="submit"
-                                        className={`${isSubmitDisabled ? 'bg-designColor bg-opacity-50 opacity-50' : 'bg-designColor'} w-full  text-white rounded py-2 px-4 font-semibold mt-8 mb-4`}
+                                        className={`${isSubmitDisabled ? 'bg-designColor bg-opacity-50 opacity-50' : 'bg-designColor'} w-full  text-white rounded-full py-2 px-4 font-semibold mt-8 mb-4`}
                                         disabled={isSubmitDisabled}
                                     >
                                         Register
