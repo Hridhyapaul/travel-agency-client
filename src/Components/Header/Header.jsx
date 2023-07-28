@@ -1,11 +1,8 @@
 import { Link, NavLink } from 'react-router-dom';
-// import { motion } from "framer-motion"
 import { FaUserAlt, FaUserCircle, FaBars } from "react-icons/fa";
 import '../Header/Header.css'
-// import logo from '../../assets/Images/logo.png'
-import { useState } from 'react';
-// import { useState } from 'react';
-const Header = () => {
+import { useEffect, useState } from 'react';
+const Header = ({ isStatic, isBgColor }) => {
     const navLinks = [
         {
             path: '/',
@@ -35,11 +32,34 @@ const Header = () => {
         setMenuOpen(!isMenuOpen);
     };
 
-    const user = true;
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+
+        const handleScroll = () => {
+            const scrollPosition = window.scrollY;
+            // Set the scroll position threshold
+            if (scrollPosition >= 80) {
+                setIsScrolled(true)
+            } else {
+                setIsScrolled(false)
+            }
+        };
+        // Add the event listener when the component mounts
+        window.addEventListener("scroll", handleScroll);
+
+        // Remove the event listener when the component unmounts
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
+    const user = false;
 
     return (
         <>
-            <div className='bg-white bg-opacity-25 lg:py-4 fixed z-10 w-full'>
+            <div className={`lg:py-4 ${isStatic ? "" : "fixed"} z-20 w-full transition-all duration-500 ${isScrolled ? "bg-bodyColor" : isBgColor ? "bg-bodyColor" : "bg-white bg-opacity-25"
+                }`}>
                 <div className="lg:mt-0 lg:max-w-[1280px] mx-auto">
                     <div className="text-white font-semibold relative">
                         {/* Large Screen */}
@@ -53,7 +73,7 @@ const Header = () => {
                                     <ul className="flex justify-center items-center">
                                         {
                                             navLinks.map((item, index) => (
-                                                <li key={index} className='navigation'>
+                                                <li key={index} className={`navigation ${isScrolled ? "scrolledNavigation" : ""}`}>
                                                     <NavLink to={item.path}>
                                                         {item.display}
                                                     </NavLink>
@@ -74,7 +94,7 @@ const Header = () => {
                                                     </div>
                                                 </label>
                                                 <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-designColor rounded-box w-52 text-white">
-                                                    
+
                                                     <li><a>Dashboard</a></li>
                                                     <li><a>Logout</a></li>
                                                 </ul>
@@ -84,7 +104,7 @@ const Header = () => {
                                                 <div tabIndex={0} className='w-10 cursor-pointer'>
                                                     <FaUserCircle className='text-[40px] text-white'></FaUserCircle>
                                                 </div>
-                                                <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                                                <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 text-black rounded-box w-52">
                                                     <li><Link to='/login'>Login</Link></li>
                                                     <li><Link to='/register'>Register</Link></li>
                                                 </ul>

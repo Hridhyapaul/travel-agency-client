@@ -10,7 +10,7 @@ export default {
         body: ['Poppins', 'sans-serif'],
       },
       colors: {
-        bodyColor: '#0a0a0a',
+        bodyColor: '#0d1321',
         bgColor: '#FFFFFF',
         lightText: '#c4cfde',
         boxBg: 'linear-gradient(145deg, #1e2024, #23272b)',

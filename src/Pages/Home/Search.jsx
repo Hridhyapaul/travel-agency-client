@@ -7,7 +7,7 @@ const Search = () => {
         <>
             <div className="bg-base-200 py-10">
                 <Container>
-                    <div className="relative bg-white shadow-lg px-10 py-10 rounded-lg">
+                    <div className="relative bg-white shadow-lg px-10 py-10 rounded-lg text-bodyColor">
                         <div>
                             <form>
                                 <div className="lg:flex justify-between items-center font-body">

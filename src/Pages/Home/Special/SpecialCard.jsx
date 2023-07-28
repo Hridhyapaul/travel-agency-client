@@ -8,7 +8,7 @@ const SpecialCard = ({ item }) => {
                     <img className="h-[50px] w-[50px]" src={icon} alt="" />
                 </div>
             </div>
-            <div className="">
+            <div className=" text-bodyColor">
                 <p className="pt-12 pb-5 px-6 text-lg text-center font-semibold">{service}</p>
             </div>
         </div>

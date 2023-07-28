@@ -2,11 +2,17 @@ ul .navigation a {
     position: relative;
 }
 
+
+
 ul .navigation a.active {
     background-color: #F43F5E;
     padding: 6px 16px;
     border-radius: 8px;
     transition: transform 0.4s ease;
+}
+
+ul .scrolledNavigation a.active {
+    color: #0d1321;
 }
 
 ul .navigation a {
@@ -15,7 +21,7 @@ ul .navigation a {
     align-items: center;
 }
 
-ul .navigation a::after{
+ul .navigation a::after {
     content: '';
     height: 3px;
     width: 60%;
@@ -31,7 +37,7 @@ ul .navigation a::after{
     pointer-events: none;
 }
 
-ul .navigation a:hover::after{
+ul .navigation a:hover::after {
     opacity: 1;
     transform: scale(1, 1);
 }
@@ -56,7 +62,7 @@ ul .mobileNavigation a {
     align-items: center;
 }
 
-ul .mobileNavigation a::after{
+ul .mobileNavigation a::after {
     content: '';
     height: 3px;
     width: 60%;
@@ -72,7 +78,7 @@ ul .mobileNavigation a::after{
     pointer-events: none;
 }
 
-ul .mobileNavigation a:hover::after{
+ul .mobileNavigation a:hover::after {
     opacity: 1;
     transform: scale(1, 1);
 }
