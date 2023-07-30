@@ -1,11 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 import Home from "../Pages/Home/Home";
-import Tours from "../Pages/Tours/Tours";
-import TourDetails from "../Pages/TourDetails/TourDetails";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
-import SearchResultList from "../Pages/SearchResult/SearchResultList";
+import ViewPackages from "../Pages/ViewPackages/viewPackages";
+import Packages from "../Pages/ViewPackages/Packages";
 
 const router = createBrowserRouter([
     {
@@ -16,18 +15,6 @@ const router = createBrowserRouter([
                 path: "/",
                 element: <Home></Home>
             },
-            {
-                path: "/tours",
-                element: <Tours></Tours>
-            },
-            {
-                path: "/tours/:id",
-                element: <TourDetails></TourDetails>
-            },
-            {
-                path: "/tours/search",
-                element: <SearchResultList></SearchResultList>
-            }
         ]
     },
     {
@@ -37,6 +24,16 @@ const router = createBrowserRouter([
     {
         path: "/register",
         element: <Register></Register>
+    },
+    {
+        path: "/viewPackages",
+        element: <ViewPackages></ViewPackages>,
+        children: [
+            {
+                path: ":id",
+                element: <Packages></Packages>,
+            }
+        ]
     },
 ]);
 

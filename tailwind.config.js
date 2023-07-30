@@ -11,7 +11,7 @@ export default {
       },
       colors: {
         bodyColor: '#0d1321',
-        bgColor: '#FFFFFF',
+        bgColor: '#F5F6F6',
         lightText: '#c4cfde',
         boxBg: 'linear-gradient(145deg, #1e2024, #23272b)',
         designColor: '#F43F5E',
