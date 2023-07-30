@@ -2,7 +2,10 @@ import Container from "../../Shared/Container";
 import PackagesCard from "./PackagesCard";
 import usePackages from "../../Hooks/usePackages";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ReactSlider from "react-slider";
+import './CSS/Package.css'
+import adImage from '../../../public/Icon/ad.avif'
 
 const Packages = () => {
 
@@ -12,20 +15,30 @@ const Packages = () => {
     const { accommodation, countryImage, country, slogan } = packages;
     console.log(accommodation)
 
-    const [accommodations, setAccommodations] = useState(accommodation)
+    // ====== Search Filter ======
+    const [query, setQuery] = useState("")
 
-    const handleFilter = (event) => {
-        const searchTerm = event.target.value.toLowerCase();
-        const filteredAccommodations = accommodation.filter((item) => {
-            const packageName = item.name.toLowerCase();
-            return packageName.includes(searchTerm);
-        });
-        setAccommodations(filteredAccommodations);
-    };
+    // ====== Price Filter ======
+    const min = 100;
+    const max = 10000;
+
+    const [values, setValues] = useState([min, max])
+
+    // ====== Duration Filter ======
+    const [durationFilter, setDurationFilter] = useState("");
 
     const handleDurationFilter = (event) => {
-        console.log(event.target.value)
-    }
+        const checkedTerm = event.target.value;
+        if (durationFilter.includes(checkedTerm)) {
+            // If the filter is already selected, remove it
+            setDurationFilter((prevFilters) =>
+                prevFilters.filter((filter) => filter !== checkedTerm)
+            );
+        } else {
+            // If the filter is not selected, add it
+            setDurationFilter((prevFilters) => [...prevFilters, checkedTerm]);
+        }
+    };
 
     if (loading) {
         return <div>Loading...</div>
@@ -53,7 +66,7 @@ const Packages = () => {
                                 <div className="font-body bg-white shadow-md px-6 py-6 rounded-lg">
                                     <label className="text-2xl font-semibold">Search Packages</label>
                                     <input
-                                        onChange={(event) => handleFilter(event)}
+                                        onChange={(event) => setQuery(event.target.value)}
                                         className="h-14 w-full rounded-lg border-2 outline-none border-bgColor pl-4 mt-4 focus:border-designColor"
                                         type="text"
                                         placeholder="Search Package"
@@ -62,8 +75,26 @@ const Packages = () => {
                                 </div>
 
                                 {/* Price Range */}
-                                <div className="font-body bg-white shadow-md px-6 py-6 rounded-lg">
+                                <div className="font-body bg-white shadow-md px-6 py-6 rounded-lg space-y-4">
                                     <p className="text-2xl font-semibold">Price Range</p>
+                                    <div>
+                                        <div>
+                                            <p>${values[0]} - ${values[1]}</p>
+                                            <p>Current Range: ${values[1] - values[0]}</p>
+                                        </div>
+                                        <div className="mt-4 bg-bgColor px-4 py-6 flex justify-center items-center">
+                                            <ReactSlider
+                                                onChange={setValues}
+                                                className="slider"
+                                                value={values}
+                                                step={50}
+                                                min={min}
+                                                max={max}
+                                            >
+
+                                            </ReactSlider>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 {/* Duration */}
@@ -72,12 +103,12 @@ const Packages = () => {
                                     <div className="mt-4 space-y-1">
                                         <label className="block w-fit">
                                             <input
+
                                                 type="checkbox"
                                                 className="text-designColor"
                                                 name="duration"
                                                 value="1"
                                                 onChange={(event) => handleDurationFilter(event)}
-                                            // Add the appropriate onChange handler if needed
                                             />
                                             <span className="ml-2">01 Day</span>
                                         </label>
@@ -99,7 +130,6 @@ const Packages = () => {
                                                 name="duration"
                                                 value="3"
                                                 onChange={(event) => handleDurationFilter(event)}
-                                            // Add the appropriate onChange handler if needed
                                             />
                                             <span className="ml-2">03 Days</span>
                                         </label>
@@ -128,14 +158,27 @@ const Packages = () => {
                                     </div>
                                 </div>
 
+                                {/* Advertise banner */}
+                                <div>
+                                    <img className="rounded-lg" src={adImage} alt="" />
+                                </div>
+
                             </div>
                             <div className="col-span-4">
                                 <div className="bg-white px-4 py-4 rounded-md mb-8 shadow-md">
-                                    <h1 className="text-3xl font-body font-semibold">There are <span>{accommodations?.length < 10 ? `0${accommodations?.length}` : accommodations?.length}</span> Packages Available in {country}.</h1>
+                                    <h1 className="text-3xl font-body font-semibold">There are <span>{accommodation?.length < 10 ? `0${accommodation?.length}` : accommodation?.length}</span> Packages Available in {country}.</h1>
                                 </div>
                                 <div className="grid grid-cols-2 gap-8">
                                     {
-                                        accommodations?.map(item => <PackagesCard key={item._id} item={item} loading={loading}></PackagesCard>)
+                                        accommodation.
+                                            filter(item => item.name.toLowerCase().includes(query.toLowerCase()))
+                                            .filter((item) =>
+                                                durationFilter.length > 0
+                                                    ? durationFilter.includes(item.numberOfDay.toString())
+                                                    : true
+                                            )
+                                            .filter(item => item.price >= values[0] && item.price <= values[1])
+                                            .map(item => <PackagesCard key={item._id} item={item}></PackagesCard>)
                                     }
                                 </div>
                             </div>

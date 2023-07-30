@@ -5,10 +5,10 @@ const PopularPackageCard = ({ destination, isLarge }) => {
     console.log(destination)
     const { _id, country, countryImage, accommodation } = destination;
 
-    const minPrice = accommodation.reduce((min, acc) => {
-        const price = acc.price.pricePerPersonDouble;
-        return price < min ? price : min;
-    }, Number.MAX_VALUE);
+    const minPrice = accommodation.reduce(
+        (min, item) => (item.price < min ? item.price : min),
+        Infinity
+      );
 
 
     return (

@@ -26,11 +26,11 @@ const router = createBrowserRouter([
         element: <Register></Register>
     },
     {
-        path: "/viewPackages",
+        path: "/viewPackages/:id",
         element: <ViewPackages></ViewPackages>,
         children: [
             {
-                path: ":id",
+                path: "",
                 element: <Packages></Packages>,
             }
         ]

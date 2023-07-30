@@ -4,8 +4,12 @@ import SectionTitle from "../../../Shared/SectionTitle";
 import PopularPackageCard from "./PopularPackageCard";
 
 const PopularPackage = () => {
-    const [destinations] = usePopularDestination();
+    const [destinations, loading, ] = usePopularDestination();
     console.log(destinations)
+
+    if(loading){
+        return <div>Loading....</div>
+    }
 
     return (
         <div className="my-24">

@@ -1,7 +1,7 @@
 import { Rating, ThinRoundedStar } from "@smastrom/react-rating";
 import '@smastrom/react-rating/style.css'
 
-const PackagesCard = ({ item, loading }) => {
+const PackagesCard = ({ item}) => {
     console.log(item)
     const { acc_id, about, image, name, numberOfDay, price, reviews = [] } = item;
 
@@ -13,10 +13,6 @@ const PackagesCard = ({ item, loading }) => {
         activeFillColor: '#f59e0b',
         inactiveFillColor: '#ECEEEF',
     };
-
-    if (loading) {
-        return <div>Loading...</div>
-    }
 
     return (
         <div className="col-span-1">
@@ -43,7 +39,7 @@ const PackagesCard = ({ item, loading }) => {
                         <p>{about}</p>
                     </div>
                     <div className="flex justify-between items-center">
-                        <p><span className="font-medium text-[18px] text-designColor">${price?.pricePerPersonDouble}</span>{" "} / Per person</p>
+                        <p><span className="font-medium text-[18px] text-designColor">${price}</span>{" "} / Per person</p>
                         <p className="bg-bgColor rounded-lg px-4 py-2 w-fit">0{numberOfDay} Days</p>
                     </div>
                     <div>

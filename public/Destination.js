@@ -14,11 +14,7 @@
                     "https://cms-asset.ayana.com/cdn-cgi/image/f=auto,q=85,width=996/996x560_BALI_Facility_Children_Pool_5a0c2172eb.jpg",
                     "https://cms-asset.ayana.com/cdn-cgi/image/f=auto,q=85,width=996/Kubu_7dfe86b373.jpg"
                 ],
-                "price": {
-                    "pricePerPersonDouble": 250,
-                    "pricePerPersonTriple": 220,
-                    "pricePerChild": 100
-                },
+                "price": 250,
                 "numberOfDay": 5,
                 "details": "Perched on the cliffs of Jimbaran Bay, AYANA Resort and Spa offers an indulgent escape in Bali, Indonesia. This five-star resort boasts breathtaking views of the Indian Ocean and lush tropical gardens. Guests can choose from luxurious rooms and suites, each thoughtfully designed to exude comfort and elegance. AYANA's extensive facilities include a private beach, multiple swimming pools, and a world-class spa where traditional Balinese treatments and modern therapies converge. The resort's dining options are a culinary delight, featuring a range of international cuisines and signature restaurants. For an unforgettable Bali experience, AYANA Resort and Spa sets the stage for a luxurious and rejuvenating holiday.",
                 "reviews": [
@@ -49,11 +45,7 @@
                     "https://www.juicer.io/api/posts/460765441/images.jpg?external_id=Ci960E5tSYu&s=037a6af711b21954ce81b67ec27096d5c0b5f939",
                     "https://www.juicer.io/api/posts/385415554/images.jpg?external_id=B2qBx66H9pN&s=10cb75a62de23d60402a55cefdb11b65ac271a5a"
                 ],
-                "price": {
-                    "pricePerPersonDouble": 180,
-                    "pricePerPersonTriple": 160,
-                    "pricePerChild": 80
-                },
+                "price": 180,
                 "numberOfDay": 4,
                 "details": "Nestled amidst Ubud's verdant rainforest, Alila Ubud offers a serene and eco-conscious retreat in Bali, Indonesia. The resort's picturesque setting on the banks of the Ayung River provides a tranquil ambiance for guests seeking relaxation and connection with nature. Alila's guest rooms and villas boast contemporary Balinese design, featuring open-air bathtubs and private balconies with breathtaking views. Enjoy farm-to-table dining experiences at the resort's restaurant, which emphasizes locally sourced and organic ingredients.",
                 "reviews": [
@@ -84,11 +76,7 @@
                     "https://cache.marriott.com/content/dam/marriott-renditions/JKTRT/jktrt-pasola-bar-4025-hor-clsc.jpg?output-quality=70&interpolation=progressive-bilinear&downsize=750px:*",
                     "https://s7d1.scene7.com/is/image/marriotts7prod/rz-jktrt-presidential-suite-dining-37210:Wide-Hor?wid=932&fit=constrain"
                 ],
-                "price": {
-                    "pricePerPersonDouble": 320,
-                    "pricePerPersonTriple": 290,
-                    "pricePerChild": 150
-                },
+                "price": 320,
                 "numberOfDay": 3,
                 "details": "The Ritz-Carlton, Jakarta Pacific Place, presents an urban oasis of luxury and sophistication in the bustling city of Jakarta, Indonesia. Situated in the prestigious Pacific Place complex, this five-star hotel offers an unparalleled experience of elegance and impeccable service. The opulent rooms and suites feature modern amenities and panoramic city views. Indulge in exquisite dining at the hotel's restaurants, serving a variety of international and Indonesian cuisines. The Ritz-Carlton Spa offers a haven of relaxation and well-being, where guests can unwind with indulgent treatments. Whether for business or leisure, The Ritz-Carlton, Jakarta Pacific Place sets the standard for refined luxury in the heart of the capital city.",
                 "reviews": [
@@ -114,11 +102,7 @@
                     "https://www.viceroybali.com/wp-content/uploads/2021/11/86A6763_LOW-768x512.jpg.webp",
                     "https://www.viceroybali.com/wp-content/uploads/2022/09/Viceroy-Villa-View-Outdoor-768x512.webp"
                 ],
-                "price": {
-                    "pricePerPersonDouble": 400,
-                    "pricePerPersonTriple": 350,
-                    "pricePerChild": 180
-                },
+                "price": 350,
                 "numberOfDay": 5,
                 "details": "Nestled in the lush hills of Ubud, Viceroy Bali offers an intimate and luxurious retreat in Indonesia. This five-star resort is renowned for its breathtaking views of the Valley of the Kings and the Petanu River below. The spacious villas showcase Balinese elegance and modern comforts, each featuring a private pool and traditional alang-alang thatched roofs. Guests can indulge in personalized butler service and exclusive dining experiences at the resort's gourmet restaurant. Viceroy Bali's Lembah Spa provides an array of rejuvenating treatments inspired by ancient Balinese traditions. Surrender to the tranquility and indulgence of Viceroy Bali, where every moment promises to be a cherished memory.",
                 "reviews": [
@@ -151,11 +135,7 @@
                     "https://s7d1.scene7.com/is/image/marriotts7prod/rcphuby_00059_conversion:Classic-Hor?wid=750&fit=constrain",
                     "https://s7d1.scene7.com/is/image/marriotts7prod/rcphuby_00108_conversion:Classic-Hor?wid=750&fit=constrain"
                 ],
-                "price": {
-                    "pricePerPersonDouble": 1100,
-                    "pricePerPersonTriple": 1000,
-                    "pricePerChild": 400
-                },
+                "price": 1100,
                 "numberOfDay": 5,
                 "details": "Phulay Bay, a Ritz-Carlton Reserve, is an enchanting retreat situated on the shores of Krabi, Thailand. Surrounded by lush rainforests and the azure waters of the Andaman Sea, this luxury resort offers a serene and unforgettable experience. Guests can indulge in the resort's exceptional amenities, including private plunge pools, exquisite dining options, and a spa that embraces traditional Thai healing practices. With breathtaking views of the limestone cliffs and pristine beaches, Phulay Bay offers a haven for those seeking unparalleled tranquility and five-star hospitality.",
                 "reviews": [
@@ -191,11 +171,7 @@
                     "https://storage.baankrating.com/property/phuket/hotel-photos/stay/deluxe-beachfront/deluxe-beachfront_balcony.jpg?_gl=1*15tgpc4*_ga*MjU1ODEzNzY5LjE2OTA1NzI2ODI.*_ga_5QST3MH4Z3*MTY5MDU3MjY4MS4xLjEuMTY5MDU3Mjc3Mi4wLjAuMA..",
                     "https://storage.baankrating.com/property/phuket/hotel-photos/stay/deluxe-pavilion-beachfront/deluxe-pavilion-beachfront_balcony_3.jpg?_gl=1*vgitqb*_ga*MjU1ODEzNzY5LjE2OTA1NzI2ODI.*_ga_5QST3MH4Z3*MTY5MDU3MjY4MS4xLjEuMTY5MDU3Mjc3Mi4wLjAuMA.."
                 ],
-                "price": {
-                    "pricePerPersonDouble": 120,
-                    "pricePerPersonTriple": 100,
-                    "pricePerChild": 60
-                },
+                "price": 450,
                 "numberOfDay": 6,
                 "details": "Baan Krating Jungle Beach is a hidden gem located on the southern coast of Phuket, tucked away amidst lush greenery and overlooking the pristine Andaman Sea. This boutique resort offers a unique blend of tropical jungle vibes and serene beachfront. Guests can experience nature at its finest, with cozy wooden bungalows nestled amidst the trees and a private beach just steps away. Relax in the tranquil surroundings, enjoy delicious Thai cuisine at the resort's restaurant, and explore nearby attractions like Promthep Cape and Rawai Beach. Baan Krating Jungle Beach promises an unforgettable retreat for those seeking peace and tranquility.",
                 "reviews": [
@@ -226,11 +202,7 @@
                     "https://res.cloudinary.com/grand-luxury/image/upload/w_1440,q_50,f_auto,c_fill,g_center,dpr_1/remote_glh/original/69110-root-rim-tai-kitchen-buffet.jpg",
                     "https://res.cloudinary.com/grand-luxury/image/upload/w_1440,q_50,f_auto,c_fill,g_center,dpr_1/remote_glh/original/103835-root-upper-garden-pavilion-terrace.jpg"
                 ],
-                "price": {
-                    "pricePerPersonDouble": 400,
-                    "pricePerPersonTriple": 350,
-                    "pricePerChild": 150
-                },
+                "price": 400,
                 "numberOfDay": 4,
                 "details": "Experience the epitome of luxury at Four Seasons Resort Chiang Mai, located amidst lush rice fields and misty mountains. This five-star retreat offers impeccable service, elegant villas, and a range of top-notch amenities. Enjoy a serene escape in spacious accommodations with private plunge pools and captivating views. The resort's exceptional dining options cater to every palate, with delectable Thai and international cuisine. Guests can indulge in rejuvenating spa treatments, partake in traditional Thai cooking classes, and explore the cultural treasures of Chiang Mai. Four Seasons Resort Chiang Mai offers a seamless blend of comfort, opulence, and Thai hospitality.",
                 "reviews": [
@@ -263,11 +235,7 @@
                     "https://images.unsplash.com/photo-1655106606763-dc1506c6c1e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80",
                     "https://images.unsplash.com/photo-1679569783351-06e0ab2a1a3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1631&q=80"
                 ],
-                "price": {
-                    "pricePerPersonDouble": 45,
-                    "pricePerPersonTriple": 40,
-                    "pricePerChild": 10
-                },
+                "price": 450,
                 "numberOfDay": 3,
                 "details": "Taj Lake Palace, a breathtaking heritage hotel floating in the middle of Lake Pichola, offers a fairytale-like experience in the heart of Udaipur, India. This romantic oasis is renowned for its exquisite architecture, ornate interiors, and impeccable service. Guests arrive at the palace by boat, evoking a sense of luxury and exclusivity. The rooms and suites exude regal charm, and some boast stunning views of the surrounding lake and Aravalli Mountains. Indulge in royal dining experiences at the hotel's fine restaurants, or enjoy a private dinner on a vintage boat. Taj Lake Palace is an enchanting escape that promises to transport you to the era of Maharajas and their opulent lifestyles.",
                 "reviews": [
@@ -298,11 +266,7 @@
                     "https://imgcy.trivago.com/c_limit,d_dummy.jpeg,f_auto,h_1300,q_auto,w_2000/partnerimages/16/23/162347048.jpeg",
                     "https://imgcy.trivago.com/c_limit,d_dummy.jpeg,f_auto,h_1300,q_auto,w_2000/partnerimages/16/23/162347054.jpeg"
                 ],
-                "price": {
-                    "pricePerPersonDouble": 750,
-                    "pricePerPersonTriple": 700,
-                    "pricePerChild": 400
-                },
+                "price": 750,
                 "numberOfDay": 5,
                 "details": "Ananda in the Himalayas, nestled amidst the lush greenery of Rishikesh, is a world-class wellness retreat dedicated to rejuvenation and self-discovery. Surrounded by the majestic Himalayan foothills and overlooking the Ganges River, this luxury resort offers a serene environment for healing and relaxation. The resort's spa and wellness center provides a holistic range of Ayurvedic treatments, yoga sessions, meditation classes, and wellness therapies. The elegant accommodations blend traditional Indian aesthetics with modern comforts, providing a comfortable and tranquil escape. Ananda's organic cuisine complements the wellness experience, promoting nourishment from within. For those seeking a transformative wellness journey, Ananda in the Himalayas is a sanctuary of peace and revitalization.",
                 "reviews": [
@@ -338,11 +302,7 @@
                     "https://cf.bstatic.com/xdata/images/hotel/max1024x768/156785431.jpg?k=ae66384c3b69b6d34e4894bc45eb78ce0b6722624008e6a72b8ae29f8ed47d06&o=&hp=1",
                     "https://cf.bstatic.com/xdata/images/hotel/max1024x768/156785461.jpg?k=a229df5649dd87703df2e93a5667b064c9c780d2a9a9c8b4a86b66a44e22a734&o=&hp=1"
                 ],
-                "price": {
-                    "pricePerPersonDouble": 400,
-                    "pricePerPersonTriple": 350,
-                    "pricePerChild": 200
-                },
+                "price": 400,
                 "numberOfDay": 4,
                 "details": "Suryagarh, a majestic fortress hotel situated in the golden city of Jaisalmer, transports guests to the era of royal splendor and Rajput hospitality. Surrounded by the vast Thar Desert, this opulent retreat offers an authentic experience of Rajasthan's rich culture and history. The luxurious rooms and suites boast traditional decor and modern amenities, providing a lavish stay in the desert. At Suryagarh, guests can partake in camel safaris, desert excursions, and folk music performances under the stars. The hotel's fine dining restaurant serves a delectable array of Rajasthani and international delicacies. Immerse yourself in the timeless beauty of the desert while experiencing the warmth of Suryagarh's hospitality.",
                 "reviews": [
@@ -380,11 +340,7 @@
                     "https://www.dwarikas.com/wp-content/uploads/2022/01/ezgif.com-gif-maker-3-780x1024.jpg.webp",
                     "https://www.dwarikas.com/wp-content/uploads/2021/11/dwarika-banner-1024x682.jpg.webp"
                 ],
-                "price": {
-                    "pricePerPersonDouble": 180,
-                    "pricePerPersonTriple": 160,
-                    "pricePerChild": 80
-                },
+                "price": 280,
                 "numberOfDay": 4,
                 "details": "Dwarika's Hotel, a blend of heritage and luxury, is a hidden gem in the heart of Kathmandu, Nepal. Inspired by Newari architecture and craftsmanship, the hotel showcases intricate woodcarvings and terracotta work, creating an ambiance of timeless elegance. The rooms and suites are designed with utmost attention to detail, offering modern comforts and a sense of cultural immersion. Dwarika's boasts several fine restaurants serving authentic Nepali and international cuisine, crafted with organic produce from the hotel's own farm. The tranquil Pancha Kosha Himalayan Spa provides traditional wellness treatments for rejuvenation. For a unique and enriching stay in Kathmandu, Dwarika's Hotel offers an unforgettable experience steeped in history and luxury.",
                 "reviews": [
@@ -410,11 +366,7 @@
                     "https://cf.bstatic.com/xdata/images/hotel/max1024x768/33092115.jpg?k=674524bacd199691193cdc68ec2be60d2e1ead104c6ceaf0ba7b053b7a701687&o=&hp=1",
                     "https://cf.bstatic.com/xdata/images/hotel/max1024x768/256504572.jpg?k=b7cba845f14812bfbf0c6f69b15a935912504de8fcb432ee6d31c8784e173d85&o=&hp=1"
                 ],
-                "price": {
-                    "pricePerPersonDouble": 200,
-                    "pricePerPersonTriple": 180,
-                    "pricePerChild": 100
-                },
+                "price": 220,
                 "numberOfDay": 3,
                 "details": "Nestled on a hillside in Pokhara, Tiger Mountain Pokhara Lodge offers a serene and eco-conscious retreat in the lap of the Himalayas, Nepal. The lodge provides breathtaking views of the Annapurna range and lush terraced fields below. The spacious cottages blend traditional Nepali architecture with modern amenities, and private verandas allow guests to soak in the stunning mountain vistas. Tiger Mountain emphasizes sustainable practices and offers fresh organic produce from their own gardens. Guests can explore nearby villages, go on guided nature walks, or simply relax in the tranquil surroundings. For an authentic Himalayan experience, Tiger Mountain Pokhara Lodge is an idyllic escape.",
                 "reviews": [
@@ -450,11 +402,7 @@
                     "https://cf.bstatic.com/xdata/images/hotel/max1024x768/14793313.jpg?k=b4f1aeef7b9b959c02f05964caa4efd3e87a79f0dcdc08af15dad27e058ef2a5&o=&hp=1",
                     "https://cf.bstatic.com/xdata/images/hotel/max1024x768/222634077.jpg?k=857011833d00e3783a596a47911f94139e6f4afc0e0dd0eb0bdc5f124d44f86d&o=&hp=1"
                 ],
-                "price": {
-                    "pricePerPersonDouble": 150,
-                    "pricePerPersonTriple": 130,
-                    "pricePerChild": 70
-                },
+                "price": 250,
                 "numberOfDay": 5,
                 "details": "Gokarna Forest Resort, situated in a serene forested area on the outskirts of Kathmandu, Nepal, offers a tranquil escape from the bustling city life. Surrounded by the Gokarna Protected Forest, the resort provides a serene ambiance for relaxation and rejuvenation. The spacious rooms and suites offer modern comforts and views of the forest and the Himalayan range. Guests can enjoy a round of golf at the resort's golf course, take leisurely walks in the peaceful forest, and unwind at the outdoor swimming pool. The resort's dining options serve a variety of cuisines, catering to different tastes. Gokarna Forest Resort is an ideal destination for nature lovers and those seeking a peaceful stay amidst lush greenery.",
                 "reviews": [
@@ -492,11 +440,7 @@
                     "https://i.ibb.co/jVq4crB/saffu-x58so-Eov-G-M-unsplash.jpg",
                     "https://i.ibb.co/K2GHXmz/datingscout-YVvt129s-XY0-unsplash.jpg"
                 ],
-                "price": {
-                    "pricePerPersonDouble": 740,
-                    "pricePerPersonTriple": 690,
-                    "pricePerChild": 352
-                },
+                "price": 740,
                 "numberOfDay": 4,
                 "details": "Cinnamon Dhonveli, an idyllic tropical paradise nestled in the breathtaking Maldives, stands as a beacon of luxury and relaxation. Situated on the North Male Atoll, this exquisite island resort offers an unrivaled escape for travelers seeking a tranquil haven surrounded by crystal-clear turquoise waters and powdery white-sand beaches. Cinnamon Dhonveli is not just a destination; it's a lifelong memory etched in the hearts of those fortunate enough to experience its magic. Whether seeking a romantic getaway, a family adventure, or a soul-soothing retreat, this Maldivian paradise caters to every dream, weaving an enchanting tale of luxury, beauty, and serenity.",
                 "reviews": [
@@ -522,11 +466,7 @@
                     "https://i.ibb.co/SJmb1nq/ocean-village-maldives.jpg",
                     "https://i.ibb.co/t84hw86/maldives-guesthouse.jpg"
                 ],
-                "price": {
-                    "pricePerPersonDouble": 306,
-                    "pricePerPersonTriple": 306,
-                    "pricePerChild": 22
-                },
+                "price": 306,
                 "numberOfDay": 4,
                 "details": "You're eligible for a Genius discount at Kaani Grand Seaview! To save at this property, all you have to do is sign in. Located in South Male Atoll, 16 mi from Male City, Kaani Grand Seaview is a beach front property that features a spa center, fitness center and a conference room. Ocean View room with private balcony is air conditioned and has a personal safe, mini-bar and a flat-screen TV with cable channels. Free coffee and tea making facility is available in the room. Extras include free toiletries and a hairdryer. Located directly opposite the Bikini Beach, the in-house restaurant serves local and Western cuisine, accompanied with views of the blue lagoon.",
                 "reviews": [
