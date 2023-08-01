@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import useAccommodationDetails from "../../../Hooks/useAccommodationDetails";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
@@ -8,19 +8,21 @@ import { Rating, ThinRoundedStar } from "@smastrom/react-rating";
 import '@smastrom/react-rating/style.css'
 import { HiOutlineClock, HiOutlineMap } from "react-icons/hi";
 import { useForm } from 'react-hook-form';
+import useAuth from "../../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Details = () => {
     const { country, id } = useParams();
-    console.log({ id, country })
-
+    const { user } = useAuth();
+    console.log(user)
+    const navigate = useNavigate();
+    const location = useLocation();
     const [rooms, refetch, loading] = useAccommodationDetails({ country, id })
-    console.log(rooms)
-    const { image, name, numberOfDay, price, reviews, details, location, includedServices, tourPlan } = rooms;
-    console.log(tourPlan)
+    const { image, name, numberOfDay, price, reviews, details, location: place, includedServices, tourPlan } = rooms;
 
     const totalRatings = reviews?.reduce((sum, review) => sum + review?.rating, 0);
     const averageRating = totalRatings / reviews?.length;
-    
+
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     const customStyles = {
@@ -35,6 +37,40 @@ const Details = () => {
 
     const onSubmit = data => {
         console.log(data)
+        if (user && user.email) {
+            const bookingInput = { country: country, accommodation: name, accommodation_id: parseInt(id), price: price, name: data.name, email: data.email, phoneNumber: data.phone, tickets: parseInt(data.ticket), date: data.date, message: data.message }
+
+            console.log(bookingInput)
+            fetch('http://localhost:5000/booking', {
+                method: 'POST',
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify(bookingInput)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    if (data.insertedId) {
+                        reset()
+                        refetch()
+                    }
+                })
+        } else {
+            Swal.fire({
+                title: 'Please login to book this accommodation',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Login now'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/login', { state: { from: location } })
+                }
+            })
+        }
+
     }
 
     return (
@@ -84,7 +120,7 @@ const Details = () => {
                                         {/* Location & Tour duration */}
                                         <div className="bg-bgColor flex justify-center items-center px-6 py-4 font-medium rounded-lg">
                                             <div className="w-[40%] text-center flex justify-center items-center gap-2"><HiOutlineClock className="text-lg text-designColor"></HiOutlineClock> 0{numberOfDay} Days</div>
-                                            <div className="w-[60%] text-center flex justify-center items-center gap-2 border-l-[2px]"><HiOutlineMap className="text-lg text-designColor"></HiOutlineMap> {location}</div>
+                                            <div className="w-[60%] text-center flex justify-center items-center gap-2 border-l-[2px]"><HiOutlineMap className="text-lg text-designColor"></HiOutlineMap> {place}</div>
                                         </div>
 
                                         {/* Services */}
@@ -165,7 +201,8 @@ const Details = () => {
                                                         type="text"
                                                         {...register("name", { required: true })}
                                                         placeholder='Enter Your Name'
-                                                        className="w-full py-2 border-b border-gray-300 focus:outline-none focus:ring-[#082A5E] focus:border-designColor"
+                                                        value={user.displayName}
+                                                        className="w-full py-2 border-b border-gray-300 focus:outline-none focus:border-designColor"
 
                                                     />
                                                     {errors.name && <p className="mt-2 text-[#CC0000]">Name field is required</p>}
@@ -180,7 +217,8 @@ const Details = () => {
                                                         type="email"
                                                         {...register("email", { required: true })}
                                                         placeholder='Enter Your Email'
-                                                        className="w-full py-2 border-b border-gray-300 focus:outline-none focus:ring-[#082A5E] focus:border-designColor"
+                                                        value={user.email}
+                                                        className="w-full py-2 border-b border-gray-300 focus:outline-none focus:border-designColor"
 
                                                     />
                                                     {errors.email && <p className="mt-2 text-[#CC0000]">Email field is required</p>}
@@ -197,7 +235,7 @@ const Details = () => {
                                                             {...register("phone", {
                                                                 required: true,
                                                             })}
-                                                            className="w-full py-2 border-b border-gray-300 focus:outline-none focus:ring-[#082A5E] focus:border-[#082A5E]"
+                                                            className="w-full py-2 border-b border-gray-300 focus:outline-none focus:border-designColor"
                                                             placeholder="Phone Number"
                                                         />
                                                         {errors.phone && <p className="mt-2 text-[#CC0000]">Phone field is required</p>}
@@ -213,7 +251,7 @@ const Details = () => {
                                                         type="text"
                                                         {...register("ticket", { required: true })}
                                                         placeholder='Tickets'
-                                                        className="w-full py-2 border-b border-gray-300 focus:outline-none focus:ring-[#082A5E] focus:border-[#082A5E]"
+                                                        className="w-full py-2 border-b border-gray-300 focus:outline-none focus:border-designColor"
                                                     />
                                                     {errors.ticket && <p className="mt-2 text-[#CC0000]">Ticket field is required</p>}
                                                 </div>
@@ -227,7 +265,7 @@ const Details = () => {
                                                         type="date"
                                                         {...register("date", { required: true })}
                                                         placeholder=''
-                                                        className="w-full py-2 border-b border-gray-300 focus:outline-none focus:ring-[#082A5E] focus:border-[#082A5E]"
+                                                        className="w-full py-2 border-b border-gray-300 focus:outline-none  focus:border-designColor"
 
                                                     />
                                                     {errors.date && <p className="mt-2 text-[#CC0000]">Date field is required</p>}
@@ -241,16 +279,18 @@ const Details = () => {
                                                     <textarea
                                                         {...register("message")}
                                                         placeholder='Enter Message'
-                                                        className="w-full py-2 border-b border-gray-300 focus:outline-none focus:ring-[#082A5E] focus:border-[#082A5E]"
+                                                        className="w-full py-2 border-b border-gray-300 focus:outline-none  focus:border-designColor"
                                                     ></textarea>
                                                 </div>
                                             </div>
-                                            <button
-                                                type="submit"
-                                                className="bg-designColor w-full  text-white rounded py-2 px-4 font-semibold transform hover:scale-105 duration-300 mt-8 mb-4"
-                                            >
-                                                Book Tour
-                                            </button>
+                                            <Link to="/payment">
+                                                <button
+                                                    type="submit"
+                                                    className="bg-designColor w-full  text-white rounded py-2 px-4 font-semibold transform hover:scale-105 duration-300 mt-8 mb-4"
+                                                >
+                                                    Book Tour
+                                                </button>
+                                            </Link>
                                         </form>
                                     </div>
                                 </div>
