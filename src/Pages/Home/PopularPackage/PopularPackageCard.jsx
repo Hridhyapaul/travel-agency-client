@@ -13,7 +13,7 @@ const PopularPackageCard = ({ destination, isLarge }) => {
 
     return (
         <div className={`col-span-${isLarge ? "2" : "1"}`}>
-            <Link to={`/viewPackages/${_id}`}>
+            <Link to={`/packages/${_id}`}>
                 <div className="font-body relative duration-300">
                     <img className={`h-[${isLarge ? "300px" : "200px"}] w-full object-cover rounded-lg cursor-pointer`} src={countryImage} alt="" />
 

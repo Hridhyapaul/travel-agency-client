@@ -136,4 +136,68 @@
             }
         ]
     },
+    {
+        "country": "Maldives",
+        "slogan": "The Country of Island Paradise and Underwater Restaurants",
+        "countryImage": "https://images.unsplash.com/photo-1505881402582-c5bc11054f91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1032&q=80",
+        "accommodation": [
+            {
+                "acc_id": 1,
+                "name": "Cinnamon Dhonveli",
+                "about": "Unforgettable island retreat in Maldives.",
+                "image": [
+                    "https://i.ibb.co/Zh9dJ4c/ice-tea-n-Q5f-VAXz89-E-unsplash.jpg",
+                    "https://i.ibb.co/y0mM28j/ice-tea-wi-S-GTrf-Ck-Q-unsplash.jpg",
+                    "https://i.ibb.co/jVq4crB/saffu-x58so-Eov-G-M-unsplash.jpg",
+                    "https://i.ibb.co/K2GHXmz/datingscout-YVvt129s-XY0-unsplash.jpg"
+                ],
+                "price": 740,
+                "numberOfDay": 4,
+                "details": "Cinnamon Dhonveli, an idyllic tropical paradise nestled in the breathtaking Maldives, stands as a beacon of luxury and relaxation. Situated on the North Male Atoll, this exquisite island resort offers an unrivaled escape for travelers seeking a tranquil haven surrounded by crystal-clear turquoise waters and powdery white-sand beaches. Cinnamon Dhonveli is not just a destination; it's a lifelong memory etched in the hearts of those fortunate enough to experience its magic. Whether seeking a romantic getaway, a family adventure, or a soul-soothing retreat, this Maldivian paradise caters to every dream, weaving an enchanting tale of luxury, beauty, and serenity.",
+                "reviews": [
+                    {
+                        "reviewerName": "John Doe",
+                        "rating": 5,
+                        "reviewText": "Absolutely loved our stay at Cinnamon Dhonveli! The resort was stunning, the staff was friendly and attentive, and the food was delicious. Would definitely recommend!"
+                    },
+                    {
+                        "reviewerName": "Jane Smith",
+                        "rating": 4,
+                        "reviewText": "Had a wonderful time at Cinnamon Dhonveli. The beaches were beautiful, and the water was so clear. The only downside was that it rained a bit during our stay, but the resort had plenty of indoor activities to keep us entertained."
+                    }
+                ]
+            },
+            {
+                "acc_id": 2,
+                "name": "Kaani Grand Seaview",
+                "about": "The vacation on the magnificent beachfront!",
+                "image": [
+                    "https://i.ibb.co/dQhFSF3/maldives-guesthouse-arena-beach.jpg",
+                    "https://i.ibb.co/8gycQYH/ocean-village-17.jpg",
+                    "https://i.ibb.co/SJmb1nq/ocean-village-maldives.jpg",
+                    "https://i.ibb.co/t84hw86/maldives-guesthouse.jpg"
+                ],
+                "price": 306,
+                "numberOfDay": 4,
+                "details": "You're eligible for a Genius discount at Kaani Grand Seaview! To save at this property, all you have to do is sign in. Located in South Male Atoll, 16 mi from Male City, Kaani Grand Seaview is a beach front property that features a spa center, fitness center and a conference room. Ocean View room with private balcony is air conditioned and has a personal safe, mini-bar and a flat-screen TV with cable channels. Free coffee and tea making facility is available in the room. Extras include free toiletries and a hairdryer. Located directly opposite the Bikini Beach, the in-house restaurant serves local and Western cuisine, accompanied with views of the blue lagoon.",
+                "reviews": [
+                    {
+                        "reviewerName": "Emily Johnson",
+                        "rating": 4,
+                        "reviewText": "Kaani Grand Seaview is a beautiful property with stunning views. The staff was friendly and accommodating. The only downside was that the Wi-Fi signal in the room was weak."
+                    },
+                    {
+                        "reviewerName": "Michael Smith",
+                        "rating": 5,
+                        "reviewText": "I had an amazing time at Kaani Grand Seaview. The beachfront location was perfect, and the room was comfortable. The restaurant had delicious food, and I enjoyed the spa facilities."
+                    },
+                    {
+                        "reviewerName": "Sophia Lee",
+                        "rating": 4,
+                        "reviewText": "The stay at Kaani Grand Seaview was delightful. The beach was pristine, and the room was spacious and clean. The staff was attentive, and the overall experience was fantastic."
+                    }
+                ]
+            }
+        ]
+    }
 ]

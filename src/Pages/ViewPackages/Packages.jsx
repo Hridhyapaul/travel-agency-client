@@ -178,7 +178,7 @@ const Packages = () => {
                                                     : true
                                             )
                                             .filter(item => item.price >= values[0] && item.price <= values[1])
-                                            .map(item => <PackagesCard key={item._id} item={item}></PackagesCard>)
+                                            .map(item => <PackagesCard key={item._id} item={item} country={country}></PackagesCard>)
                                     }
                                 </div>
                             </div>

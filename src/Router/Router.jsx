@@ -5,6 +5,8 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import ViewPackages from "../Pages/ViewPackages/viewPackages";
 import Packages from "../Pages/ViewPackages/Packages";
+import HotelDetails from "../Pages/ViewPackages/Details/HotelDetails";
+import Details from "../Pages/ViewPackages/Details/Details";
 
 const router = createBrowserRouter([
     {
@@ -26,12 +28,22 @@ const router = createBrowserRouter([
         element: <Register></Register>
     },
     {
-        path: "/viewPackages/:id",
+        path: "/packages/:id",
         element: <ViewPackages></ViewPackages>,
         children: [
             {
                 path: "",
                 element: <Packages></Packages>,
+            }
+        ]
+    },
+    {
+        path: "/accommodation/:country/:id",
+        element: <HotelDetails></HotelDetails>,
+        children: [
+            {
+                path: "",
+                element: <Details></Details>,
             }
         ]
     },
