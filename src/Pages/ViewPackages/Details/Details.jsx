@@ -283,16 +283,24 @@ const Details = () => {
                                                     ></textarea>
                                                 </div>
                                             </div>
-                                            <Link to="/payment">
-                                                <button
-                                                    type="submit"
-                                                    className="bg-designColor w-full  text-white rounded py-2 px-4 font-semibold transform hover:scale-105 duration-300 mt-8 mb-4"
-                                                >
-                                                    Book Tour
-                                                </button>
-                                            </Link>
+
+                                            <button
+                                                type="submit"
+                                                className="bg-designColor w-full  text-white rounded py-2 px-4 font-semibold transform hover:scale-105 duration-300 mt-8 mb-4"
+                                            >
+                                                Book Tour
+                                            </button>
+
                                         </form>
                                     </div>
+                                    <Link to="/dashboard/bookList">
+                                        <button
+                                            type="submit"
+                                            className="bg-designColor w-full  text-white rounded py-2 px-4 font-semibold transform hover:scale-105 duration-300 mt-8 mb-4"
+                                        >
+                                            Pay for Booking
+                                        </button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

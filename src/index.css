@@ -22,3 +22,13 @@ input[type="password"]:not(:placeholder-shown)~.input-text,
 input[type="tel"]:not(:placeholder-shown)~.input-text {
     @apply bg-white transform -translate-y-[22px] -translate-x-2 scale-90;
 }
+
+.drawer-side ul li a.active {
+    color: #F5F6F6;
+    background-color: #0d1321;
+}
+
+.drawer-side ul li a:hover {
+    color: #F5F6F6;
+    background-color: #0d1321;
+}

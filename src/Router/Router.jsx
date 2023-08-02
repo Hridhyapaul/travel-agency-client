@@ -7,6 +7,8 @@ import ViewPackages from "../Pages/ViewPackages/viewPackages";
 import Packages from "../Pages/ViewPackages/Packages";
 import HotelDetails from "../Pages/ViewPackages/Details/HotelDetails";
 import Details from "../Pages/ViewPackages/Details/Details";
+import Dashboard from "../Layout/Dashboard";
+import BookList from "../Pages/Dashboard/BookList";
 
 const router = createBrowserRouter([
     {
@@ -47,6 +49,16 @@ const router = createBrowserRouter([
             }
         ]
     },
+    {
+        path: "/dashboard",
+        element: <Dashboard></Dashboard>,
+        children: [
+            {
+                path: "bookList",
+                element: <BookList></BookList>
+            },
+        ]
+    }
 ]);
 
 export default router;
