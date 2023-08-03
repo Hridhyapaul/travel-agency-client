@@ -55,6 +55,13 @@ const Details = () => {
                     if (data.insertedId) {
                         reset()
                         refetch()
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Your booking requests are being reviewed. To confirm your booking, click on the "Pay for Booking" button',
+                            showConfirmButton: false,
+                            timer: 3500
+                        })
                     }
                 })
         } else {

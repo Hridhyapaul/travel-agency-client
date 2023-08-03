@@ -3,9 +3,12 @@ import useBook from "../../../Hooks/useBook";
 import Container from "../../../Shared/Container";
 import PaymentInject from "./PaymentInject";
 import noData from "../../../../public/Icon/Nodata.jpg";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const Payment = () => {
-    const [booking, , loading] = useBook();
+    const [axiosSecure] = useAxiosSecure();
+    const [booking, refetch, loading] = useBook();
     console.log(booking)
 
     if (loading) {
@@ -16,7 +19,36 @@ const Payment = () => {
         return total + item.price * item.tickets;
     }, 0);
 
-    // Payment system
+    const handleAccommodationDelete = (id) => {
+        console.log(id)
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You want to delete this request",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure
+                    .delete(`/booking/${id}`)
+                    .then(res => res.data)
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            refetch()
+                            Swal.fire(
+                                'Deleted!',
+                                'This request has been deleted',
+                                'success'
+                            )
+                        }
+                    })
+            }
+
+        })
+    }
 
     return (
         <div className="mt-20 pb-20 mx-20">
@@ -50,7 +82,7 @@ const Payment = () => {
                                 {booking.map((item, index) => (
                                     <div key={index} className="bg-white shadow-lg rounded-lg px-6 py-4 font-body relative">
                                         <h1 className="text-xl font-semibold">{item.accommodation}</h1>
-                                        <h1 className="text-lg font-semibold">{item.country}</h1>
+                                        <h1 className="text-lg font-semibold">({item.country})</h1>
                                         <p>Booking Request Date: {item.date}</p>
                                         <p>You will be charged <span className="text-lg font-semibold">${item.price}</span>/accommodation</p>
                                         <p>You are interested in reserving <span className="text-lg font-semibold">0{item.tickets}</span> tickets</p>
@@ -60,7 +92,7 @@ const Payment = () => {
                                             <p className="text-lg font-medium">Payable price <span className="text-designColor">${item.price * item.tickets}</span></p>
                                         </div>
                                         <div className="absolute top-4 right-4 cursor-pointer">
-                                            <div className="w-[30px] h-[30px] rounded-full bg-bodyColor flex justify-center items-center">
+                                            <div onClick={() => handleAccommodationDelete(item._id)} className="w-[30px] h-[30px] rounded-full bg-bodyColor flex justify-center items-center">
                                                 <HiOutlineX className="text-white text-xl"></HiOutlineX>
                                             </div>
                                         </div>
