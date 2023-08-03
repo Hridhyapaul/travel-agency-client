@@ -86,6 +86,7 @@ const PaymentForm = ({ price, refetch, booking }) => {
             const ticketsByAccommodation = booking.map(item => ({
                 accommodation: item.accommodation,
                 tickets: item.tickets,
+                country: item.country
             }));
 
             const payments = {

@@ -9,6 +9,7 @@ import HotelDetails from "../Pages/ViewPackages/Details/HotelDetails";
 import Details from "../Pages/ViewPackages/Details/Details";
 import Dashboard from "../Layout/Dashboard";
 import Payment from "../Pages/Dashboard/Payment/Payment";
+import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
 
 const router = createBrowserRouter([
     {
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
                 path: "payment",
                 element: <Payment></Payment>
             },
+            {
+                path: "paymentHistory",
+                element: <PaymentHistory></PaymentHistory>
+            }
         ]
     }
 ]);
