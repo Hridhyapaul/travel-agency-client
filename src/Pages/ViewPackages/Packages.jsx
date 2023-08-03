@@ -10,7 +10,7 @@ import adImage from '../../../public/Icon/ad.avif'
 const Packages = () => {
 
     const { text } = useParams();
-    const [packages, refetch, loading] = usePackages({ text });
+    const [packages, , loading] = usePackages({ text });
     console.log(packages)
     const { accommodation, countryImage, country, slogan } = packages;
     console.log(packages)

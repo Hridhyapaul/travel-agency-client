@@ -120,10 +120,10 @@ const PaymentForm = ({ price, refetch, booking }) => {
         }
     }
     return (
-        <div className='w-[400px] bg-white rounded-lg shadow-lg p-6'>
+        <div className=' h-[227px] bg-white rounded-lg shadow-lg px-6 py-4'>
             <form onSubmit={handleSubmit} className="mt-2">
                 <div className="mb-4">
-                    <label htmlFor="card-element" className="block text-gray-700 text-xl font-semibold mb-2">
+                    <label htmlFor="card-element" className="block text-gray-700 text-xl font-semibold mb-4">
                         Card Information
                     </label>
                     <CardElement
@@ -143,11 +143,11 @@ const PaymentForm = ({ price, refetch, booking }) => {
                         }}
                     />
                 </div>
-                <button type="submit" disabled={!stripe || !clientSecret || processing} className="bg-[#082A5E] text-white text-[16px] rounded-lg py-1 px-3 mt-6 font-semibold transform hover:scale-105 duration-300">
-                    PAY
+                <button type="submit" disabled={!stripe || !clientSecret || processing} className="bg-bodyColor text-white text-[16px] rounded-lg py-1 px-3 font-semibold">
+                    Pay
                 </button>
             </form>
-            {paymentError ? <p className="text-red-500 mt-4">
+            {paymentError ? <p className="text-red-500 mt-4 font-body capitalize">
                 {paymentError}
             </p> : <p className="text-green-500 mt-4">
                 {paymentSuccess}

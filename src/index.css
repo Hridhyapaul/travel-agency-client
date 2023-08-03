@@ -28,7 +28,6 @@ input[type="tel"]:not(:placeholder-shown)~.input-text {
     background-color: #0d1321;
 }
 
-.drawer-side ul li a:hover {
-    color: #F5F6F6;
-    background-color: #0d1321;
+.drawer-side ul li a:not(.active):hover {
+    background-color: #F5F6F6;
 }

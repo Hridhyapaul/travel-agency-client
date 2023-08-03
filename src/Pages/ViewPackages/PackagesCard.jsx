@@ -2,7 +2,7 @@ import { Rating, ThinRoundedStar } from "@smastrom/react-rating";
 import '@smastrom/react-rating/style.css'
 import { Link } from "react-router-dom";
 
-const PackagesCard = ({ item, country }) => {
+const PackagesCard = ({ item}) => {
     console.log(item)
     const { _id, about, image, name, numberOfDay, price, reviews = [] } = item;
     console.log(_id)
