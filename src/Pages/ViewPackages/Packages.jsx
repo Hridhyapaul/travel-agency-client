@@ -9,11 +9,11 @@ import adImage from '../../../public/Icon/ad.avif'
 
 const Packages = () => {
 
-    const { id } = useParams()
-    const [packages, refetch, loading] = usePackages({ id });
+    const { text } = useParams();
+    const [packages, refetch, loading] = usePackages({ text });
     console.log(packages)
     const { accommodation, countryImage, country, slogan } = packages;
-    console.log(accommodation)
+    console.log(packages)
 
     // ====== Search Filter ======
     const [query, setQuery] = useState("")
@@ -154,6 +154,17 @@ const Packages = () => {
                                             // Add the appropriate onChange handler if needed
                                             />
                                             <span className="ml-2">05 Days</span>
+                                        </label>
+                                        <label className="block w-fit">
+                                            <input
+                                                type="checkbox"
+                                                className="focus:bg-designColor"
+                                                name="duration"
+                                                value="6"
+                                                onChange={(event) => handleDurationFilter(event)}
+                                            // Add the appropriate onChange handler if needed
+                                            />
+                                            <span className="ml-2">06 Days</span>
                                         </label>
                                     </div>
                                 </div>

@@ -20,8 +20,8 @@ const Dashboard = () => {
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 h-full bg-white shadow-lg text-bodyColor text-[16px] font-body font-semibold pt-20">
                         {/* Sidebar content here */}
-                        <li><NavLink to="/dashboard/bookList">Booking Request</NavLink></li>
                         <li><NavLink to="/dashboard/myBooking">My Booking</NavLink></li>
+                        <li><NavLink to="/dashboard/payment">Payment</NavLink></li>
                     </ul>
 
                 </div>

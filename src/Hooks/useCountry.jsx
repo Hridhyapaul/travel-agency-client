@@ -1,19 +1,20 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "./useAxiosSecure";
-const useAccommodationDetails = ({id}) => {
+
+const useCountry = () => {
     // const {user} = useAuth();
     const [axiosSecure] = useAxiosSecure();
 
-    const { data: rooms = [], isLoading: loading, refetch } = useQuery({
-        queryKey: ['rooms'],
+    const { data: countries = [], isLoading: countryLoading, refetch } = useQuery({
+        queryKey: ['countries'],
         // enabled: !!user?.email && !! localStorage.getItem("access-token"),
         queryFn: async () => {
-            const res = await axiosSecure.get(`/accommodation/${id}`);
+            const res = await axiosSecure.get('/countries');
             return res.data;
         }
     })
 
-    return [rooms, refetch, loading]
+    return [countries, countryLoading , refetch]
 };
 
-export default useAccommodationDetails;
+export default useCountry;

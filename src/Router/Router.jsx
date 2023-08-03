@@ -8,7 +8,7 @@ import Packages from "../Pages/ViewPackages/Packages";
 import HotelDetails from "../Pages/ViewPackages/Details/HotelDetails";
 import Details from "../Pages/ViewPackages/Details/Details";
 import Dashboard from "../Layout/Dashboard";
-import BookList from "../Pages/Dashboard/BookList";
+import Payment from "../Pages/Dashboard/Payment/Payment";
 
 const router = createBrowserRouter([
     {
@@ -30,7 +30,7 @@ const router = createBrowserRouter([
         element: <Register></Register>
     },
     {
-        path: "/packages/:id",
+        path: "/packages/:text",
         element: <ViewPackages></ViewPackages>,
         children: [
             {
@@ -40,7 +40,7 @@ const router = createBrowserRouter([
         ]
     },
     {
-        path: "/accommodation/:country/:id",
+        path: "/accommodation/:id",
         element: <HotelDetails></HotelDetails>,
         children: [
             {
@@ -54,8 +54,8 @@ const router = createBrowserRouter([
         element: <Dashboard></Dashboard>,
         children: [
             {
-                path: "bookList",
-                element: <BookList></BookList>
+                path: "payment",
+                element: <Payment></Payment>
             },
         ]
     }

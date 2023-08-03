@@ -1,19 +1,18 @@
 import { FaReceipt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const PopularPackageCard = ({ destination, isLarge }) => {
-    console.log(destination)
-    const { _id, country, countryImage, accommodation } = destination;
+const PopularPackageCard = ({ accommodation, isLarge }) => {
+    console.log(accommodation)
+    const { country, countryImage, accommodations } = accommodation;
 
-    const minPrice = accommodation.reduce(
+    const minPrice = accommodations.reduce(
         (min, item) => (item.price < min ? item.price : min),
         Infinity
       );
 
-
     return (
         <div className={`col-span-${isLarge ? "2" : "1"}`}>
-            <Link to={`/packages/${_id}`}>
+            <Link to={`/packages/${country}`}>
                 <div className="font-body relative duration-300">
                     <img className={`h-[${isLarge ? "300px" : "200px"}] w-full object-cover rounded-lg cursor-pointer`} src={countryImage} alt="" />
 
@@ -21,7 +20,7 @@ const PopularPackageCard = ({ destination, isLarge }) => {
 
                         <div className={`ml-4 mb-3 text-white`}>
                             <h1 className="text-2xl font-semibold">{country}</h1>
-                            <p className="flex justify-start items-center gap-2"><FaReceipt></FaReceipt> <span>{accommodation.length} Packages</span></p>
+                            <p className="flex justify-start items-center gap-2"><FaReceipt></FaReceipt> <span>{accommodations.length} Packages</span></p>
                             <p>Start from ${minPrice}</p>
                         </div>
                     </div>

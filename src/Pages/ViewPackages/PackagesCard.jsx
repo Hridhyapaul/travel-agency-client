@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 const PackagesCard = ({ item, country }) => {
     console.log(item)
-    const { acc_id, about, image, name, numberOfDay, price, reviews = [] } = item;
-    console.log(acc_id)
+    const { _id, about, image, name, numberOfDay, price, reviews = [] } = item;
+    console.log(_id)
 
     const totalRatings = reviews.reduce((sum, review) => sum + review.rating, 0);
     const averageRating = totalRatings / reviews?.length;
@@ -45,7 +45,7 @@ const PackagesCard = ({ item, country }) => {
                         <p className="bg-bgColor rounded-lg px-4 py-2 w-fit">0{numberOfDay} Days</p>
                     </div>
                     <div>
-                        <Link to={`/accommodation/${country}/${acc_id}`}>
+                        <Link to={`/accommodation/${_id}`}>
                             <button className="px-4 py-2 bg-designColor text-white rounded-lg">See Details</button>
                         </Link>
                     </div>

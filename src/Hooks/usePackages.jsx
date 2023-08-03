@@ -3,7 +3,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "./useAxiosSecure";
 
-const usePackages = ({id}) => {
+const usePackages = ({text}) => {
     // const {user} = useAuth();
     const [axiosSecure] = useAxiosSecure();
 
@@ -11,7 +11,7 @@ const usePackages = ({id}) => {
         queryKey: ['package'],
         // enabled: !!user?.email && !! localStorage.getItem("access-token"),
         queryFn: async () => {
-            const res = await axiosSecure.get(`/packages/${id}`);
+            const res = await axiosSecure.get(`/packages/${text}`);
             return res.data;
         }
     })

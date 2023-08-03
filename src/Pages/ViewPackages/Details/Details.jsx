@@ -12,13 +12,14 @@ import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
 
 const Details = () => {
-    const { country, id } = useParams();
+    const { id } = useParams();
     const { user } = useAuth();
     console.log(user)
     const navigate = useNavigate();
     const location = useLocation();
-    const [rooms, refetch, loading] = useAccommodationDetails({ country, id })
-    const { image, name, numberOfDay, price, reviews, details, location: place, includedServices, tourPlan } = rooms;
+    const [rooms, refetch, loading] = useAccommodationDetails({ id })
+    console.log(rooms)
+    const { _id, countryName, image, name, numberOfDay, price, reviews, details, location: place, includedServices, tourPlan } = rooms;
 
     const totalRatings = reviews?.reduce((sum, review) => sum + review?.rating, 0);
     const averageRating = totalRatings / reviews?.length;
@@ -38,7 +39,7 @@ const Details = () => {
     const onSubmit = data => {
         console.log(data)
         if (user && user.email) {
-            const bookingInput = { country: country, accommodation: name, accommodation_id: parseInt(id), price: price, name: data.name, email: data.email, phoneNumber: data.phone, tickets: parseInt(data.ticket), date: data.date, message: data.message }
+            const bookingInput = { country: countryName, accommodation: name, accommodation_id: _id, price: price, name: data.name, email: data.email, phoneNumber: data.phone, tickets: parseInt(data.ticket), date: data.date, message: data.message }
 
             console.log(bookingInput)
             fetch('http://localhost:5000/booking', {
@@ -201,7 +202,7 @@ const Details = () => {
                                                         type="text"
                                                         {...register("name", { required: true })}
                                                         placeholder='Enter Your Name'
-                                                        value={user.displayName}
+                                                        value={user?.displayName}
                                                         className="w-full py-2 border-b border-gray-300 focus:outline-none focus:border-designColor"
 
                                                     />
@@ -217,7 +218,7 @@ const Details = () => {
                                                         type="email"
                                                         {...register("email", { required: true })}
                                                         placeholder='Enter Your Email'
-                                                        value={user.email}
+                                                        value={user?.email}
                                                         className="w-full py-2 border-b border-gray-300 focus:outline-none focus:border-designColor"
 
                                                     />
@@ -293,7 +294,7 @@ const Details = () => {
 
                                         </form>
                                     </div>
-                                    <Link to="/dashboard/bookList">
+                                    <Link to="/dashboard/payment">
                                         <button
                                             type="submit"
                                             className="bg-designColor w-full  text-white rounded py-2 px-4 font-semibold transform hover:scale-105 duration-300 mt-8 mb-4"

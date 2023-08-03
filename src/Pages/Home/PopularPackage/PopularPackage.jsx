@@ -1,13 +1,13 @@
-import usePopularDestination from "../../../Hooks/usePopularDestination";
+import useAccommodation from "../../../Hooks/useAccommodation";
 import Container from "../../../Shared/Container";
 import SectionTitle from "../../../Shared/SectionTitle";
 import PopularPackageCard from "./PopularPackageCard";
 
 const PopularPackage = () => {
-    const [destinations, loading, ] = usePopularDestination();
-    console.log(destinations)
+    const [accommodations, accommodationLoading, ] = useAccommodation();
+    console.log(accommodations)
 
-    if(loading){
+    if (accommodationLoading) {
         return <div>Loading....</div>
     }
 
@@ -19,10 +19,10 @@ const PopularPackage = () => {
                 </div>
                 <div className="grid grid-cols-2 gap-8">
                     {
-                        destinations.map((destination,index) =>
+                        accommodations.map((accommodation, index) =>
                             <PopularPackageCard
-                                key={destination._id}
-                                destination={destination}
+                                key={accommodation._id}
+                                accommodation={accommodation}
                                 isLarge={index === 0}
                             >
 
