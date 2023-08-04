@@ -58,8 +58,8 @@ const Header = ({ isStatic, isBgColor }) => {
 
     return (
         <>
-            <div className={`lg:py-4 ${isStatic ? "" : "fixed"} z-20 w-full transition-all duration-500 ${isScrolled ? "bg-bodyColor" : isBgColor ? "bg-bodyColor" : "bg-white bg-opacity-25"
-                }`}>
+            <div className={`lg:py-4 ${isStatic ? "" : "fixed"} z-20 w-full transition-all duration-500 ${isScrolled ? "bg-bodyColor" : isBgColor ? "bg-bodyColor" : "bg-black bg-opacity-25"
+                } blurContainer`}>
                 <div className="lg:mt-0 lg:max-w-[1280px] mx-auto">
                     <div className="text-white font-semibold relative">
                         {/* Large Screen */}

@@ -82,3 +82,7 @@ ul .mobileNavigation a:hover::after {
     opacity: 1;
     transform: scale(1, 1);
 }
+
+.blurContainer {
+    backdrop-filter: blur(10px); /* Adjust the blur intensity as needed */
+}

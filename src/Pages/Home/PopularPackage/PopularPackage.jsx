@@ -1,5 +1,6 @@
 import useAccommodation from "../../../Hooks/useAccommodation";
 import Container from "../../../Shared/Container";
+import Loading from "../../../Shared/Loading";
 import SectionTitle from "../../../Shared/SectionTitle";
 import PopularPackageCard from "./PopularPackageCard";
 
@@ -8,7 +9,7 @@ const PopularPackage = () => {
     console.log(accommodations)
 
     if (accommodationLoading) {
-        return <div>Loading....</div>
+        return <Loading></Loading>
     }
 
     return (
