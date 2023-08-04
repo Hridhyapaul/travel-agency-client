@@ -1,6 +1,6 @@
 const PaymentHistoryCard = ({ history, index }) => {
     console.log(history)
-    const { date, price, quantity, transitionId, tickets, accommodationName } = history;
+    const { date, price, transitionId, tickets } = history;
     const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
     const localDate = new Date(date).toLocaleString('en-US', options);
 

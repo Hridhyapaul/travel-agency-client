@@ -10,7 +10,7 @@ const useBook = () => {
         queryKey: ['booking'],
         // enabled: !!user?.email && !! localStorage.getItem("access-token"),
         queryFn: async () => {
-            const res = await axiosSecure.get(`/booking?email=${user?.email}`);
+            const res = await axiosSecure.get(`/bookingRequest?email=${user?.email}`);
             return res.data;
         }
     })

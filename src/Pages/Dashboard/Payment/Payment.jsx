@@ -33,7 +33,7 @@ const Payment = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 axiosSecure
-                    .delete(`/booking/${id}`)
+                    .delete(`/bookingRequest/${id}`)
                     .then(res => res.data)
                     .then(data => {
                         if (data.deletedCount > 0) {

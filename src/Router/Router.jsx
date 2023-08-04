@@ -10,6 +10,7 @@ import Details from "../Pages/ViewPackages/Details/Details";
 import Dashboard from "../Layout/Dashboard";
 import Payment from "../Pages/Dashboard/Payment/Payment";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
+import MyBooking from "../Pages/Dashboard/MyBooking/MyBooking";
 
 const router = createBrowserRouter([
     {
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
             {
                 path: "paymentHistory",
                 element: <PaymentHistory></PaymentHistory>
+            },
+            {
+                path: "myBooking",
+                element: <MyBooking></MyBooking>
             }
         ]
     }
