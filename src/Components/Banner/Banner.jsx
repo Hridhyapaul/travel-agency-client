@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../Banner/Banner.css"
 import "../Banner/custom-slick.css"
+import Loading from '../../Shared/Loading';
 // import Container from '../../Shared/Container';
 
 const Banner = () => {
@@ -48,6 +49,7 @@ const Banner = () => {
     ];
 
     const [backgroundImage, setBackgroundImage] = useState(images[0].img);
+    const [loading, setLoading] = useState(true);
 
     const [selectedPlace, setSelectedPlace] = useState({
         name: images[0].name,
@@ -91,82 +93,102 @@ const Banner = () => {
         pauseOnFocus: 'true',
     };
 
+    useEffect(() => {
+        const loadingTimeout = setTimeout(() => {
+            setLoading(false);
+        }, 500); // Adjust the delay time as needed
+
+        return () => {
+            clearTimeout(loadingTimeout);
+        };
+    }, []);
+
     return (
         <div>
-            {/* Start Mobile Screen */}
-
-            <div className='lg:hidden block'>
-                <Slider {...settings}>
-                    {images.slice(1).map((item, index) => (
-                        <div key={index} className="relative flex justify-between items-start gap-8" onClick={() => handleThumbnailClick(item)}>
-                            <img className="w-full h-[400px] object-cover cursor-pointer" src={item.img} alt="" />
-
-                            {/* ====== Start Background shadow ====== */}
-
-                            <div className='bg-black w-full h-[400px] absolute inset-0 index-1 bg-opacity-50'></div>
-
-                            {/* ====== End Background shadow ====== */}
-
-
-                            <div className="absolute top-1/2 right-5 left-5 translate-y-[-50%] text-bgColor space-y-5">
-                                <h1 className='lg:text-3xl text-2xl font-semibold'>{item.address}</h1>
-                                <p className='text-sm line-clamp-4'>{item.details}</p>
-                            </div>
-                        </div>
-                    ))}
-                </Slider>
-            </div>
-
-            {/* End Mobile Screen */}
-
-            {/* ===== Start Large Screen ===== */}
-
-            <div className="lg:block hidden w-full shadow-lg relative">
-
-                {/* ====== Start Background ====== */}
-
+            {loading ? (
+                // Display loader while loading
                 <div>
-                    <img className='backgroundImage w-full h-[100vh] object-cover' src={backgroundImage} alt="" />
+                    <Loading></Loading>
                 </div>
+            ) : (
+                <div>
+                    {/* Start Mobile Screen */}
 
-                {/* ====== End Background ====== */}
+                    <div className='lg:hidden block'>
+                        <Slider {...settings}>
+                            {images.slice(1).map((item, index) => (
+                                <div key={index} className="relative flex justify-between items-start gap-8" onClick={() => handleThumbnailClick(item)}>
+                                    <img className="w-full h-[400px] object-cover cursor-pointer" src={item.img} alt="" />
 
-                {/* ====== Start Background shadow ====== */}
+                                    {/* ====== Start Background shadow ====== */}
 
-                <div className='bg-bodyColor w-full h-[100vh] absolute inset-0 index-1 bg-opacity-30'></div>
+                                    <div className='bg-black w-full h-[400px] absolute inset-0 index-1 bg-opacity-50'></div>
 
-                {/* ====== End Background shadow ====== */}
+                                    {/* ====== End Background shadow ====== */}
 
-                <div className='font-body text-bgColor absolute inset-0 top-1/2 left-10 right-10 translate-y-[-50%] flex justify-between items-center gap-5'>
-                    <div className='w-[50%] space-y-5 '>
-                        <h1 className='lg:text-3xl text-xl font-semibold'>{selectedPlace.address}</h1>
-                        <p className='text-sm line-clamp-4'>{selectedPlace.details}</p>
+
+                                    <div className="absolute top-1/2 right-5 left-5 translate-y-[-50%] text-bgColor space-y-5">
+                                        <h1 className='lg:text-3xl text-2xl font-semibold'>{item.address}</h1>
+                                        <p className='text-sm line-clamp-4'>{item.details}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </Slider>
                     </div>
 
-                    {/* ====== Start Thumbnail Images ====== */}
+                    {/* End Mobile Screen */}
 
-                    <div className='w-[50%]'>
-                        <div className='w-full '>
-                            <Slider {...settings}>
-                                {images.map((item, index) => (
-                                    <div key={index} className="relative flex justify-between items-start gap-8" onClick={() => handleThumbnailClick(item)}>
-                                        <img className="w-[200px] h-[300px] object-cover cursor-pointer rounded-lg " src={item.img} alt="" />
-                                        <div className="absolute bottom-0 right-0 left-0 py-5">
-                                            <h1 className="font-semibold text-center">{item.name}</h1>
-                                        </div>
-                                    </div>
-                                ))}
-                            </Slider>
+                    {/* ===== Start Large Screen ===== */}
+
+                    <div className="lg:block hidden w-full shadow-lg relative">
+
+                        {/* ====== Start Background ====== */}
+
+                        <div>
+                            <img className='backgroundImage w-full h-[100vh] object-cover' src={backgroundImage} alt="" />
+                        </div>
+
+                        {/* ====== End Background ====== */}
+
+                        {/* ====== Start Background shadow ====== */}
+
+                        <div className='bg-bodyColor w-full h-[100vh] absolute inset-0 index-1 bg-opacity-30'></div>
+
+                        {/* ====== End Background shadow ====== */}
+
+                        <div className='font-body text-bgColor absolute inset-0 top-1/2 left-10 right-10 translate-y-[-50%] flex justify-between items-center gap-5'>
+                            <div className='w-[50%] space-y-5 '>
+                                <h1 className='lg:text-3xl text-xl font-semibold'>{selectedPlace.address}</h1>
+                                <p className='text-sm line-clamp-4'>{selectedPlace.details}</p>
+                            </div>
+
+                            {/* ====== Start Thumbnail Images ====== */}
+
+                            <div className='w-[50%]'>
+                                <div className='w-full '>
+                                    <Slider {...settings}>
+                                        {images.map((item, index) => (
+                                            <div key={index} className="relative flex justify-between items-start gap-8" onClick={() => handleThumbnailClick(item)}>
+                                                <img className="w-[200px] h-[300px] object-cover cursor-pointer rounded-lg " src={item.img} alt="" />
+                                                <div className="absolute bottom-0 right-0 left-0 py-5">
+                                                    <h1 className="font-semibold text-center">{item.name}</h1>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </Slider>
+                                </div>
+                            </div>
+
+                            {/* ====== End Thumbnail Images ====== */}
+
                         </div>
                     </div>
 
-                    {/* ====== End Thumbnail Images ====== */}
-
+                    {/* ===== End Large Screen ===== */}
                 </div>
-            </div>
-
-            {/* ===== End Large Screen ===== */}
+            )}
         </div>
+
     );
 };
 
