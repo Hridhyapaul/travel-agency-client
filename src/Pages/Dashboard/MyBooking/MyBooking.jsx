@@ -1,6 +1,7 @@
 import useMyBooking from "../../../Hooks/useMyBooking";
 import MyBookingCard from "./MyBookingCard";
 import noCollection from "../../../../public/Icon/NoCollection.jpg"
+import Loading from "../../../Shared/Loading";
 
 const MyBooking = () => {
     const [bookingCollection, , loading] = useMyBooking();
@@ -10,7 +11,7 @@ const MyBooking = () => {
     if(loading){
         return (  // Add the missing return statement here
             <div>
-                <h1>Loading...</h1>
+                <Loading></Loading>
             </div>
         );
     }

@@ -10,6 +10,7 @@ import { HiOutlineClock, HiOutlineMap } from "react-icons/hi";
 import { useForm } from 'react-hook-form';
 import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
+import Loading from "../../../Shared/Loading";
 
 const Details = () => {
     const { id } = useParams();
@@ -33,7 +34,7 @@ const Details = () => {
     };
 
     if (loading) {
-        return <div>Loading...</div>; // or display an error message
+        return <Loading></Loading>; // or display an error message
     }
 
     const onSubmit = data => {

@@ -5,6 +5,7 @@ import PaymentInject from "./PaymentInject";
 import noData from "../../../../public/Icon/Nodata.jpg";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import Loading from "../../../Shared/Loading";
 
 const Payment = () => {
     const [axiosSecure] = useAxiosSecure();
@@ -12,7 +13,7 @@ const Payment = () => {
     console.log(booking)
 
     if (loading) {
-        <div>Loading...</div>
+        return <Loading></Loading>
     }
 
     const totalAmount = booking.reduce((total, item) => {

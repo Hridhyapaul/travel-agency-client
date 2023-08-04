@@ -6,6 +6,7 @@ import { useState } from "react";
 import ReactSlider from "react-slider";
 import './CSS/Package.css'
 import adImage from '../../../public/Icon/ad.avif'
+import Loading from "../../Shared/Loading";
 
 const Packages = () => {
 
@@ -41,7 +42,7 @@ const Packages = () => {
     };
 
     if (loading) {
-        return <div>Loading...</div>
+        return <Loading></Loading>
     }
 
     return (

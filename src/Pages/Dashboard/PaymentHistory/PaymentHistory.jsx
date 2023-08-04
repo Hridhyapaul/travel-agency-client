@@ -1,10 +1,15 @@
 import usePaymentHistory from "../../../Hooks/usePaymentHistory";
 import PaymentHistoryCard from "./PaymentHistoryCard";
 import noPayment from "../../../../public/Icon/noPaymentHistory.jpg"
+import Loading from "../../../Shared/Loading";
 
 const PaymentHistory = () => {
-    const [paymentHistory, refetch, loading] = usePaymentHistory();
+    const [paymentHistory, , loading] = usePaymentHistory();
     console.log(paymentHistory)
+
+    if(loading){
+        return <Loading></Loading>
+    }
     return (
         <div className=" my-20">
 

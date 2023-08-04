@@ -3,7 +3,7 @@ import { RotatingLines } from 'react-loader-spinner'
 
 const Loading = () => {
     return (
-        <div className='bg-white w-full flex justify-center items-center'>
+        <div className='bg-bgColor w-full h-screen flex justify-center items-center'>
             <RotatingLines
                 strokeColor="grey"
                 strokeWidth="5"
