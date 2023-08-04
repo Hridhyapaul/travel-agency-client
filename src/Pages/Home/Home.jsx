@@ -5,6 +5,7 @@ import Search from "./Search";
 import Special from "./Special/Special";
 
 const Home = () => {
+   
     return (
         <div>
             <Banner></Banner>
