@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import ReactSlider from "react-slider";
 import './CSS/Package.css'
-import adImage from '../../../public/Icon/ad.avif'
+import adImage from '../../assets/Images/ad.avif'
 import Loading from "../../Shared/Loading";
 
 const Packages = () => {
@@ -61,6 +61,8 @@ const Packages = () => {
                 <div className="mt-20 pb-20">
                     <Container>
                         <div className="grid grid-cols-6 gap-8">
+
+                            {/* Filter section */}
                             <div className="col-span-2 space-y-8">
 
                                 {/* Search Input */}
@@ -176,6 +178,8 @@ const Packages = () => {
                                 </div>
 
                             </div>
+
+                            {/* Accommodation section */}
                             <div className="col-span-4">
                                 <div className="bg-white px-4 py-4 rounded-md mb-8 shadow-md">
                                     <h1 className="text-3xl font-body font-semibold">There are <span>{accommodation?.length < 10 ? `0${accommodation?.length}` : accommodation?.length}</span> Packages Available in {country}.</h1>

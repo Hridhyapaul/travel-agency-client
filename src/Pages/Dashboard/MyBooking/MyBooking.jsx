@@ -1,6 +1,6 @@
 import useMyBooking from "../../../Hooks/useMyBooking";
 import MyBookingCard from "./MyBookingCard";
-import noCollection from "../../../../public/Icon/NoCollection.jpg"
+import noCollection from "../../../assets/Images/NoCollection.jpg"
 import Loading from "../../../Shared/Loading";
 
 const MyBooking = () => {

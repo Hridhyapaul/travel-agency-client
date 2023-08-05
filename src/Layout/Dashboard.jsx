@@ -1,11 +1,8 @@
 import { NavLink, Outlet } from "react-router-dom";
-import Header from "../Components/Header/Header";
 
 const Dashboard = () => {
     return (
         <div>
-            <Header isStatic={true} isBgColor={true}></Header>
-
             <div className="drawer lg:drawer-open">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content bg-bgColor px-6 flex flex-col items-center justify-start">
@@ -23,6 +20,10 @@ const Dashboard = () => {
                         <li><NavLink to="/dashboard/myBooking">My Booking</NavLink></li>
                         <li><NavLink to="/dashboard/payment">Payment</NavLink></li>
                         <li><NavLink to="/dashboard/paymentHistory">Payment History</NavLink></li>
+                        <hr className="my-6"/>
+                        <li><NavLink to="/">Home</NavLink></li>
+                        <li><NavLink to="/login">Login</NavLink></li>
+                        <li><NavLink to="/register">Register</NavLink></li>
                     </ul>
                 </div>
             </div>

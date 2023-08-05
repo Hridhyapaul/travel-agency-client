@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Container from "../../../Shared/Container";
 import './About.css'
-import videoPlayer from "../../../../public/Icon/videoplayer.png";
+import videoPlayer from "../../../assets/Images/videoplayer.png";
 
 const About = () => {
     return (

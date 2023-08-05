@@ -2,7 +2,7 @@ import { HiOutlineX } from "react-icons/hi";
 import useBook from "../../../Hooks/useBook";
 import Container from "../../../Shared/Container";
 import PaymentInject from "./PaymentInject";
-import noData from "../../../../public/Icon/Nodata.jpg";
+import noData from "../../../assets/Images/Nodata.jpg";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Loading from "../../../Shared/Loading";

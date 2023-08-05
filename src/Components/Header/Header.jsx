@@ -2,7 +2,11 @@ import { Link, NavLink } from 'react-router-dom';
 import { FaUserAlt, FaUserCircle, FaBars } from "react-icons/fa";
 import '../Header/Header.css'
 import { useEffect, useState } from 'react';
+import useAuth from '../../Hooks/useAuth';
+import MenuDropdown from '../../Shared/MenuDropdown';
 const Header = ({ isStatic, isBgColor }) => {
+
+    const {user} = useAuth();
     const navLinks = [
         {
             path: '/',
@@ -54,11 +58,9 @@ const Header = ({ isStatic, isBgColor }) => {
         };
     }, []);
 
-    const user = false;
-
     return (
         <>
-            <div className={`lg:py-4 ${isStatic ? "" : "fixed"} z-20 w-full transition-all duration-500 ${isScrolled ? "bg-bodyColor" : isBgColor ? "bg-bodyColor" : "bg-black bg-opacity-25"
+            <div className={`lg:py-4 ${isStatic ? "" : "fixed"} z-[100] w-full transition-all duration-500 ${isScrolled ? "bg-bodyColor" : isBgColor ? "bg-bodyColor" : "bg-black bg-opacity-25"
                 } blurContainer`}>
                 <div className="lg:mt-0 lg:max-w-[1280px] mx-auto">
                     <div className="text-white font-semibold relative">
@@ -83,7 +85,10 @@ const Header = ({ isStatic, isBgColor }) => {
                                     </ul>
                                 </div>
                                 <div className='w-[50%] text-end'>
-                                    {
+                                    <div className='flex justify-end'>
+                                        <MenuDropdown></MenuDropdown>
+                                    </div>
+                                    {/* {
                                         user ? (
                                             <div className="dropdown dropdown-end">
                                                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
@@ -93,7 +98,7 @@ const Header = ({ isStatic, isBgColor }) => {
                                                         </div>
                                                     </div>
                                                 </label>
-                                                <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-designColor rounded-box w-52 text-white">
+                                                <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[100] p-2 shadow bg-base-100 rounded-box w-52 text-black">
 
                                                     <li><a>Dashboard</a></li>
                                                     <li><a>Logout</a></li>
@@ -104,13 +109,13 @@ const Header = ({ isStatic, isBgColor }) => {
                                                 <div tabIndex={0} className='w-10 cursor-pointer'>
                                                     <FaUserCircle className='text-[40px] text-white'></FaUserCircle>
                                                 </div>
-                                                <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 text-black rounded-box w-52">
+                                                <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[100] p-2 shadow bg-base-100 text-black rounded-box w-52">
                                                     <li><Link to='/login'>Login</Link></li>
                                                     <li><Link to='/register'>Register</Link></li>
                                                 </ul>
                                             </div>
                                         )
-                                    }
+                                    } */}
                                 </div>
                             </div>
                         </div>

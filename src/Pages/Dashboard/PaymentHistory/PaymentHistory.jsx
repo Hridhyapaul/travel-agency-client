@@ -1,6 +1,6 @@
 import usePaymentHistory from "../../../Hooks/usePaymentHistory";
 import PaymentHistoryCard from "./PaymentHistoryCard";
-import noPayment from "../../../../public/Icon/noPaymentHistory.jpg"
+import noPayment from "../../../assets/Images/noPaymentHistory.jpg"
 import Loading from "../../../Shared/Loading";
 
 const PaymentHistory = () => {

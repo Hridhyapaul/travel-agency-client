@@ -11,6 +11,7 @@ import Dashboard from "../Layout/Dashboard";
 import Payment from "../Pages/Dashboard/Payment/Payment";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
 import MyBooking from "../Pages/Dashboard/MyBooking/MyBooking";
+import Tours from "../Pages/Tours/Tours";
 
 const router = createBrowserRouter([
     {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
                 path: "/",
                 element: <Home></Home>
             },
+            {
+                path: "/tours",
+                element: <Tours></Tours>
+            }
         ]
     },
     {
