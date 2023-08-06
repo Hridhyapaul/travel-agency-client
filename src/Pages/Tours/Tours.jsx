@@ -5,6 +5,9 @@ import worldTour from "../../assets/Images/Worldtour.jpg"
 import ToursCard from "./ToursCard";
 import { useState } from "react";
 import { BiSearch } from 'react-icons/bi'
+import { BsGridFill } from "react-icons/bs";
+import { FaBarsStaggered } from "react-icons/fa6";
+import './Tours.css'
 
 const Tours = () => {
     const [destinations, loading, refetch] = usePopularDestination();
@@ -35,6 +38,7 @@ const Tours = () => {
         }
     };
 
+    // ====== Country Search filter ======
     const [value, setValue] = useState("")
 
     const onChange = (event) => {
@@ -44,6 +48,18 @@ const Tours = () => {
     const onSearch = (searchTerm) => {
         console.log(searchTerm)
     };
+
+    // State to manage the grid layout
+    const [isBoxCard, setIsBoxCard] = useState(true);
+
+    // Handler for toggling grid layout
+    const handleBoxCard = () => {
+        setIsBoxCard(true);
+    };
+
+    const handleVerticalCard = () => {
+        setIsBoxCard(false)
+    }
 
     return (
         <div>
@@ -81,12 +97,23 @@ const Tours = () => {
 
                                         </div>
                                     </div>
-                                    <div className="w-[30%]">
-
+                                    <div className="w-[30%] flex justify-end">
+                                        <div className="flex justify-start items-center gap-2">
+                                            <div
+                                                onClick={handleBoxCard}
+                                                className={`border-[2px] rounded-lg px-2 py-2 cursor-pointer ${isBoxCard ? 'bg-activeColor border-designColor' : 'border-base-400'}`}>
+                                                <BsGridFill className={`text-[28px] ${isBoxCard ? 'text-bgColor' : 'text-[#8C8E8C]'}`}></BsGridFill>
+                                            </div>
+                                            <div
+                                                onClick={handleVerticalCard}
+                                                className={`border-[2px] rounded-lg px-2 py-2 cursor-pointer ${!isBoxCard ? 'bg-activeColor border-designColor' : 'border-base-400'}`}>
+                                                <FaBarsStaggered className={`text-[28px] ${!isBoxCard ? 'text-bgColor' : 'text-[#8C8E8C]'}`}></FaBarsStaggered>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="grid grid-cols-2 gap-6 mt-5">
+                            <div className={`grid ${isBoxCard ? "grid-cols-2" : "grid-cols-1"} gap-6 mt-5`}>
                                 {
                                     destinations
                                         .filter(destination => destination.countryName.toLowerCase().includes(value.toLowerCase()))
@@ -97,7 +124,7 @@ const Tours = () => {
                                                 ? durationFilter.includes(item.numberOfDay.toString())
                                                 : true
                                         )
-                                        .map((destination, index) => <ToursCard key={index} destination={destination}></ToursCard>)
+                                        .map((destination, index) => <ToursCard key={index} destination={destination} isBoxCard={isBoxCard}></ToursCard>)
                                 }
                             </div>
                         </div>
