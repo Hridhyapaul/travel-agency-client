@@ -12,6 +12,7 @@ import Payment from "../Pages/Dashboard/Payment/Payment";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
 import MyBooking from "../Pages/Dashboard/MyBooking/MyBooking";
 import Tours from "../Pages/Tours/Tours";
+import AddAccommodation from "../Pages/Dashboard/AddAccommodation/AddAccommodation";
 
 const router = createBrowserRouter([
     {
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
             {
                 path: "myBooking",
                 element: <MyBooking></MyBooking>
+            },
+            {
+                path: "addAccommodation",
+                element: <AddAccommodation></AddAccommodation>
             }
         ]
     }

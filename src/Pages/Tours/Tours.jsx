@@ -8,10 +8,12 @@ import { BiSearch } from 'react-icons/bi'
 import { BsGridFill } from "react-icons/bs";
 import { FaBarsStaggered } from "react-icons/fa6";
 import './Tours.css'
+import Loading from "../../Shared/Loading";
 
 const Tours = () => {
     const [destinations, loading, refetch] = usePopularDestination();
     console.log(destinations)
+
 
     // ====== Search Filter ======
     const [query, setQuery] = useState("")
@@ -72,64 +74,75 @@ const Tours = () => {
             <div className="bg-bgColor py-20">
                 <Container>
                     <div className="grid grid-cols-6 gap-12">
-                        <div className="col-span-4">
-                            <div className="w-full px-5 py-2 rounded-lg bg-white">
-                                <p className="font-body font-semibold">{destinations.length} Captivating Tours Awaits Your Exploration</p>
-                            </div>
-                            <div className="w-full mt-5">
-                                <div className="flex justify-between items-center gap-8">
-                                    <div className="w-[70%]">
-                                        <div className="w-[80%] relative max-w-md">
-                                            <div className="flex items-center">
-                                                <input
-                                                    type="text"
-                                                    placeholder="Search Country"
-                                                    value={value}
-                                                    onChange={onChange}
-                                                    className="w-full py-3 px-4 rounded-full focus:outline-none"
-                                                />
-                                                <div
-                                                    onClick={() => onSearch(value)}
-                                                    className='absolute right-[6px] top-1/2 translate-y-[-50%] p-2 bg-rose-500 rounded-full text-white'>
-                                                    <BiSearch size={22} />
+                        {
+                            loading ?
+                                (
+                                    <div>
+                                        <Loading></Loading>
+                                    </div>
+                                )
+                                :
+                                (
+                                    <div className="col-span-4">
+                                        <div className="w-full px-5 py-2 rounded-lg bg-white">
+                                            <p className="font-body font-semibold">{destinations.length} Captivating Tours Awaits Your Exploration</p>
+                                        </div>
+                                        <div className="w-full mt-5">
+                                            <div className="flex justify-between items-center gap-8">
+                                                <div className="w-[70%]">
+                                                    <div className="w-[80%] relative max-w-md">
+                                                        <div className="flex items-center">
+                                                            <input
+                                                                type="text"
+                                                                placeholder="Search Country"
+                                                                value={value}
+                                                                onChange={onChange}
+                                                                className="w-full py-3 px-4 rounded-full focus:outline-none"
+                                                            />
+                                                            <div
+                                                                onClick={() => onSearch(value)}
+                                                                className='absolute right-[6px] top-1/2 translate-y-[-50%] p-2 bg-rose-500 rounded-full text-white'>
+                                                                <BiSearch size={22} />
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div className="w-[30%] flex justify-end">
+                                                    <div className="flex justify-start items-center gap-2">
+                                                        <div
+                                                            onClick={handleBoxCard}
+                                                            className={`border-[2px] rounded-lg px-2 py-2 cursor-pointer ${isBoxCard ? 'bg-activeColor border-designColor' : 'border-base-400'}`}>
+                                                            <BsGridFill className={`text-[28px] ${isBoxCard ? 'text-bgColor' : 'text-[#8C8E8C]'}`}></BsGridFill>
+                                                        </div>
+                                                        <div
+                                                            onClick={handleVerticalCard}
+                                                            className={`border-[2px] rounded-lg px-2 py-2 cursor-pointer ${!isBoxCard ? 'bg-activeColor border-designColor' : 'border-base-400'}`}>
+                                                            <FaBarsStaggered className={`text-[28px] ${!isBoxCard ? 'text-bgColor' : 'text-[#8C8E8C]'}`}></FaBarsStaggered>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div className={`grid ${isBoxCard ? "grid-cols-2" : "grid-cols-1"} gap-6 mt-5`}>
+                                            {
+                                                destinations
+                                                    .filter(destination => destination.countryName.toLowerCase().includes(value.toLowerCase()))
+                                                    .filter(destination => destination.name.toLowerCase().includes(query.toLowerCase()))
+                                                    .filter(destination => destination.price >= values[0] && destination.price <= values[1])
+                                                    .filter((item) =>
+                                                        durationFilter.length > 0
+                                                            ? durationFilter.includes(item.numberOfDay.toString())
+                                                            : true
+                                                    )
+                                                    .map((destination, index) => <ToursCard key={index} destination={destination} isBoxCard={isBoxCard}></ToursCard>)
+                                            }
+                                        </div>
+                                    </div>
+                                )
+                        }
 
-                                        </div>
-                                    </div>
-                                    <div className="w-[30%] flex justify-end">
-                                        <div className="flex justify-start items-center gap-2">
-                                            <div
-                                                onClick={handleBoxCard}
-                                                className={`border-[2px] rounded-lg px-2 py-2 cursor-pointer ${isBoxCard ? 'bg-activeColor border-designColor' : 'border-base-400'}`}>
-                                                <BsGridFill className={`text-[28px] ${isBoxCard ? 'text-bgColor' : 'text-[#8C8E8C]'}`}></BsGridFill>
-                                            </div>
-                                            <div
-                                                onClick={handleVerticalCard}
-                                                className={`border-[2px] rounded-lg px-2 py-2 cursor-pointer ${!isBoxCard ? 'bg-activeColor border-designColor' : 'border-base-400'}`}>
-                                                <FaBarsStaggered className={`text-[28px] ${!isBoxCard ? 'text-bgColor' : 'text-[#8C8E8C]'}`}></FaBarsStaggered>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className={`grid ${isBoxCard ? "grid-cols-2" : "grid-cols-1"} gap-6 mt-5`}>
-                                {
-                                    destinations
-                                        .filter(destination => destination.countryName.toLowerCase().includes(value.toLowerCase()))
-                                        .filter(destination => destination.name.toLowerCase().includes(query.toLowerCase()))
-                                        .filter(destination => destination.price >= values[0] && destination.price <= values[1])
-                                        .filter((item) =>
-                                            durationFilter.length > 0
-                                                ? durationFilter.includes(item.numberOfDay.toString())
-                                                : true
-                                        )
-                                        .map((destination, index) => <ToursCard key={index} destination={destination} isBoxCard={isBoxCard}></ToursCard>)
-                                }
-                            </div>
-                        </div>
                         <div className="col-span-2 space-y-8">
-
                             {/* Search Input */}
                             <div className="font-body bg-white shadow-md px-6 py-6 rounded-lg">
                                 <label className="text-2xl font-semibold">Search Packages</label>
@@ -237,10 +250,10 @@ const Tours = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </Container>
-            </div>
-        </div>
+                    </div >
+                </Container >
+            </div >
+        </div >
     );
 };
 

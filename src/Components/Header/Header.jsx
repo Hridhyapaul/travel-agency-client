@@ -88,34 +88,6 @@ const Header = ({ isStatic, isBgColor }) => {
                                     <div className='flex justify-end'>
                                         <MenuDropdown></MenuDropdown>
                                     </div>
-                                    {/* {
-                                        user ? (
-                                            <div className="dropdown dropdown-end">
-                                                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                                                    <div className="w-10 rounded-full ring ring-designColor ring-offset-base-100 ring-offset-2 ">
-                                                        <div className='flex justify-center'>
-                                                            <FaUserAlt className='items-center text-3xl text-white'></FaUserAlt>
-                                                        </div>
-                                                    </div>
-                                                </label>
-                                                <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[100] p-2 shadow bg-base-100 rounded-box w-52 text-black">
-
-                                                    <li><a>Dashboard</a></li>
-                                                    <li><a>Logout</a></li>
-                                                </ul>
-                                            </div>
-                                        ) : (
-                                            <div className="dropdown dropdown-end">
-                                                <div tabIndex={0} className='w-10 cursor-pointer'>
-                                                    <FaUserCircle className='text-[40px] text-white'></FaUserCircle>
-                                                </div>
-                                                <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[100] p-2 shadow bg-base-100 text-black rounded-box w-52">
-                                                    <li><Link to='/login'>Login</Link></li>
-                                                    <li><Link to='/register'>Register</Link></li>
-                                                </ul>
-                                            </div>
-                                        )
-                                    } */}
                                 </div>
                             </div>
                         </div>
@@ -161,7 +133,6 @@ const Header = ({ isStatic, isBgColor }) => {
                                             )
                                         }
                                     </div>
-
                                     <FaBars onClick={handleMenuToggle} className="text-[25px] text-designColor lg:hidden block"></FaBars>
                                 </div>
                             </div>
