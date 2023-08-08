@@ -3,13 +3,13 @@ import useUsers from "../../../Hooks/useUsers";
 import useRevenue from "../../../Hooks/useRevenue";
 import usePopularDestination from "../../../Hooks/usePopularDestination";
 import useAllBooking from "../../../Hooks/useAllBooking";
+import AdminBarChart from "./AdminBarChart";
 
 const AdminDashboard = () => {
     const [users] = useUsers()
     const [revenues] = useRevenue()
     const [destinations] = usePopularDestination()
     const [bookings] = useAllBooking()
-    const {paidAmount, countryName} = bookings;
 
     const indonesiaBookings = bookings.filter(booking => booking.countryName === 'Indonesia');
 
@@ -83,7 +83,9 @@ const AdminDashboard = () => {
             </div>
 
             <div className="bg-white w-full h-[400px] mt-10 rounded-lg shadow-lg">
-
+                <div className="py-6">
+                    <AdminBarChart></AdminBarChart>
+                </div>
             </div>
         </div>
     );
