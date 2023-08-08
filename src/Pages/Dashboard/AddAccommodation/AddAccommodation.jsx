@@ -1,4 +1,3 @@
-// import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 // import Swal from 'sweetalert2';
 
@@ -6,49 +5,62 @@ const image_hosting_token = import.meta.env.VITE_IMAGE_UPLOAD_TOKEN;
 
 const AddAccommodation = () => {
     const { register, handleSubmit, reset, control } = useForm();
-    const img_hosting_url = `https://api.imgbb.com/1/upload?key=${image_hosting_token}`
+
     const onSubmit = data => {
-        console.log(data)
-        const includedServices = data.services.split(',').map(service => service.trim());
-        const inputTourPlanLines = data.tourPlan.split('\n');
+        console.log(data);
 
-        const tourPlan = inputTourPlanLines.map((line, index) => {
-            const dayObj = { day: index + 1, activities: [] };
-            const activities = line.split(',').map(activity => activity.trim());
-            dayObj.activities = activities;
-            return dayObj;
-        });
+        // Include Services
+        // const includedServices = data.services.split(',').map(service => service.trim());
 
-        const imagesFormData = new FormData();
-        for (const imageFile of data.image) {
-            imagesFormData.append('image', imageFile);
-        }
+        // Tour plan
+        // const inputTourPlanLines = data.tourPlan.split('\n');
+    
+        // const tourPlan = inputTourPlanLines.map((line, index) => {
+        //     const dayObj = { day: index + 1, activities: [] };
+        //     const activities = line.split(',').map(activity => activity.trim());
+        //     dayObj.activities = activities;
+        //     return dayObj;
+        // });
+
+        // Multiple images
+        const img = data.image;
+        console.log(img)
+    
+        const formData = new FormData();
+
+        for (let i = 0; i < img.length; i++) {
+            formData.append(`image${i}`, img[i]);
+          }
+    
+        const img_hosting_url = `https://api.imgbb.com/1/upload?key=${image_hosting_token}`
+
         fetch(img_hosting_url, {
             method: 'POST',
-            body: imagesFormData
+            body: formData
         })
-            .then(res => res.json())
-            .then(imagesResponse => {
-                console.log(imagesResponse)
-                if (imagesResponse.success) {
-                    const imgUrls = imagesResponse.data.images.map(image => image.display_url);
-                    const classDetails = {
-                        name: data.name,
-                        image: imgUrls,
-                        countryName: data.country,
-                        location: data.location,
-                        about: data.about,
-                        numberOfDay: parseFloat(data.duration),
-                        price: parseFloat(data.price),
-                        details: data.details,
-                        reviews: 'Under Review',
-                        tourPlan: tourPlan,
-                        includedServices: includedServices,
-                    }
-                    console.log(classDetails)
-                }
-            })
-    }
+        .then((res) => res.json())
+        .then((imagesResponse) => {
+            console.log(imagesResponse);
+            // if (imagesResponse.success) {
+            //     const imgUrls = imagesResponse.data.display_url;
+            //     const classDetails = {
+            //         name: data.name,
+            //         image: imgUrls,
+            //         countryName: data.country,
+            //         location: data.location,
+            //         about: data.about,
+            //         numberOfDay: parseFloat(data.duration),
+            //         price: parseFloat(data.price),
+            //         details: data.details,
+            //         reviews: 'Under Review',
+            //         tourPlan: tourPlan,
+            //         includedServices: includedServices,
+            //     };
+            //     console.log(classDetails);
+            // }
+        });
+    };
+    
 
     return (
         <div className="flex flex-col items-center justify-center">
@@ -75,7 +87,11 @@ const AddAccommodation = () => {
                             <label htmlFor="image" className="block mb-1 font-medium">
                                 Accommodation Image
                             </label>
-                            <input {...register("image", { required: true })} type="file" className="file-input mt-3 file-input-sm w-full max-w-xs" multiple/>
+                            <input 
+                            type="file" 
+                            multiple 
+                            {...register("image", { required: true })}
+                            className="file-input mt-3 file-input-sm w-full max-w-xs"/>
                         </div>
 
                         {/* ======== Country Name ======== */}
@@ -177,7 +193,6 @@ const AddAccommodation = () => {
                                 </div>
                             )}
                         />
-
 
                         {/* ======== Included Services ======== */}
                         <Controller

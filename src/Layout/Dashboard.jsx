@@ -49,6 +49,11 @@ const Dashboard = () => {
                             <FaCreditCard size={16}></FaCreditCard>
                             <p className="ml-2">Add Accommodation</p>
                         </NavLink></li>
+                        <li><NavLink to="/dashboard/adminDashboard">
+                            <FaCreditCard size={16}></FaCreditCard>
+                            <p className="ml-2">Dashboard</p>
+                        </NavLink></li>
+
                         <hr className="my-6" />
                         <li><NavLink to="/">
                             <FaHome size={16}></FaHome>
