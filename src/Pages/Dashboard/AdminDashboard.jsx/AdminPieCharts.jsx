@@ -5,7 +5,7 @@ const AdminPieCharts = () => {
     const [chartData] = useChartData();
     console.log(chartData);
 
-    const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+    const COLORS = ['#FA6166', '#234E70', '#990012', '#FF69B3', '#EE4E34', '#7B2049'];
 
     const RADIAN = Math.PI / 180;
     const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {

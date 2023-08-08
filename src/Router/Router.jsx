@@ -14,6 +14,7 @@ import MyBooking from "../Pages/Dashboard/MyBooking/MyBooking";
 import Tours from "../Pages/Tours/Tours";
 import AddAccommodation from "../Pages/Dashboard/AddAccommodation/AddAccommodation";
 import AdminDashboard from "../Pages/Dashboard/AdminDashboard.jsx/AdminDashboard";
+import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 
 const router = createBrowserRouter([
     {
@@ -63,10 +64,6 @@ const router = createBrowserRouter([
         element: <Dashboard></Dashboard>,
         children: [
             {
-                path: "adminDashboard",
-                element: <AdminDashboard></AdminDashboard>
-            },
-            {
                 path: "payment",
                 element: <Payment></Payment>
             },
@@ -81,6 +78,14 @@ const router = createBrowserRouter([
             {
                 path: "addAccommodation",
                 element: <AddAccommodation></AddAccommodation>
+            },
+            {
+                path: "adminDashboard",
+                element: <AdminDashboard></AdminDashboard>
+            },
+            {
+                path: "manageUsers",
+                element: <ManageUsers></ManageUsers>
             }
         ]
     }

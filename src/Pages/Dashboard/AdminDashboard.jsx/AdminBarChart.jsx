@@ -6,7 +6,7 @@ const AdminBarChart = () => {
     const [chartData] = useChartData()
     console.log(chartData)
 
-    const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink'];
+    const colors = ['#FA6166', '#234E70', '#990012', '#FF69B3', '#EE4E34', '#7B2049'];
 
     const getPath = (x, y, width, height) => {
         return `M${x},${y + height}C${x + width / 3},${y + height} ${x + width / 2},${y + height / 3}
