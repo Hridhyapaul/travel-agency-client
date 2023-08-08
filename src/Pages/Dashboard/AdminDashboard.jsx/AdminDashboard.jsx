@@ -1,8 +1,13 @@
 import { FaUsers, FaWallet } from "react-icons/fa";
 import useUsers from "../../../Hooks/useUsers";
+import useRevenue from "../../../Hooks/useRevenue";
 
 const AdminDashboard = () => {
     const [users] = useUsers()
+    const [revenues] = useRevenue()
+
+    const totalRevenue = revenues.reduce((acc, revenue) => acc + revenue.price, 0);
+
     return (
         <div>
             <div className="flex justify-between items-center gap-8 mt-8 font-body">
@@ -41,7 +46,7 @@ const AdminDashboard = () => {
                     <div className="w-[60%] flex justify-center items-center">
                         <div>
                             <p className="text-xl font-semibold">Revenue</p>
-                            <h1 className="text-xl font-semibold text-center">320</h1>
+                            <h1 className="text-xl font-semibold text-center">${totalRevenue}</h1>
                         </div>
                     </div>
                 </div>
