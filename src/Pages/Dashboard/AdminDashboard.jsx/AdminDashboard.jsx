@@ -9,6 +9,11 @@ const AdminDashboard = () => {
     const [revenues] = useRevenue()
     const [destinations] = usePopularDestination()
     const [bookings] = useAllBooking()
+    const {paidAmount, countryName} = bookings;
+
+    const indonesiaBookings = bookings.filter(booking => booking.countryName === 'Indonesia');
+
+    console.log(indonesiaBookings)
 
     const totalRevenue = revenues.reduce((acc, revenue) => acc + revenue.price, 0);
 
