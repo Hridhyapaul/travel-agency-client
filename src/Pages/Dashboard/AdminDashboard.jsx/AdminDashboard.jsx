@@ -4,6 +4,7 @@ import useRevenue from "../../../Hooks/useRevenue";
 import usePopularDestination from "../../../Hooks/usePopularDestination";
 import useAllBooking from "../../../Hooks/useAllBooking";
 import AdminBarChart from "./AdminBarChart";
+import AdminPieCharts from "./AdminPieCharts";
 
 const AdminDashboard = () => {
     const [users] = useUsers()
@@ -82,9 +83,20 @@ const AdminDashboard = () => {
                 </div>
             </div>
 
-            <div className="bg-white w-full h-[400px] mt-10 rounded-lg shadow-lg">
-                <div className="py-6">
-                    <AdminBarChart></AdminBarChart>
+            <div className="bg-white font-body w-full h-[400px] mt-10 rounded-lg shadow-lg">
+                <div className="py-6 flex justify-center items-center">
+                    <div>
+                        <h1 className="text-2xl font-semibold text-center">Total Revenue by Accommodation</h1>
+                        <div className="mt-4">
+                            <AdminBarChart></AdminBarChart>
+                        </div>
+                    </div>
+                    <div>
+                        <h1 className="text-2xl font-semibold text-center">Revenue Percentage by Country</h1>
+                        <div className="mt-4">
+                            <AdminPieCharts></AdminPieCharts>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
