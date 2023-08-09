@@ -8,7 +8,7 @@ import AdminPieCharts from "./AdminPieCharts";
 
 const AdminDashboard = () => {
     const [users] = useUsers()
-    const [revenues] = useRevenue()
+    const [allPayments] = useRevenue()
     const [destinations] = usePopularDestination()
     const [bookings] = useAllBooking()
 
@@ -16,7 +16,7 @@ const AdminDashboard = () => {
 
     console.log(indonesiaBookings)
 
-    const totalRevenue = revenues.reduce((acc, revenue) => acc + revenue.price, 0);
+    const totalRevenue = allPayments.reduce((acc, revenue) => acc + revenue.price, 0);
 
     return (
         <div>

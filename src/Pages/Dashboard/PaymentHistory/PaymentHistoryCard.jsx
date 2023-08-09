@@ -21,7 +21,7 @@ const PaymentHistoryCard = ({ history, index }) => {
                     accommodationList.map((accommodation, idx) => (
                         <div key={idx}>
                             <p className="h-[50px] flex items-center justify-center">{accommodation}</p>
-                            <hr key={idx} className="" />
+                            {idx < accommodationList.length - 1 && <hr className="" />}
                         </div>
                         
                     ))
@@ -37,7 +37,7 @@ const PaymentHistoryCard = ({ history, index }) => {
                     countryList.map((country, idx) => (
                         <div key={idx}>
                             <p className="h-[50px] flex items-center justify-center">{country}</p>
-                            <hr className="" />
+                            {idx < countryList.length - 1 && <hr className="" />}
                         </div>
                     ))
                 ) : (
@@ -52,7 +52,7 @@ const PaymentHistoryCard = ({ history, index }) => {
                     ticketsList.map((ticket, idx) => (
                         <div key={idx}>
                             <p className="h-[50px] flex items-center justify-center">{ticket}</p>
-                            <hr className="" />
+                            {idx < ticketsList.length - 1 && <hr className="" />}
                         </div>
                     ))
                 ) : (

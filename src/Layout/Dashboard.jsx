@@ -10,10 +10,10 @@ const Dashboard = () => {
         <div>
             <div className="drawer lg:drawer-open">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-                <div className="drawer-content bg-bgColor px-6 flex flex-col items-center justify-start">
+                <div className="drawer-content bg-bgColor flex flex-col items-center justify-start">
                     {/* Page content here */}
                     <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
-                    <div className="overflow-x-auto">
+                    <div>
                         <Outlet></Outlet>
                     </div>
 
@@ -56,6 +56,10 @@ const Dashboard = () => {
                         <li><NavLink to="/dashboard/manageUsers">
                             <FaCreditCard size={16}></FaCreditCard>
                             <p className="ml-2">Manage Users</p>
+                        </NavLink></li>
+                        <li><NavLink to="/dashboard/paymentRecord">
+                            <FaCreditCard size={16}></FaCreditCard>
+                            <p className="ml-2">Payment Record</p>
                         </NavLink></li>
 
 

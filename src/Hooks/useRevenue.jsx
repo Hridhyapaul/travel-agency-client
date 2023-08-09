@@ -4,8 +4,8 @@ import useAxiosSecure from "./useAxiosSecure";
 const useRevenue = () => {
     const [axiosSecure] = useAxiosSecure();
 
-    const { data: revenues = [], isLoading: revenuesLoading, refetch } = useQuery({
-        queryKey: ['revenues'],
+    const { data: allPayments = [], isLoading: paymentsLoading, refetch } = useQuery({
+        queryKey: ['allPayments'],
         // enabled: !!user?.email && !! localStorage.getItem("access-token"),
         queryFn: async () => {
             const res = await axiosSecure.get('/allPayments');
@@ -13,7 +13,7 @@ const useRevenue = () => {
         }
     })
 
-    return [revenues, revenuesLoading , refetch]
+    return [allPayments, paymentsLoading , refetch]
 };
 
 export default useRevenue;
