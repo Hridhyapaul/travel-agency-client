@@ -16,6 +16,7 @@ import AddAccommodation from "../Pages/Dashboard/AddAccommodation/AddAccommodati
 import AdminDashboard from "../Pages/Dashboard/AdminDashboard.jsx/AdminDashboard";
 import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 import AllPaymentHistory from "../Pages/Dashboard/AllPaymentRecord/AllPaymentHistory";
+import AllBookingCollection from "../Pages/Dashboard/AllBookingCollection/AllBookingCollection";
 
 const router = createBrowserRouter([
     {
@@ -91,6 +92,10 @@ const router = createBrowserRouter([
             {
                 path: "paymentRecord",
                 element: <AllPaymentHistory></AllPaymentHistory>
+            },
+            {
+                path: "bookingCollection",
+                element: <AllBookingCollection></AllBookingCollection>
             }
         ]
     }

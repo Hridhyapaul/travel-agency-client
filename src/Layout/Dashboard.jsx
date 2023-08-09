@@ -61,6 +61,10 @@ const Dashboard = () => {
                             <FaCreditCard size={16}></FaCreditCard>
                             <p className="ml-2">Payment Record</p>
                         </NavLink></li>
+                        <li><NavLink to="/dashboard/bookingCollection">
+                            <FaCreditCard size={16}></FaCreditCard>
+                            <p className="ml-2">Booking Collection</p>
+                        </NavLink></li>
 
 
                         <hr className="my-6" />
