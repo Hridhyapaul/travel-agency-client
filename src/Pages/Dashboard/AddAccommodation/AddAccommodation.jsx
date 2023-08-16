@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useForm, Controller } from 'react-hook-form';
 // import Swal from 'sweetalert2';
 
@@ -6,61 +7,67 @@ const image_hosting_token = import.meta.env.VITE_IMAGE_UPLOAD_TOKEN;
 const AddAccommodation = () => {
     const { register, handleSubmit, reset, control } = useForm();
 
-    const onSubmit = data => {
+    const onSubmit = async data => {
         console.log(data);
+        try {
+            // ===== Include Services =====
+            const includedServices = data.services.split(',').map(service => service.trim());
 
-        // Include Services
-        // const includedServices = data.services.split(',').map(service => service.trim());
+            // ===== Tour plan =====
+            const inputTourPlanLines = data.tourPlan.split('\n');
 
-        // Tour plan
-        // const inputTourPlanLines = data.tourPlan.split('\n');
-    
-        // const tourPlan = inputTourPlanLines.map((line, index) => {
-        //     const dayObj = { day: index + 1, activities: [] };
-        //     const activities = line.split(',').map(activity => activity.trim());
-        //     dayObj.activities = activities;
-        //     return dayObj;
-        // });
+            const tourPlan = inputTourPlanLines.map((line, index) => {
+                const dayObj = { day: index + 1, activities: [] };
+                const activities = line.split(',').map(activity => activity.trim());
+                dayObj.activities = activities;
+                return dayObj;
+            });
 
-        // Multiple images
-        const img = data.image;
-        console.log(img)
-    
-        const formData = new FormData();
+            // ===== Multiple images =====
 
-        for (let i = 0; i < img.length; i++) {
-            formData.append("image", img[i]);
-          }
-    
-        const img_hosting_url = `https://api.imgbb.com/1/upload?key=${image_hosting_token}`
+            // Convert FileList to an array of files
+            const imagesArray = Array.from(data.image);
+            console.log(imagesArray)
 
-        fetch(img_hosting_url, {
-            method: 'POST',
-            body: formData
-        })
-        .then((res) => res.json())
-        .then((imagesResponse) => {
-            console.log(imagesResponse);
-            // if (imagesResponse.success) {
-            //     const imgUrls = imagesResponse.data.display_url;
-            //     const classDetails = {
-            //         name: data.name,
-            //         image: imgUrls,
-            //         countryName: data.country,
-            //         location: data.location,
-            //         about: data.about,
-            //         numberOfDay: parseFloat(data.duration),
-            //         price: parseFloat(data.price),
-            //         details: data.details,
-            //         reviews: 'Under Review',
-            //         tourPlan: tourPlan,
-            //         includedServices: includedServices,
-            //     };
-            //     console.log(classDetails);
-            // }
-        });
+            const promises = imagesArray.map(async (img) => {
+                const formData = new FormData();
+                formData.append('image', img);
+
+                const response = await axios.post(
+                    `https://api.imgbb.com/1/upload?key=${image_hosting_token}`,
+                    formData
+                );
+                console.log(response)
+                return response.data.data.url;
+            });
+
+            const uploadedUrls = await Promise.all(promises);
+            console.log('Uploaded URLs:', uploadedUrls);
+
+            // Check if all uploads were successful
+            const allUploadsSuccessful = uploadedUrls.every(url => url && url.trim() !== '' && url !== null);
+
+            if (allUploadsSuccessful) {
+                const classDetails = {
+                    name: data.name,
+                    image: uploadedUrls,
+                    countryName: data.country,
+                    location: data.location,
+                    about: data.about,
+                    numberOfDay: parseFloat(data.duration),
+                    price: parseFloat(data.price),
+                    details: data.details,
+                    reviews: 'Under Review',
+                    tourPlan: tourPlan,
+                    includedServices: includedServices,
+                };
+                console.log(classDetails);
+            }
+        }
+        catch (error) {
+            console.error('Error uploading images:', error);
+        }
     };
-    
 
     return (
         <div className="flex flex-col items-center justify-center">
@@ -87,11 +94,11 @@ const AddAccommodation = () => {
                             <label htmlFor="image" className="block mb-1 font-medium">
                                 Accommodation Image
                             </label>
-                            <input 
-                            type="file" 
-                            multiple 
-                            {...register("image", { required: true })}
-                            className="file-input mt-3 file-input-sm w-full max-w-xs"/>
+                            <input
+                                type="file"
+                                multiple
+                                {...register("image", { required: true })}
+                                className="file-input mt-3 file-input-sm w-full max-w-xs" />
                         </div>
 
                         {/* ======== Country Name ======== */}
