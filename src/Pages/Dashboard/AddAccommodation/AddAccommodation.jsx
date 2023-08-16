@@ -48,7 +48,7 @@ const AddAccommodation = () => {
             const allUploadsSuccessful = uploadedUrls.every(url => url && url.trim() !== '' && url !== null);
 
             if (allUploadsSuccessful) {
-                const classDetails = {
+                const accommodationDetails = {
                     name: data.name,
                     image: uploadedUrls,
                     countryName: data.country,
@@ -61,16 +61,16 @@ const AddAccommodation = () => {
                     tourPlan: tourPlan,
                     includedServices: includedServices,
                 };
-                console.log(classDetails);
+                console.log(accommodationDetails);
 
                 try {
-                    const response = await axios.post('http://localhost:5000/destinations', classDetails, {
+                    const res = await axios.post('http://localhost:5000/destinations', accommodationDetails, {
                         headers: {
                             'Content-Type': 'application/json',
                         },
                     });
 
-                    if (response.data.insertedId) {
+                    if (res.data.insertedId) {
                         reset();
                         Swal.fire({
                             position: 'top-end',
@@ -81,7 +81,7 @@ const AddAccommodation = () => {
                         });
                     }
                 } catch (error) {
-                    console.error('Error adding class:', error);
+                    console.error('Error adding accommodation:', error);
                 }
             }
         }

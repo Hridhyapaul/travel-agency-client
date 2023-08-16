@@ -15,7 +15,7 @@ const AddCountry = () => {
         formData.append('image', data.image[0])
 
         const response = await axios.post(
-            `https://api.imgbb.com/1/upload?key=${image_hosting_token}`,
+            img_hosting_url,
             formData
         );
         console.log(response.data.success)
@@ -23,11 +23,32 @@ const AddCountry = () => {
             const imgURL = response.data.data.display_url;
             console.log(imgURL)
             const countryDetails = {
-                country: data.name,
+                country: data.name.charAt(0).toUpperCase() + data.name.slice(1),
                 slogan: data.slogan,
                 countryImage: imgURL
             }
             console.log(countryDetails)
+
+            try {
+                const res = await axios.post('http://localhost:5000/countries', countryDetails, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+
+                if (res.data.insertedId) {
+                    reset();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'You have successfully added Country!',
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
+                }
+            } catch (error) {
+                console.error('Error adding country:', error);
+            }
         }
     }
 
