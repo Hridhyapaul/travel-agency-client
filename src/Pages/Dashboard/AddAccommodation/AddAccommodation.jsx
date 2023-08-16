@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useForm, Controller } from 'react-hook-form';
+import Swal from 'sweetalert2';
 // import Swal from 'sweetalert2';
 
 const image_hosting_token = import.meta.env.VITE_IMAGE_UPLOAD_TOKEN;
@@ -11,14 +12,14 @@ const AddAccommodation = () => {
         console.log(data);
         try {
             // ===== Include Services =====
-            const includedServices = data.services.split(',').map(service => service.trim());
+            const includedServices = data.services.split(';').map(service => service.trim());
 
             // ===== Tour plan =====
             const inputTourPlanLines = data.tourPlan.split('\n');
 
             const tourPlan = inputTourPlanLines.map((line, index) => {
                 const dayObj = { day: index + 1, activities: [] };
-                const activities = line.split(',').map(activity => activity.trim());
+                const activities = line.split(';').map(activity => activity.trim());
                 dayObj.activities = activities;
                 return dayObj;
             });
@@ -57,11 +58,32 @@ const AddAccommodation = () => {
                     numberOfDay: parseFloat(data.duration),
                     price: parseFloat(data.price),
                     details: data.details,
-                    reviews: 'Under Review',
+                    reviews: [],
                     tourPlan: tourPlan,
                     includedServices: includedServices,
                 };
                 console.log(classDetails);
+
+                try {
+                    const response = await axios.post('http://localhost:5000/destinations', classDetails, {
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    });
+
+                    if (response.data.insertedId) {
+                        reset();
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'You have successfully added a Accommodation!',
+                            showConfirmButton: false,
+                            timer: 1500,
+                        });
+                    }
+                } catch (error) {
+                    console.error('Error adding class:', error);
+                }
             }
         }
         catch (error) {
@@ -70,35 +92,23 @@ const AddAccommodation = () => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center font-body py-20">
             <h1 className="text-3xl font-bold mb-10">Add Accommodation</h1>
-            <div className="w-[600px] bg-white rounded shadow-md p-12">
+            <div className="w-[800px] bg-white rounded shadow-md p-12">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="grid grid-cols-2 gap-8">
 
                         {/* ======== Accommodation Name ======== */}
-                        <div className='col-span-2'>
+                        <div className='col-span-1'>
                             <label htmlFor="name" className="block mb-1 font-medium">
                                 Accommodation Name
                             </label>
                             <input
                                 type="text"
                                 {...register("name", { required: true })}
-                                placeholder='Enter Accommodation name'
-                                className="w-full py-2 border-b border-gray-300 focus:outline-none focus:ring-[#082A5E] focus:border-[#082A5E]"
+                                placeholder='Accommodation name'
+                                className="w-full py-2 border-2 pl-3 rounded-lg border-gray-300 focus:outline-none focus:ring-[#082A5E] focus:border-[#082A5E]"
                             />
-                        </div>
-
-                        {/* ======== Accommodation Image ======== */}
-                        <div className='col-span-2'>
-                            <label htmlFor="image" className="block mb-1 font-medium">
-                                Accommodation Image
-                            </label>
-                            <input
-                                type="file"
-                                multiple
-                                {...register("image", { required: true })}
-                                className="file-input mt-3 file-input-sm w-full max-w-xs" />
                         </div>
 
                         {/* ======== Country Name ======== */}
@@ -109,35 +119,48 @@ const AddAccommodation = () => {
                             <div className="relative">
                                 <input
                                     type="text"
+                                    placeholder='Country'
                                     {...register("country", { required: true })}
-                                    className="w-full py-2 border-b border-gray-300 focus:outline-none focus:ring-[#082A5E] focus:border-[#082A5E]"
+                                    className="w-full py-2 border-2 pl-3 rounded-lg border-gray-300 focus:outline-none focus:ring-bodyColor focus:border-bodyColor"
                                 />
                             </div>
+                        </div>
+
+                        {/* ======== Accommodation Image ======== */}
+                        <div className='col-span-1'>
+                            <label htmlFor="image" className="block mb-1 font-medium">
+                                Accommodation Image
+                            </label>
+                            <input
+                                type="file"
+                                multiple
+                                {...register("image", { required: true })}
+                                className="file-input mt-3 file-input-sm w-full max-w-xs" />
                         </div>
 
                         {/* ======== Location Name ======== */}
                         <div className='col-span-1'>
                             <label htmlFor="confirmPassword" className="block mb-1 font-medium">
-                                Location
+                                Accommodation Location
                             </label>
                             <input
                                 type="text"
-                                placeholder='Accommodation Location'
+                                placeholder='Location'
                                 {...register("location", { required: true })}
-                                className="w-full py-2 border-b border-gray-300 focus:outline-none focus:ring-[#082A5E] focus:border-[#082A5E]"
+                                className="w-full py-2 border-2 pl-3 rounded-lg border-gray-300 focus:outline-none focus:ring-bodyColor focus:border-bodyColor"
                             />
                         </div>
 
                         {/* ======== About Tour in one line ======== */}
                         <div className='col-span-2'>
-                            <label htmlFor="confirmPassword" className="block mb-1 font-medium">
-                                About
+                            <label htmlFor="" className="block mb-1 font-medium">
+                                Accommodation Summary
                             </label>
                             <input
                                 type="text"
-                                placeholder='About in one line'
+                                placeholder='Summarize in 5-6 letters'
                                 {...register("about", { required: true })}
-                                className="w-full py-2 border-b border-gray-300 focus:outline-none focus:ring-[#082A5E] focus:border-[#082A5E]"
+                                className="w-full py-2 border-2 pl-3 rounded-lg border-gray-300 focus:outline-none focus:ring-bodyColor focus:border-bodyColor"
                             />
                         </div>
 
@@ -151,7 +174,7 @@ const AddAccommodation = () => {
                                 min="0" step="any"
                                 {...register("duration", { required: true })}
                                 placeholder='Enter Tour Duration'
-                                className="w-full py-2 border-b border-gray-300 focus:outline-none focus:ring-[#082A5E] focus:border-[#082A5E]"
+                                className="w-full py-2 border-2 px-3 rounded-lg border-gray-300 focus:outline-none focus:ring-bodyColor focus:border-bodyColor"
                             />
                         </div>
 
@@ -164,20 +187,22 @@ const AddAccommodation = () => {
                                 {...register("price", { required: true })}
                                 type="number" min="0" step="any"
                                 placeholder='Price Per Person'
-                                className="w-full py-2 border-b border-gray-300 focus:outline-none focus:ring-[#082A5E] focus:border-[#082A5E]"
+                                className="w-full py-2 border-2 px-3 rounded-lg border-gray-300 focus:outline-none focus:ring-bodyColor focus:border-bodyColor"
                             ></input>
                         </div>
 
                         {/* ======== Details ======== */}
                         <div className='col-span-2'>
                             <label htmlFor="duration" className="block mb-1 font-medium">
-                                Details
+                                Accommodation Information
                             </label>
-                            <input
+                            <textarea
                                 {...register("details", { required: true })}
                                 type="text"
-                                className="w-full py-2 border-b border-gray-300 focus:outline-none focus:ring-[#082A5E] focus:border-[#082A5E]"
-                            ></input>
+                                placeholder='Provide Accommodation Details'
+                                className="w-full py-2 border-2 px-3 rounded-lg border-gray-300 focus:outline-none focus:ring-bodyColor focus:border-bodyColor"
+                                rows="6"
+                            ></textarea>
                         </div>
 
                         {/* ======== Tour Plan ======== */}
@@ -188,15 +213,25 @@ const AddAccommodation = () => {
                             render={({ field }) => (
                                 <div className='col-span-2'>
                                     <label htmlFor="modules" className="block mb-1 font-medium">
-                                        Tour Plan
+                                        Itinerary Details
                                     </label>
                                     <textarea
+                                        type="text"
                                         {...field}
-                                        placeholder='Enter tour plan'
-                                        className="w-full py-2 border-b border-gray-300 focus:outline-none focus:ring-[#082A5E] focus:border-[#082A5E]"
-                                        rows="4"
+                                        placeholder='Outline Travel Plan'
+                                        className="w-full py-2 border-2 px-3 rounded-lg border-gray-300 focus:outline-none focus:ring-bodyColor focus:border-bodyColor"
+                                        rows="6"
                                     // value={tourPlan}
                                     />
+                                    <p className="mt-2 text-sm text-gray-500">
+                                        Format each day's activities with a new line and separate activities with semicolons (;), e.g.,
+                                        <br />
+                                        Day 1: Activity A; Activity B; Activity C
+                                        <br />
+                                        Day 2: Activity D; Activity E; Activity F
+                                        <br />
+                                        Day 3: Activity G; Activity H; Activity I
+                                    </p>
                                 </div>
                             )}
                         />
@@ -209,23 +244,27 @@ const AddAccommodation = () => {
                             render={({ field }) => (
                                 <div className='col-span-2'>
                                     <label htmlFor="phoneNumber" className="block mb-1 font-medium">
-                                        Included Services
+                                        Provide Services
                                     </label>
-                                    <input
+                                    <textarea
                                         type="text"
                                         {...field}
-                                        placeholder='Enter category'
-                                        className="w-full py-2 border-b border-gray-300 focus:outline-none focus:ring-[#082A5E] focus:border-[#082A5E]"
+                                        placeholder='List of Provided Services'
+                                        className="w-full py-2 border-2 px-3 rounded-lg border-gray-300 focus:outline-none focus:ring-bodyColor focus:border-bodyColor"
+                                        rows="6"
                                     />
+                                    <p className="mt-2 text-sm text-gray-500">
+                                        Separate each service with a semicolon (;), e.g., Service A; Service B; Service C
+                                    </p>
                                 </div>
                             )}
                         />
                     </div>
                     <button
                         type="submit"
-                        className="w-full bg-[#082A5E] text-white rounded py-2 px-4 font-semibold transform hover:scale-105 duration-300 mt-8 mb-4"
+                        className="w-full bg-bodyColor text-white rounded py-2 px-4 font-semibold mt-8 mb-4"
                     >
-                        Submit
+                        Add Accommodation
                     </button>
                 </form>
             </div>

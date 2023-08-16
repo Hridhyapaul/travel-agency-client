@@ -173,7 +173,7 @@ const Details = () => {
                                     <h1 className="text-3xl font-semibold">Traveler Review for {name}</h1>
                                     <div className="bg-white px-8 py-8 rounded-lg space-y-8">
                                         {
-                                            reviews.map((review, index) => (
+                                            reviews?.map((review, index) => (
                                                 <div key={index} className="bg-bgColor px-6 py-6 rounded-lg space-y-3">
                                                     <div className="bg-white px-4 py-2 rounded-lg flex justify-start items-center gap-2">
                                                         <Rating
