@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 
 const image_hosting_token = import.meta.env.VITE_IMAGE_UPLOAD_TOKEN;
@@ -8,8 +8,27 @@ const AddCountry = () => {
 
     const { register, handleSubmit, reset, control } = useForm();
 
+    const img_hosting_url = `https://api.imgbb.com/1/upload?key=${image_hosting_token}`
     const onSubmit = async data => {
         console.log(data)
+        const formData = new FormData();
+        formData.append('image', data.image[0])
+
+        const response = await axios.post(
+            `https://api.imgbb.com/1/upload?key=${image_hosting_token}`,
+            formData
+        );
+        console.log(response.data.success)
+        if (response.data.success) {
+            const imgURL = response.data.data.display_url;
+            console.log(imgURL)
+            const countryDetails = {
+                country: data.name,
+                slogan: data.slogan,
+                countryImage: imgURL
+            }
+            console.log(countryDetails)
+        }
     }
 
     return (
