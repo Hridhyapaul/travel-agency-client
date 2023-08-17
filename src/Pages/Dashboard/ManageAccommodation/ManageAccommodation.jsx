@@ -24,7 +24,7 @@ const ManageAccommodation = () => {
                         </thead>
                         <tbody>
                             {
-                                destinations.map((destination, index) => <ManageAccommodationCard key={destination._id} destination={destination} index={index}></ManageAccommodationCard>)
+                                destinations.map((destination, index) => <ManageAccommodationCard key={destination._id} destination={destination} index={index} refetch={refetch}></ManageAccommodationCard>)
                             }
                         </tbody>
                     </table>

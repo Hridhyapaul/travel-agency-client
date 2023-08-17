@@ -72,6 +72,7 @@ const AddAccommodation = () => {
 
                     if (res.data.insertedId) {
                         reset();
+                        control._reset({ tourPlan: "", services: "" });
                         Swal.fire({
                             position: 'top-end',
                             icon: 'success',
@@ -210,6 +211,7 @@ const AddAccommodation = () => {
                                 name="tourPlan"
                                 control={control}
                                 rules={{ required: true }}
+                                defaultValue=""
                                 render={({ field }) => (
                                     <div className='col-span-2'>
                                         <label htmlFor="tourPlan" className="block mb-1 font-medium">
@@ -241,6 +243,7 @@ const AddAccommodation = () => {
                                 name="services"
                                 control={control}
                                 rules={{ required: true }}
+                                defaultValue=""
                                 render={({ field }) => (
                                     <div className='col-span-2'>
                                         <label htmlFor="services" className="block mb-1 font-medium">
