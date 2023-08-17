@@ -19,6 +19,7 @@ import AllPaymentHistory from "../Pages/Dashboard/AllPaymentRecord/AllPaymentHis
 import AllBookingCollection from "../Pages/Dashboard/AllBookingCollection/AllBookingCollection";
 import AddCountry from "../Pages/Dashboard/AddCountry/AddCountry";
 import ManageAccommodation from "../Pages/Dashboard/ManageAccommodation/ManageAccommodation";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -69,7 +70,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "payment",
-                element: <Payment></Payment>
+                element: <PrivateRoute><Payment></Payment></PrivateRoute>
             },
             {
                 path: "paymentHistory",
