@@ -19,6 +19,7 @@ const ManageCountry = () => {
                                 <th>Image</th>
                                 <th>Country Name</th>
                                 <th>Country Slogan</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
