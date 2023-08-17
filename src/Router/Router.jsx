@@ -20,6 +20,7 @@ import AllBookingCollection from "../Pages/Dashboard/AllBookingCollection/AllBoo
 import AddCountry from "../Pages/Dashboard/AddCountry/AddCountry";
 import ManageAccommodation from "../Pages/Dashboard/ManageAccommodation/ManageAccommodation";
 import PrivateRoute from "./PrivateRoute";
+import ManageCountry from "../Pages/Dashboard/ManageCountry/ManageCountry";
 
 const router = createBrowserRouter([
     {
@@ -91,6 +92,10 @@ const router = createBrowserRouter([
             {
                 path: "addCountry",
                 element: <AddCountry></AddCountry>
+            },
+            {
+                path: "manageCountry",
+                element: <ManageCountry></ManageCountry>
             },
             {
                 path: "adminDashboard",

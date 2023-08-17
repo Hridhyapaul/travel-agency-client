@@ -1,6 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
-import avatarImg from "../assets/Images/placeholder.jpg"
 import { FaCreditCard, FaListUl, FaPlaneUp } from "react-icons/fa6";
 import { FaHome, FaMoneyCheckAlt, FaSignInAlt } from "react-icons/fa";
 
@@ -20,17 +19,12 @@ const Dashboard = () => {
                 </div>
                 <div className="drawer-side bg-white shadow-lg text-bodyColor text-[16px] font-body font-semibold">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                    <div className="bg-bodyColor py-10">
+                    <div className="py-10">
                         <div className="flex justify-center">
-                            <img src={user && user?.photoURL ? user?.photoURL : avatarImg} alt="profile" className='h-30 rounded-full' />
-                        </div>
-
-                        <div className="text-center mt-4 font-body text-white">
-                            <h1>{user?.displayName}</h1>
-                            <h1>{user?.email}</h1>
+                            <h1 className='text-3xl font-bold'>Travel<span className='text-designColor'>.O</span></h1>
                         </div>
                     </div>
-                    <ul className="menu px-4 w-80 pt-10">
+                    <ul className="menu px-4 w-80">
                         {/* Sidebar content here */}
                         <li><NavLink to="/dashboard/myBooking">
                             <FaListUl size={16}></FaListUl>
@@ -57,6 +51,10 @@ const Dashboard = () => {
                             <FaCreditCard size={16}></FaCreditCard>
                             <p className="ml-2">Add Country</p>
                         </NavLink></li>
+                        <li><NavLink to="/dashboard/manageCountry">
+                            <FaCreditCard size={16}></FaCreditCard>
+                            <p className="ml-2">Manage Country</p>
+                        </NavLink></li>
                         <li><NavLink to="/dashboard/adminDashboard">
                             <FaCreditCard size={16}></FaCreditCard>
                             <p className="ml-2">Dashboard</p>
@@ -73,7 +71,7 @@ const Dashboard = () => {
                             <FaCreditCard size={16}></FaCreditCard>
                             <p className="ml-2">Booking Collection</p>
                         </NavLink></li>
-                        
+
 
 
                         <hr className="my-6" />
