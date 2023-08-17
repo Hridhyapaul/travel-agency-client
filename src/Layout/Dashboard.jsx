@@ -49,6 +49,14 @@ const Dashboard = () => {
                             <FaCreditCard size={16}></FaCreditCard>
                             <p className="ml-2">Add Accommodation</p>
                         </NavLink></li>
+                        <li><NavLink to="/dashboard/manageAccommodation">
+                            <FaCreditCard size={16}></FaCreditCard>
+                            <p className="ml-2">Manage Accommodation</p>
+                        </NavLink></li>
+                        <li><NavLink to="/dashboard/addCountry">
+                            <FaCreditCard size={16}></FaCreditCard>
+                            <p className="ml-2">Add Country</p>
+                        </NavLink></li>
                         <li><NavLink to="/dashboard/adminDashboard">
                             <FaCreditCard size={16}></FaCreditCard>
                             <p className="ml-2">Dashboard</p>
@@ -65,10 +73,7 @@ const Dashboard = () => {
                             <FaCreditCard size={16}></FaCreditCard>
                             <p className="ml-2">Booking Collection</p>
                         </NavLink></li>
-                        <li><NavLink to="/dashboard/addCountry">
-                            <FaCreditCard size={16}></FaCreditCard>
-                            <p className="ml-2">Add Country</p>
-                        </NavLink></li>
+                        
 
 
                         <hr className="my-6" />
