@@ -16,9 +16,8 @@ const ManageAccommodation = () => {
                         <thead>
                             <tr className='text-center text-[14px]'>
                                 <th></th>
-                                <th>Accommodation Name</th>
-                                <th>Country Name</th>
-                                <th>Location</th>
+                                <th>Accommodation Name <br />& Accommodation id</th>
+                                <th>Country Name <br />& Location</th>
                                 <th>Price/person</th>
                                 <th>Action</th>
                             </tr>
