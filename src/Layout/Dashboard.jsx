@@ -2,9 +2,15 @@ import { NavLink, Outlet } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import { FaCreditCard, FaListUl, FaPlaneUp } from "react-icons/fa6";
 import { FaHome, FaMoneyCheckAlt, FaSignInAlt } from "react-icons/fa";
+import useAdmin from "../Hooks/useAdmin";
+import useNormalUser from "../Hooks/useNormalUser";
 
 const Dashboard = () => {
     const { user, logOut } = useAuth()
+    const [isAdmin] = useAdmin();
+    const [isTraveler] = useNormalUser();
+    console.log(isAdmin)
+    console.log(isTraveler)
     return (
         <div>
             <div className="drawer lg:drawer-open">
