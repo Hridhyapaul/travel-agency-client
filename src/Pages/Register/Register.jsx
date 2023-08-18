@@ -39,7 +39,7 @@ const Register = () => {
 
                 updateUserProfile(data.name, data.photo)
                     .then(() => {
-                        const registeredUser = { name: data.name, email: data.email, photo: data.photo, role: 'user' }
+                        const registeredUser = { name: data.name, email: data.email, photo: data.photo, role: 'Traveler' }
                         console.log('User profile updated')
                         fetch('http://localhost:5000/users', {
                             method: 'POST',

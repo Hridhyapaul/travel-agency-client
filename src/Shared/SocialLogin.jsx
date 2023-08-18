@@ -15,7 +15,7 @@ const SocialLogin = () => {
             .then(result => {
                 const loggedUser = result.user
                 console.log(loggedUser)
-                const registerUser = { name: loggedUser.displayName, email: loggedUser.email, photo: loggedUser.photoURL, role: 'user' }
+                const registerUser = { name: loggedUser.displayName, email: loggedUser.email, photo: loggedUser.photoURL, role: 'Traveler' }
                 console.log(registerUser);
                 fetch('http://localhost:5000/users', {
                     method: 'POST',
@@ -29,7 +29,7 @@ const SocialLogin = () => {
                         if (data.insertedId) {
                             console.log('User inserted to database')
                         }
-                        navigate(from, {replace: true});
+                        navigate(from, { replace: true });
                     })
             })
             .catch(error => {
