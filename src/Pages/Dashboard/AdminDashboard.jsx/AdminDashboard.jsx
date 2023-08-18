@@ -5,6 +5,7 @@ import usePopularDestination from "../../../Hooks/usePopularDestination";
 import useAllBooking from "../../../Hooks/useAllBooking";
 import AdminBarChart from "./AdminBarChart";
 import AdminPieCharts from "./AdminPieCharts";
+import { FaBed, FaCity } from "react-icons/fa6";
 
 const AdminDashboard = () => {
     const [users] = useUsers()
@@ -19,14 +20,14 @@ const AdminDashboard = () => {
     const totalRevenue = allPayments.reduce((acc, revenue) => acc + revenue.price, 0);
 
     return (
-        <div>
-            <div className="grid grid-cols-3 gap-8 mt-8 font-body">
+        <div className="mt-8 mb-20">
+            <div className="grid grid-cols-3 gap-8 font-body">
 
                 {/* ======Total revenue====== */}
                 <div className="col-span-1 w-[300px] h-[150px] bg-[#FBD3EA] px-5 shadow-lg rounded-lg border-b-4 border-[#DB2777] flex justify-center items-center gap-6">
                     <div className="w-[40%] flex justify-center">
                         <div className="bg-[#DB2777] h-[80px] w-[80px] px-4 py-4 rounded-full flex justify-center items-center">
-                            <FaUsers className="text-white" size={40}></FaUsers>
+                            <FaWallet className="text-white" size={40}></FaWallet>
                         </div>
                     </div>
                     <div className="w-[60%] flex justify-center items-center">
@@ -56,7 +57,7 @@ const AdminDashboard = () => {
                 <div className="col-span-1 w-[300px] h-[150px] bg-[#D4DDFE] px-5 shadow-lg rounded-lg border-b-4 border-[#4F46E5] flex justify-center items-center gap-6">
                     <div className="w-[40%] flex justify-center">
                         <div className="bg-[#4F46E5] h-[80px] w-[80px] px-4 py-4 rounded-full flex justify-center items-center">
-                            <FaWallet className="text-white" size={40}></FaWallet>
+                            <FaCity className="text-white" size={40}></FaCity>
                         </div>
                     </div>
                     <div className="w-[60%] flex justify-center items-center">
