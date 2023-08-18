@@ -25,7 +25,7 @@ const ManageCountryCard = ({ country: countryName, index, refetch }) => {
         console.log(data)
 
         let imgURL = countryImage;
-        let previousSlogan = slogan
+        let updatedSlogan = slogan
 
         if (data.image.lenght > 0) {
             const formData = new FormData();
@@ -40,9 +40,13 @@ const ManageCountryCard = ({ country: countryName, index, refetch }) => {
             }
         }
 
+        if (data.slogan !== "") {
+            updatedSlogan = data.slogan;
+        }
+
         const updatedCountry = {
             country: data.name.charAt(0).toUpperCase() + data.name.slice(1),
-            slogan: data.slogan === '' ? previousSlogan : data.slogan,
+            slogan: updatedSlogan,
             countryImage: imgURL
         }
         console.log(updatedCountry)
@@ -56,6 +60,7 @@ const ManageCountryCard = ({ country: countryName, index, refetch }) => {
 
             if (res.data.modifiedCount > 0) {
                 reset();
+                refetch();
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
