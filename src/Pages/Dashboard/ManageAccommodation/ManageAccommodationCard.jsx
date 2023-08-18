@@ -57,7 +57,7 @@ const ManageAccommodationCard = ({ destination, index, refetch }) => {
             <td><p className='text-center'>${price}</p></td>
             <td>
                 <button onClick={() => handleDeleteDestination(_id, name)} className="btn btn-circle bg-bodyColor text-lightText hover:bg-bodyColor">
-                    <HiX className='h-5 w-5'></HiX>
+                    <HiX className='h-5 w-5 text-white'></HiX>
                 </button>
             </td>
             <th>

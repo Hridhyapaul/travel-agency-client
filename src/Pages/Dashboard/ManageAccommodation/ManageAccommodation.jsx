@@ -20,15 +20,15 @@ const ManageAccommodation = () => {
                         {/* head */}
                         <thead className='bg-designColor text-white'>
                             <tr className='text-center text-[14px] rounded-lg'>
-                                <th></th>
-                                <th>Accommodation Name <br />& Accommodation id</th>
-                                <th>Country Name <br />& Location</th>
-                                <th>Price/person</th>
-                                <th>Action</th>
-                                <th>Update</th>
+                                <th className='py-5'></th>
+                                <th className='py-5'>Accommodation Name <br />& Accommodation id</th>
+                                <th className='py-5'>Country Name <br />& Location</th>
+                                <th className='py-5'>Price/person</th>
+                                <th className='py-5'>Action</th>
+                                <th className='py-5'>Update</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody className='bg-white'>
                             {
                                 destinations.map((destination, index) => <ManageAccommodationCard key={destination._id} destination={destination} index={index} refetch={refetch}></ManageAccommodationCard>)
                             }

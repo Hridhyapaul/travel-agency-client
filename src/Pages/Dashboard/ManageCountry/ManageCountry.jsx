@@ -14,21 +14,20 @@ const ManageCountry = () => {
     return (
         <div className='py-20'>
             <h2 className='text-4xl font-body font-semibold text-center pb-4'>Manage Country</h2>
-            <hr className='my-4' />
             <div className='mt-8'>
                 <div className="overflow-x-auto">
                     <table className="table font-body">
                         {/* head */}
-                        <thead>
+                        <thead className='bg-designColor text-white'>
                             <tr className='text-center text-[14px]'>
-                                <th></th>
-                                <th>Image</th>
-                                <th>Country Name</th>
-                                <th>Country Slogan</th>
-                                <th>Action</th>
+                                <th className='py-6'></th>
+                                <th className='py-6'>Image</th>
+                                <th className='py-6'>Country Name</th>
+                                <th className='py-6'>Country Slogan</th>
+                                <th className='py-6'>Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody className='bg-white'>
                             {
                                 countries.map((country, index) => <ManageCountryCard key={country._id} country={country} index={index} refetch={refetch}></ManageCountryCard>)
                             }

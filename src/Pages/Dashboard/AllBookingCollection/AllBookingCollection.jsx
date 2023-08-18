@@ -7,7 +7,7 @@ const AllBookingCollection = () => {
     return (
         <div className="mt-20 pb-20">
             <h1 className="text-4xl font-body font-semibold text-center pb-4">All Booking Collection</h1>
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 gap-6 mt-8">
                 {
                     bookings.map(booking => <AllBookingCollectionCard key={booking._id} booking={booking} refetch={refetch}></AllBookingCollectionCard>)
                 }

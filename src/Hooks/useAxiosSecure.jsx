@@ -11,6 +11,8 @@ const useAxiosSecure = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
+
+        // Add secure Axios instance with authentication interceptors
         axiosSecure.interceptors.request.use((config) => {
             const token = localStorage.getItem('access-token');
             if (token) {

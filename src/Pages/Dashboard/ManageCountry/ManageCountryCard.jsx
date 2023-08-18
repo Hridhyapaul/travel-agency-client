@@ -112,7 +112,7 @@ const ManageCountryCard = ({ country: countryName, index, refetch }) => {
     }
 
     return (
-        <tr className='font-body'>
+        <tr className='font-body font-semibold'>
             <th className='text-center'>
                 <p>{index + 1}</p>
             </th>
@@ -128,17 +128,17 @@ const ManageCountryCard = ({ country: countryName, index, refetch }) => {
                 <p>{slogan}</p>
             </td>
             <td className='space-x-2'>
-                <button onClick={() => handleDeleteDestination(_id, country)} className="btn btn-circle bg-bodyColor text-lightText hover:bg-bodyColor">
+                <button onClick={() => handleDeleteDestination(_id, country)} className="btn btn-circle bg-bodyColor text-white hover:bg-bodyColor">
                     <HiX className='h-5 w-5'></HiX>
                 </button>
-                <button onClick={handleOpenEditModal} className="btn btn-circle bg-bodyColor text-lightText hover:bg-bodyColor">
+                <button onClick={handleOpenEditModal} className="btn btn-circle bg-bodyColor text-white hover:bg-bodyColor">
                     <HiPencilAlt className='h-5 w-5'></HiPencilAlt>
                 </button>
             </td>
 
             {/* Edit Modal */}
             {showEditModal && (
-                <div className="fixed inset-0 z-30 flex items-center justify-center bg-gray-800 bg-opacity-50">
+                <div className="fixed inset-0 z-30 flex items-center justify-center bg-gray-800 bg-opacity-50 font-normal">
                     <div className="relative w-[800px] bg-white rounded shadow-md p-12">
                         <div className='absolute z-30 top-2 right-2 cursor-pointer m-2' onClick={() => setShowEditModal(false)}>
                             <div className='bg-bodyColor h-8 w-8 rounded-full flex justify-center items-center p-2'>

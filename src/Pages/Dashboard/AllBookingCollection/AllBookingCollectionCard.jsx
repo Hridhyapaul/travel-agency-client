@@ -3,7 +3,7 @@ const AllBookingCollectionCard = ({ booking, refetch }) => {
     console.log(booking)
     const { traveler_name, traveler_email, travelerPhone, tickets, status, price, name, countryName, location } = booking
     return (
-        <div className="col-span-1 bg-white border-b-4 border-bodyColor rounded-lg shadow-lg font-body px-4 py-4">
+        <div className="col-span-1 bg-white text-bodyColor border-b-4 border-bodyColor rounded-lg shadow-lg font-body px-4 py-4">
             <div className="flex justify-between items-start gap-8">
                 <div>
                     <h1 className="text-xl font-semibold">{traveler_name}</h1>
@@ -15,7 +15,7 @@ const AllBookingCollectionCard = ({ booking, refetch }) => {
                     <p className="text-sm">{tickets} Tickets</p>
                 </div>
             </div>
-            <hr className="my-4" />
+            <hr className="my-4 border-gray-300" />
             <div>
                 <h1 className="font-semibold">{name} <span>({countryName})</span></h1>
                 <p><span className="font-medium">Location:</span> {location}</p>

@@ -6,23 +6,22 @@ const AllPaymentHistory = () => {
     const [allPayments] = useRevenue()
     console.log(allPayments)
     return (
-        <div className="py-20 px-4 bg-white">
+        <div className="py-20 px-4">
 
             <h2 className='text-4xl font-body font-semibold text-center pb-4'>All Payment Record</h2>
-            <hr className='my-4' />
             <div className='mt-8'>
                 <div className="overflow-x-auto">
                     <table className="table font-body">
                         {/* head */}
-                        <thead>
+                        <thead className="bg-designColor text-white">
                             <tr className='text-center text-[14px]'>
-                                <th></th>
-                                <th>Traveler Name</th>
+                                <th className="py-6"></th>
+                                <th className="py-6">Traveler Name</th>
                                 <th className="w-[300px]">Lodge Name</th>
-                                <th>Tickets</th>
-                                <th>Amount</th>
-                                <th>Transition Id</th>
-                                <th>Date</th>
+                                <th className="py-6">Tickets</th>
+                                <th className="py-6">Amount</th>
+                                <th className="py-6">Transition Id</th>
+                                <th className="py-6">Date</th>
                             </tr>
                         </thead>
                         <tbody>

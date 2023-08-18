@@ -13,9 +13,8 @@ export default {
         bodyColor: '#0d1321',
         bgColor: '#F5F6F6',
         lightText: '#c4cfde',
-        boxBg: 'linear-gradient(145deg, #1e2024, #23272b)',
         designColor: '#F43F5E',
-        hoverColor: "rgba(100,255,218,0.1)"
+        hoverColor: "rgba(244, 63, 94, 0.15)"
       },
       boxShadow: {
         shadowOne: '10px 10px 15px 5px rgba(0,0,0,0.5), -10px -10px 38px -4px rgba(255,255,255,0.05)'

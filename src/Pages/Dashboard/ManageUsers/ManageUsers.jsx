@@ -9,19 +9,18 @@ const ManageUsers = () => {
             <Container>
                 <div>
                     <h2 className='text-4xl font-body font-semibold text-center pb-4'>User Management</h2>
-                    <hr className='my-4' />
                     <div className='mt-8'>
                         <div className="overflow-x-auto">
                             <table className="table table-zebra font-body">
                                 {/* head */}
-                                <thead>
+                                <thead className="bg-designColor text-white">
                                     <tr className='text-center text-[14px]'>
-                                        <th></th>
-                                        <th>Image</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Role</th>
-                                        <th>Manage Role</th>
+                                        <th className="py-6"></th>
+                                        <th className="py-6">Image</th>
+                                        <th className="py-6">Name</th>
+                                        <th className="py-6">Email</th>
+                                        <th className="py-6">Role</th>
+                                        <th className="py-6">Manage Role</th>
                                     </tr>
                                 </thead>
                                 <tbody>

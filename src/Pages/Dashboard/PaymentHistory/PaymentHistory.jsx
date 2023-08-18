@@ -11,30 +11,30 @@ const PaymentHistory = () => {
         return <Loading></Loading>
     }
     return (
-        <div className=" my-20">
+        <div className=" my-20 mx-4">
 
             {
                 paymentHistory.length > 0 ?
                     (
                         <div>
                             <h2 className='text-4xl font-body font-semibold text-center pb-4'>Your Payment History</h2>
-                            <hr className='my-4' />
+                            
                             <div className='mt-8'>
                                 <div className="overflow-x-auto">
                                     <table className="table font-body">
                                         {/* head */}
-                                        <thead>
+                                        <thead className="bg-designColor text-white">
                                             <tr className='text-center text-[14px]'>
                                                 <th></th>
-                                                <th>Accommodation Name</th>
-                                                <th>Country Name</th>
-                                                <th>Tickets</th>
-                                                <th>Amount</th>
-                                                <th>Transition Id</th>
-                                                <th>Date</th>
+                                                <th className="py-6">Accommodation Name</th>
+                                                <th className="py-6">Country Name</th>
+                                                <th className="py-6">Tickets</th>
+                                                <th className="py-6">Amount</th>
+                                                <th className="py-6">Transition Id</th>
+                                                <th className="py-6">Date</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody className="bg-white">
                                             {
                                                 paymentHistory.map((history, index) => <PaymentHistoryCard key={history._id} history={history} index={index}></PaymentHistoryCard>)
                                             }

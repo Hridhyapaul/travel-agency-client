@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import avatar from '../../../assets/Images/placeholder.jpg'
+import Swal from 'sweetalert2';
 
 const ManageUsersCard = ({ user, index, refetch }) => {
     console.log(user)
@@ -8,7 +9,7 @@ const ManageUsersCard = ({ user, index, refetch }) => {
     const [isMadeAdmin, setIsMadeAdmin] = useState(false);
     const [isMadeUser, setIsMadeUser] = useState(false)
 
-    const handleMakeAdmin = (id) => {
+    const handleMakeAdmin = (id, userName) => {
         console.log(id)
         setIsMadeAdmin(true);
         setIsMadeUser(true)
@@ -23,11 +24,18 @@ const ManageUsersCard = ({ user, index, refetch }) => {
             .then(data => {
                 if (data.modifiedCount) {
                     refetch();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `${userName} has been successfully changed to "Admin"`,
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
                 }
             })
     };
 
-    const handleMakeUser = (id) => {
+    const handleMakeUser = (id, userName) => {
         setIsMadeUser(true)
         setIsMadeAdmin(true)
         console.log(id)
@@ -36,12 +44,19 @@ const ManageUsersCard = ({ user, index, refetch }) => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ role: 'user' })
+            body: JSON.stringify({ role: 'Traveler' })
         })
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount) {
                     refetch();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `${userName} has been successfully changed to "Traveler"`,
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
                 }
             })
     }
@@ -68,20 +83,20 @@ const ManageUsersCard = ({ user, index, refetch }) => {
             <td>
                 <div>
                     <button
-                        onClick={() => handleMakeAdmin(_id)}
+                        onClick={() => handleMakeAdmin(_id, name)}
                         disabled={isMadeAdmin}
-                        className={`${isMadeAdmin ? 'bg-designColor text-black bg-opacity-50 opacity-50 cursor-not-allowed py-1 px-3 rounded-lg font-bold mt-2' : 'bg-designColor text-white py-1 px-3 rounded-lg font-bold mt-2 transform hover:scale-105 duration-300'} `}
+                        className={`${isMadeAdmin ? 'bg-designColor text-black bg-opacity-50 opacity-50 cursor-not-allowed py-1 px-3 rounded-lg font-bold mt-2' : 'bg-designColor text-white py-1 px-3 rounded-lg font-semibold mt-2 transform hover:scale-105 duration-300'} `}
                     >
                         Make Admin
                     </button>
                 </div>
                 <div>
                     <button
-                        onClick={() => handleMakeUser(_id)}
+                        onClick={() => handleMakeUser(_id, name)}
                         disabled={isMadeUser}
-                        className={`${isMadeUser ? 'bg-designColor text-black bg-opacity-50 opacity-50 cursor-not-allowed py-1 px-3 rounded-lg font-bold mt-2' : 'bg-designColor text-white py-1 px-3 rounded-lg font-bold mt-2 transform hover:scale-105 duration-300'} `}
+                        className={`${isMadeUser ? 'bg-designColor text-black bg-opacity-50 opacity-50 cursor-not-allowed py-1 px-3 rounded-lg font-bold mt-2' : 'bg-designColor text-white py-1 px-3 rounded-lg font-semibold mt-2 transform hover:scale-105 duration-300'} `}
                     >
-                        Make User
+                        Make Traveler
                     </button>
                 </div>
             </td>
