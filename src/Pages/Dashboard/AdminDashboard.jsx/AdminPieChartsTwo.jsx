@@ -1,12 +1,12 @@
-import useChartData from "../../../Hooks/useChartData";
+import React from 'react';
+import useChartData from '../../../Hooks/useChartData';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
 
-const AdminPieCharts = () => {
+const AdminPieChartsTwo = () => {
     const [chartData] = useChartData();
     console.log(chartData);
 
-    const COLORS = ['#FFC300', '#8E44AD', '#D35400', '#16A085', '#2980B9', '#C0392B', '#27AE60', '#8E44AD', '#F39C12', '#3498DB'];
-
+    const COLORS = ['#FF5733', '#3498DB', '#2ECC71', '#E74C3C', '#9B59B6', '#1ABC9C', '#F39C12', '#E67E22', '#27AE60', '#E91E63'];
 
     const RADIAN = Math.PI / 180;
     const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
@@ -33,7 +33,7 @@ const AdminPieCharts = () => {
                         label={renderCustomizedLabel}
                         outerRadius={80}
                         fill="#8884d8"
-                        dataKey="paidAmount"
+                        dataKey="count"
                     >
                         {chartData.map((entry, index) => (
                             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
@@ -59,4 +59,4 @@ const CustomLegend = ({ payload, chartData }) => {
     );
 };
 
-export default AdminPieCharts;
+export default AdminPieChartsTwo;

@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import { FaBuilding, FaBuildingColumns, FaCalendarCheck, FaCreditCard, FaEarthAmericas, FaEarthEurope, FaListUl, FaMountainCity, FaPlaneUp } from "react-icons/fa6";
 import { FaHome, FaMoneyCheckAlt, FaSignInAlt, FaSignOutAlt, FaUsersCog } from "react-icons/fa";
@@ -27,9 +27,11 @@ const Dashboard = () => {
                 <div className="drawer-side bg-white shadow-lg text-bodyColor text-[16px] font-body font-semibold">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <div className="py-10">
-                        <div className="flex justify-center">
-                            <h1 className='text-3xl font-bold'>Travel<span className='text-designColor'>.O</span></h1>
-                        </div>
+                        <Link to="/">
+                            <div className="flex justify-center">
+                                <h1 className='text-3xl font-bold'>Travel<span className='text-designColor'>.O</span></h1>
+                            </div>
+                        </Link>
                     </div>
                     <ul className="menu px-4 w-80">
                         {/* Sidebar content here */}
