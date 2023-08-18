@@ -1,10 +1,16 @@
 import React from 'react';
 import useCountry from '../../../Hooks/useCountry';
 import ManageCountryCard from './ManageCountryCard';
+import Loading from '../../../Shared/Loading';
 
 const ManageCountry = () => {
-    const [countries, countryLoading , refetch] = useCountry();
+    const [countries, countryLoading, refetch] = useCountry();
     console.log(countries)
+
+    if (countryLoading) {
+        return <Loading></Loading>
+    }
+
     return (
         <div className='py-20'>
             <h2 className='text-4xl font-body font-semibold text-center pb-4'>Manage Country</h2>

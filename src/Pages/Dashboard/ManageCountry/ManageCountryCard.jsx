@@ -25,7 +25,8 @@ const ManageCountryCard = ({ country: countryName, index, refetch }) => {
         console.log(data)
 
         let imgURL = countryImage;
-        let updatedSlogan = slogan
+        let updatedSlogan = slogan;
+        let updatedCountryName = country;
 
         if (data.image.lenght > 0) {
             const formData = new FormData();
@@ -44,8 +45,12 @@ const ManageCountryCard = ({ country: countryName, index, refetch }) => {
             updatedSlogan = data.slogan;
         }
 
+        if (data.name !== "") {
+            updatedCountryName = data.name.charAt(0).toUpperCase() + data.name.slice(1);
+        }
+
         const updatedCountry = {
-            country: data.name.charAt(0).toUpperCase() + data.name.slice(1),
+            country: updatedCountryName,
             slogan: updatedSlogan,
             countryImage: imgURL
         }
