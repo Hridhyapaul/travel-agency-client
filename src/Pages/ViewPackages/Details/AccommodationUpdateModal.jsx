@@ -6,6 +6,90 @@ const AccommodationUpdateModal = ({ handleOpenEditModal, setIsEditModalOpen, isO
     const { register, handleSubmit, reset, control } = useForm();
     const onSubmit = async data => {
         console.log(data)
+
+        try {
+            // ===== Include Services =====
+            const includedServices = data.services.split(';').map(service => service.trim());
+
+            // ===== Tour plan =====
+            const inputTourPlanLines = data.tourPlan.split('\n');
+
+            const tourPlan = inputTourPlanLines.map((line, index) => {
+                const dayObj = { day: index + 1, activities: [] };
+                const activities = line.split(';').map(activity => activity.trim());
+                dayObj.activities = activities;
+                return dayObj;
+            });
+
+            // ===== Multiple images =====
+
+            // Convert FileList to an array of files
+
+            if (data.image.lenght > 0) {
+                const imagesArray = Array.from(data.image);
+                console.log(imagesArray)
+
+                const promises = imagesArray.map(async (img) => {
+                    const formData = new FormData();
+                    formData.append('image', img);
+
+                    const response = await axios.post(
+                        `https://api.imgbb.com/1/upload?key=${image_hosting_token}`,
+                        formData
+                    );
+                    console.log(response)
+                    return response.data.data.url;
+                });
+
+                const uploadedUrls = await Promise.all(promises);
+                console.log('Uploaded URLs:', uploadedUrls);
+            }
+
+            // Check if all uploads were successful
+            const allUploadsSuccessful = uploadedUrls.every(url => url && url.trim() !== '' && url !== null);
+
+            if (allUploadsSuccessful) {
+                const accommodationDetails = {
+                    name: data.name,
+                    image: uploadedUrls,
+                    countryName: data.country,
+                    location: data.location,
+                    about: data.about,
+                    numberOfDay: parseFloat(data.duration),
+                    price: parseFloat(data.price),
+                    details: data.details,
+                    reviews: [],
+                    tourPlan: tourPlan,
+                    includedServices: includedServices,
+                };
+                console.log(accommodationDetails);
+
+                try {
+                    const res = await axios.post('http://localhost:5000/destinations', accommodationDetails, {
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    });
+
+                    if (res.data.insertedId) {
+                        reset();
+                        control._reset({ tourPlan: "", services: "" });
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'You have successfully added a Accommodation!',
+                            showConfirmButton: false,
+                            timer: 1500,
+                        });
+                    }
+                } catch (error) {
+                    console.error('Error adding accommodation:', error);
+                }
+            }
+        }
+        catch (error) {
+            console.error('Error uploading images:', error);
+        }
     }
 
     // Add an effect to disable body scrolling when the modal is open
@@ -45,7 +129,7 @@ const AccommodationUpdateModal = ({ handleOpenEditModal, setIsEditModalOpen, isO
                                         </label>
                                         <input
                                             type="text"
-                                            {...register("name", { required: true })}
+                                            {...register("name")}
                                             placeholder='Accommodation name'
                                             className="w-full py-2 border-2 pl-3 rounded-lg border-gray-300 focus:outline-none focus:ring-[#082A5E] focus:border-[#082A5E]"
                                         />
@@ -60,7 +144,7 @@ const AccommodationUpdateModal = ({ handleOpenEditModal, setIsEditModalOpen, isO
                                             <input
                                                 type="text"
                                                 placeholder='Country'
-                                                {...register("country", { required: true })}
+                                                {...register("country")}
                                                 className="w-full py-2 border-2 pl-3 rounded-lg border-gray-300 focus:outline-none focus:ring-bodyColor focus:border-bodyColor"
                                             />
                                         </div>
@@ -74,7 +158,7 @@ const AccommodationUpdateModal = ({ handleOpenEditModal, setIsEditModalOpen, isO
                                         <input
                                             type="file"
                                             multiple
-                                            {...register("image", { required: true })}
+                                            {...register("image")}
                                             className="file-input mt-3 file-input-sm w-full max-w-xs" />
                                     </div>
 
@@ -86,7 +170,7 @@ const AccommodationUpdateModal = ({ handleOpenEditModal, setIsEditModalOpen, isO
                                         <input
                                             type="text"
                                             placeholder='Location'
-                                            {...register("location", { required: true })}
+                                            {...register("location")}
                                             className="w-full py-2 border-2 pl-3 rounded-lg border-gray-300 focus:outline-none focus:ring-bodyColor focus:border-bodyColor"
                                         />
                                     </div>
@@ -99,7 +183,7 @@ const AccommodationUpdateModal = ({ handleOpenEditModal, setIsEditModalOpen, isO
                                         <input
                                             type="text"
                                             placeholder='Summarize in 5-6 letters'
-                                            {...register("about", { required: true })}
+                                            {...register("about")}
                                             className="w-full py-2 border-2 pl-3 rounded-lg border-gray-300 focus:outline-none focus:ring-bodyColor focus:border-bodyColor"
                                         />
                                     </div>
@@ -112,7 +196,7 @@ const AccommodationUpdateModal = ({ handleOpenEditModal, setIsEditModalOpen, isO
                                         <input
                                             type="number"
                                             min="0" step="any"
-                                            {...register("duration", { required: true })}
+                                            {...register("duration")}
                                             placeholder='Enter Tour Duration'
                                             className="w-full py-2 border-2 px-3 rounded-lg border-gray-300 focus:outline-none focus:ring-bodyColor focus:border-bodyColor"
                                         />
@@ -124,7 +208,7 @@ const AccommodationUpdateModal = ({ handleOpenEditModal, setIsEditModalOpen, isO
                                             Price
                                         </label>
                                         <input
-                                            {...register("price", { required: true })}
+                                            {...register("price")}
                                             type="number" min="0" step="any"
                                             placeholder='Price Per Person'
                                             className="w-full py-2 border-2 px-3 rounded-lg border-gray-300 focus:outline-none focus:ring-bodyColor focus:border-bodyColor"
@@ -137,7 +221,7 @@ const AccommodationUpdateModal = ({ handleOpenEditModal, setIsEditModalOpen, isO
                                             Accommodation Information
                                         </label>
                                         <textarea
-                                            {...register("details", { required: true })}
+                                            {...register("details")}
                                             type="text"
                                             placeholder='Provide Accommodation Details'
                                             className="w-full py-2 border-2 px-3 rounded-lg border-gray-300 focus:outline-none focus:ring-bodyColor focus:border-bodyColor"
@@ -149,7 +233,7 @@ const AccommodationUpdateModal = ({ handleOpenEditModal, setIsEditModalOpen, isO
                                     <Controller
                                         name="tourPlan"
                                         control={control}
-                                        rules={{ required: true }}
+                                        // rules={{ required: true }}
                                         defaultValue=""
                                         render={({ field }) => (
                                             <div className='col-span-2'>
@@ -181,7 +265,7 @@ const AccommodationUpdateModal = ({ handleOpenEditModal, setIsEditModalOpen, isO
                                     <Controller
                                         name="services"
                                         control={control}
-                                        rules={{ required: true }}
+                                        // rules={{ required: true }}
                                         defaultValue=""
                                         render={({ field }) => (
                                             <div className='col-span-2'>
