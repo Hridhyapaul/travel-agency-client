@@ -69,7 +69,7 @@ const ManageCountryCard = ({ country: countryName, index, refetch }) => {
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
-                    title: 'You have successfully added Country!',
+                    title: 'You have successfully updated Country!',
                     showConfirmButton: false,
                     timer: 1500,
                 });

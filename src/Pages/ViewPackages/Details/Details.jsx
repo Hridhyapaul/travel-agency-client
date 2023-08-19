@@ -14,6 +14,7 @@ import Loading from "../../../Shared/Loading";
 import useAdmin from "../../../Hooks/useAdmin";
 import useNormalUser from "../../../Hooks/useNormalUser";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Details = () => {
     const { id } = useParams();
@@ -112,7 +113,7 @@ const Details = () => {
         let updateTourPlan = tourPlan;
 
 
-        // ===== Multiple images =====
+        // <===== Multiple images =====>
 
         // Convert FileList to an array of files
         if (data.image.lenght > 0) {
@@ -176,9 +177,6 @@ const Details = () => {
             });
         }
 
-        // if (data.countryName !== "") {
-        //     updateCountryName = data.country;
-        // }
 
         // Check if all uploads were successful
         const allUploadsSuccessful = uploadedUrls.every(url => url && url.trim() !== '' && url !== null);
@@ -200,27 +198,29 @@ const Details = () => {
 
             console.log(accommodationDetails);
 
-            // try {
-            //     const res = await axios.post('http://localhost:5000/destinations', accommodationDetails, {
-            //         headers: {
-            //             'Content-Type': 'application/json',
-            //         },
-            //     });
+            try {
+                const res = await axios.put(`http://localhost:5000/destinations/${_id}`, accommodationDetails, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+                console.log(res.data)
 
-            //     if (res.data.insertedId) {
-            //         reset();
-            //         control._reset({ tourPlan: "", services: "" });
-            //         Swal.fire({
-            //             position: 'top-end',
-            //             icon: 'success',
-            //             title: 'You have successfully added a Accommodation!',
-            //             showConfirmButton: false,
-            //             timer: 1500,
-            //         });
-            //     }
-            // } catch (error) {
-            //     console.error('Error adding accommodation:', error);
-            // }
+                if (res.data.modifiedCount > 0) {
+                    reset();
+                    refetch();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'You have successfully updated accommodation!',
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
+                    setShowEditModal(false);
+                }
+            } catch (error) {
+                console.error('Error adding country:', error);
+            }
         }
 
     }
