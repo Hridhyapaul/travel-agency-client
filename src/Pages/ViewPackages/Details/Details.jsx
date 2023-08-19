@@ -12,16 +12,14 @@ import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import Loading from "../../../Shared/Loading";
 import useAdmin from "../../../Hooks/useAdmin";
-import useNormalUser from "../../../Hooks/useNormalUser";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
 const Details = () => {
     const { id } = useParams();
     const { user } = useAuth();
-    const [isAdmin] = useAdmin();
-    const [isTraveler] = useNormalUser();
     console.log(user)
+    const [isAdmin] = useAdmin();
     const navigate = useNavigate();
     const location = useLocation();
     const [rooms, refetch, loading] = useAccommodationDetails({ id })
@@ -29,7 +27,12 @@ const Details = () => {
     const { _id, countryName, image, name, numberOfDay, price, reviews, details, location: place, includedServices, tourPlan, about } = rooms;
 
     const totalRatings = reviews?.reduce((sum, review) => sum + review?.rating, 0);
-    const averageRating = totalRatings / reviews?.length;
+
+    let averageRating = 0
+    if (reviews?.length > 0) {
+        averageRating = totalRatings / reviews?.length;
+    }
+
 
     const { register, handleSubmit, reset, control, formState: { errors } } = useForm();
 
@@ -38,11 +41,6 @@ const Details = () => {
         activeFillColor: '#f59e0b',
         inactiveFillColor: '#ECEEEF',
     };
-
-    if (loading) {
-        return <Loading></Loading>; // or display an error message
-    }
-
 
     // ===== Start getting Booking data =====
     const handleBookingSubmit = data => {
@@ -240,6 +238,10 @@ const Details = () => {
     }, [showEditModal]);
     // <===== End getting update accommodation data =====>
 
+    if (loading) {
+        return <Loading></Loading>; // or display an error message
+    }
+
     return (
         <div className="bg-bgColor">
             <div>
@@ -257,19 +259,21 @@ const Details = () => {
                     <div className={`${isAdmin ? '' : 'grid grid-cols-6 gap-8'}`}>
                         <div className="col-span-4 font-body text-bodyColor">
 
-                            <div className="flex justify-start items-center gap-2">
-                                <Rating
-                                    style={{ maxWidth: 90 }}
-                                    value={averageRating}
-                                    itemStyles={customStyles}
-                                    readOnly
-                                    className=""
-                                />
-                                <p className="text-[14px]">{averageRating.toFixed(1)}</p>
-                                <p className="text-[14px]">({reviews.length < 10 ? `0${reviews.length}` : reviews.length} Reviews)</p>
+                            <div className="bg-designColor w-fit px-4 py-2 rounded-lg">
+                                <div className="flex justify-start items-center gap-2 text-white">
+                                    <Rating
+                                        style={{ maxWidth: 90 }}
+                                        value={averageRating}
+                                        itemStyles={customStyles}
+                                        readOnly
+                                        className=""
+                                    />
+                                    <p className="text-[14px]">{averageRating.toFixed(1)}</p>
+                                    <p className="text-[14px]">({reviews.length < 10 ? `0${reviews.length}` : reviews.length} Reviews)</p>
+                                </div>
                             </div>
 
-                            <div className="space-y-4">
+                            <div className="space-y-4 mt-2">
                                 <div className="flex justify-between items-center">
                                     <div>
                                         <h1 className="text-4xl font-semibold">{name}</h1>
@@ -344,27 +348,42 @@ const Details = () => {
 
                             {/* Review */}
                             <div className="space-y-4 mt-10">
-                                <h1 className="text-3xl font-semibold">Traveler Review for {name}</h1>
-                                <div className="bg-white px-8 py-8 rounded-lg space-y-8">
+                                <h1 className="text-3xl font-semibold">
                                     {
-                                        reviews?.map((review, index) => (
-                                            <div key={index} className="bg-bgColor px-6 py-6 rounded-lg space-y-3">
-                                                <div className="bg-white px-4 py-2 rounded-lg flex justify-start items-center gap-2">
-                                                    <Rating
-                                                        style={{ maxWidth: 90 }}
-                                                        value={review.rating}
-                                                        itemStyles={customStyles}
-                                                        readOnly
-                                                        className=""
-                                                    />
-                                                    <p className="text-[14px]">({review.rating.toFixed(1)})</p>
-                                                </div>
-                                                <h1 className="text-xl font-semibold">{review.reviewerName}</h1>
-                                                <p>{review.reviewText}</p>
-                                            </div>
-                                        ))
+                                        reviews.length > 0 ? `Traveler Review for ${name}` : `There are no Review for ${name}`
                                     }
-                                </div>
+                                </h1>
+
+                                {
+                                    reviews.length > 0 ?
+                                        (<>
+                                            <div className="bg-white px-8 py-8 rounded-lg space-y-8">
+                                                {
+                                                    reviews?.map((review, index) => (
+                                                        <div key={index} className="bg-bgColor px-6 py-6 rounded-lg space-y-3">
+                                                            <div className="bg-white px-4 py-2 rounded-lg flex justify-start items-center gap-2">
+                                                                <Rating
+                                                                    style={{ maxWidth: 90 }}
+                                                                    value={review.rating}
+                                                                    itemStyles={customStyles}
+                                                                    readOnly
+                                                                    className=""
+                                                                />
+                                                                <p className="text-[14px]">({review.rating.toFixed(1)})</p>
+                                                            </div>
+                                                            <h1 className="text-xl font-semibold">{review.reviewerName}</h1>
+                                                            <p>{review.reviewText}</p>
+                                                        </div>
+                                                    ))
+                                                }
+                                            </div>
+                                        </>)
+                                        :
+                                        (<>
+
+                                        </>)
+                                }
+
                             </div>
                         </div>
                         {/* Right Column */}

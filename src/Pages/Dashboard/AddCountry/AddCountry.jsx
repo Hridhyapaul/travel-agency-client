@@ -11,6 +11,7 @@ const AddCountry = () => {
     const img_hosting_url = `https://api.imgbb.com/1/upload?key=${image_hosting_token}`
     const onSubmit = async data => {
         console.log(data)
+        const countryName = data.name.charAt(0).toUpperCase() + data.name.slice(1);
         const formData = new FormData();
         formData.append('image', data.image[0])
 
@@ -47,7 +48,16 @@ const AddCountry = () => {
                     });
                 }
             } catch (error) {
-                console.error('Error adding country:', error);
+                console.error('Error adding country:', error.message);
+                if (error.message === "Request failed with status code 400") {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: `${countryName} Already Exists`,
+                        showConfirmButton: false,
+                        timer: 2500,
+                    });
+                }
             }
         }
     }
