@@ -6,7 +6,11 @@ const ToursCard = ({ destination, isBoxCard }) => {
     const { _id, about, image, name, countryName, numberOfDay, price, reviews } = destination;
 
     const totalRatings = reviews.reduce((sum, review) => sum + review.rating, 0);
-    const averageRating = totalRatings / reviews?.length;
+
+    let averageRating = 0
+    if (reviews?.length > 0) {
+        averageRating = totalRatings / reviews?.length;
+    }
 
     const customStyles = {
         itemShapes: ThinRoundedStar,

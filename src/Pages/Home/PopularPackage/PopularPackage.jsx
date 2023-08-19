@@ -13,7 +13,7 @@ const PopularPackage = () => {
     }
 
     return (
-        <div className="my-24">
+        <div className="mt-24 mb-28">
             <Container>
                 <div>
                     <SectionTitle headers='Packages in Popular Destinations' subHeader='Modern & Beautiful'></SectionTitle>

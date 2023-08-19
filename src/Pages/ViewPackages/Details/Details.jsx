@@ -259,8 +259,8 @@ const Details = () => {
                     <div className={`${isAdmin ? '' : 'grid grid-cols-6 gap-8'}`}>
                         <div className="col-span-4 font-body text-bodyColor">
 
-                            <div className="bg-designColor w-fit px-4 py-2 rounded-lg">
-                                <div className="flex justify-start items-center gap-2 text-white">
+                            <div className="bg-white w-fit px-4 py-2 rounded-lg">
+                                <div className="flex justify-start items-center gap-2 text-bodyColor">
                                     <Rating
                                         style={{ maxWidth: 90 }}
                                         value={averageRating}
