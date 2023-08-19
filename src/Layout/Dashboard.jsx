@@ -1,7 +1,7 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
-import { FaBuilding, FaBuildingColumns, FaCalendarCheck, FaCreditCard, FaEarthAmericas, FaEarthEurope, FaListUl, FaMountainCity, FaPlaneUp } from "react-icons/fa6";
-import { FaHome, FaMoneyCheckAlt, FaSignInAlt, FaSignOutAlt, FaUsersCog } from "react-icons/fa";
+import { FaBuilding, FaCalendarCheck, FaCreditCard, FaEarthAmericas, FaEarthEurope, FaListUl, FaMountainCity, FaPlaneUp } from "react-icons/fa6";
+import { FaHome, FaMoneyCheckAlt, FaSignOutAlt, FaUsersCog } from "react-icons/fa";
 import useAdmin from "../Hooks/useAdmin";
 import useNormalUser from "../Hooks/useNormalUser";
 import { HiChartPie, HiCurrencyDollar } from "react-icons/hi";

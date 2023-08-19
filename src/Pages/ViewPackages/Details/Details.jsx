@@ -6,15 +6,21 @@ import './CSS/Details.css'
 import Container from "../../../Shared/Container";
 import { Rating, ThinRoundedStar } from "@smastrom/react-rating";
 import '@smastrom/react-rating/style.css'
-import { HiOutlineClock, HiOutlineMap } from "react-icons/hi";
+import { HiOutlineClock, HiOutlineMap, HiPencilAlt } from "react-icons/hi";
 import { useForm } from 'react-hook-form';
 import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import Loading from "../../../Shared/Loading";
+import useAdmin from "../../../Hooks/useAdmin";
+import useNormalUser from "../../../Hooks/useNormalUser";
+import AccommodationUpdateModal from "./AccommodationUpdateModal";
+import { useState } from "react";
 
 const Details = () => {
     const { id } = useParams();
     const { user } = useAuth();
+    const [isAdmin] = useAdmin();
+    const [isTraveler] = useNormalUser();
     console.log(user)
     const navigate = useNavigate();
     const location = useLocation();
@@ -82,6 +88,8 @@ const Details = () => {
 
     }
 
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+
     return (
         <>
             <div className="bg-bgColor">
@@ -97,7 +105,7 @@ const Details = () => {
 
                 <div className="mt-[600px]">
                     <Container>
-                        <div className="grid grid-cols-6 gap-8">
+                        <div className={`${isAdmin ? '' : 'grid grid-cols-6 gap-8'}`}>
                             <div className="col-span-4 font-body text-bodyColor">
 
                                 <div className="flex justify-start items-center gap-2">
@@ -113,9 +121,26 @@ const Details = () => {
                                 </div>
 
                                 <div className="space-y-4">
-                                    <div>
-                                        <h1 className="text-4xl font-semibold">{name}</h1>
-                                        <p className="font-semibold "><span className="text-[24px] text-designColor">${price}</span>{" "} <span className="text-[18px]">/ Per person</span></p>
+                                    <div className="flex justify-between items-center">
+                                        <div>
+                                            <h1 className="text-4xl font-semibold">{name}</h1>
+                                            <p className="font-semibold "><span className="text-[24px] text-designColor">${price}</span>{" "} <span className="text-[18px]">/ Per person</span></p>
+                                        </div>
+                                        {
+                                            isAdmin && (
+                                                <>
+                                                    <div>
+                                                        <div className="flex justify-end">
+                                                            <button
+                                                                onClick={() => setIsEditModalOpen(true)}
+                                                                className="flex justify-center items-center bg-bodyColor px-4 py-2 rounded-lg text-lightText font-semibold space-x-2">
+                                                                <HiPencilAlt></HiPencilAlt> <p>Update Accommodation</p>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </>
+                                            )
+                                        }
                                     </div>
 
 
@@ -194,124 +219,132 @@ const Details = () => {
                                 </div>
                             </div>
 
+                            <AccommodationUpdateModal handleOpenEditModal={() => setIsEditModalOpen(true)}
+                                setIsEditModalOpen={setIsEditModalOpen}
+                                isOpen={isEditModalOpen}></AccommodationUpdateModal>
+
                             {/* Right Column */}
-                            <div className="col-span-2">
-                                <div>
-                                    <div className="w-full bg-white rounded shadow-md p-12">
-                                        <form onSubmit={handleSubmit(onSubmit)}>
-                                            <div className="space-y-8">
+                            {!isAdmin && (
+                                <>
+                                    <div className="col-span-2">
+                                        <div>
+                                            <div className="w-full bg-white rounded shadow-md p-12">
+                                                <form onSubmit={handleSubmit(onSubmit)}>
+                                                    <div className="space-y-8">
 
-                                                {/* Name field */}
-                                                <div>
-                                                    <label htmlFor="name" className="block mb-1 font-medium">
-                                                        Name
-                                                    </label>
-                                                    <input
-                                                        type="text"
-                                                        {...register("name", { required: true })}
-                                                        placeholder='Enter Your Name'
-                                                        value={user?.displayName}
-                                                        className="w-full py-2 border-b border-gray-300 focus:outline-none focus:border-designColor"
+                                                        {/* Name field */}
+                                                        <div>
+                                                            <label htmlFor="name" className="block mb-1 font-medium">
+                                                                Name
+                                                            </label>
+                                                            <input
+                                                                type="text"
+                                                                {...register("name", { required: true })}
+                                                                placeholder='Enter Your Name'
+                                                                value={user?.displayName}
+                                                                className="w-full py-2 border-b border-gray-300 focus:outline-none focus:border-designColor"
 
-                                                    />
-                                                    {errors.name && <p className="mt-2 text-[#CC0000]">Name field is required</p>}
-                                                </div>
+                                                            />
+                                                            {errors.name && <p className="mt-2 text-[#CC0000]">Name field is required</p>}
+                                                        </div>
 
-                                                {/* Email field */}
-                                                <div>
-                                                    <label htmlFor="email" className="block mb-1 font-medium">
-                                                        Email
-                                                    </label>
-                                                    <input
-                                                        type="email"
-                                                        {...register("email", { required: true })}
-                                                        placeholder='Enter Your Email'
-                                                        value={user?.email}
-                                                        className="w-full py-2 border-b border-gray-300 focus:outline-none focus:border-designColor"
+                                                        {/* Email field */}
+                                                        <div>
+                                                            <label htmlFor="email" className="block mb-1 font-medium">
+                                                                Email
+                                                            </label>
+                                                            <input
+                                                                type="email"
+                                                                {...register("email", { required: true })}
+                                                                placeholder='Enter Your Email'
+                                                                value={user?.email}
+                                                                className="w-full py-2 border-b border-gray-300 focus:outline-none focus:border-designColor"
 
-                                                    />
-                                                    {errors.email && <p className="mt-2 text-[#CC0000]">Email field is required</p>}
-                                                </div>
+                                                            />
+                                                            {errors.email && <p className="mt-2 text-[#CC0000]">Email field is required</p>}
+                                                        </div>
 
-                                                {/* Phone number field */}
-                                                <div>
-                                                    <label htmlFor="phone" className="block mb-1 font-medium">
-                                                        Phone
-                                                    </label>
-                                                    <div className="relative">
-                                                        <input
-                                                            type="tel"
-                                                            {...register("phone", {
-                                                                required: true,
-                                                            })}
-                                                            className="w-full py-2 border-b border-gray-300 focus:outline-none focus:border-designColor"
-                                                            placeholder="Phone Number"
-                                                        />
-                                                        {errors.phone && <p className="mt-2 text-[#CC0000]">Phone field is required</p>}
+                                                        {/* Phone number field */}
+                                                        <div>
+                                                            <label htmlFor="phone" className="block mb-1 font-medium">
+                                                                Phone
+                                                            </label>
+                                                            <div className="relative">
+                                                                <input
+                                                                    type="tel"
+                                                                    {...register("phone", {
+                                                                        required: true,
+                                                                    })}
+                                                                    className="w-full py-2 border-b border-gray-300 focus:outline-none focus:border-designColor"
+                                                                    placeholder="Phone Number"
+                                                                />
+                                                                {errors.phone && <p className="mt-2 text-[#CC0000]">Phone field is required</p>}
+                                                            </div>
+                                                        </div>
+
+                                                        {/* Tickets field */}
+                                                        <div>
+                                                            <label htmlFor="ticket" className="block mb-1 font-medium">
+                                                                Number of Tickets
+                                                            </label>
+                                                            <input
+                                                                type="text"
+                                                                {...register("ticket", { required: true })}
+                                                                placeholder='Tickets'
+                                                                className="w-full py-2 border-b border-gray-300 focus:outline-none focus:border-designColor"
+                                                            />
+                                                            {errors.ticket && <p className="mt-2 text-[#CC0000]">Ticket field is required</p>}
+                                                        </div>
+
+                                                        {/* Booking date field */}
+                                                        <div>
+                                                            <label htmlFor="date" className="block mb-1 font-medium">
+                                                                Booking Date
+                                                            </label>
+                                                            <input
+                                                                type="date"
+                                                                {...register("date", { required: true })}
+                                                                placeholder=''
+                                                                className="w-full py-2 border-b border-gray-300 focus:outline-none  focus:border-designColor"
+
+                                                            />
+                                                            {errors.date && <p className="mt-2 text-[#CC0000]">Date field is required</p>}
+                                                        </div>
+
+                                                        {/* Message */}
+                                                        <div>
+                                                            <label htmlFor="message" className="block mb-1 font-medium">
+                                                                Message
+                                                            </label>
+                                                            <textarea
+                                                                {...register("message")}
+                                                                placeholder='Enter Message'
+                                                                className="w-full py-2 border-b border-gray-300 focus:outline-none  focus:border-designColor"
+                                                            ></textarea>
+                                                        </div>
                                                     </div>
-                                                </div>
 
-                                                {/* Tickets field */}
-                                                <div>
-                                                    <label htmlFor="ticket" className="block mb-1 font-medium">
-                                                        Number of Tickets
-                                                    </label>
-                                                    <input
-                                                        type="text"
-                                                        {...register("ticket", { required: true })}
-                                                        placeholder='Tickets'
-                                                        className="w-full py-2 border-b border-gray-300 focus:outline-none focus:border-designColor"
-                                                    />
-                                                    {errors.ticket && <p className="mt-2 text-[#CC0000]">Ticket field is required</p>}
-                                                </div>
+                                                    <button
+                                                        type="submit"
+                                                        className="bg-designColor w-full  text-white rounded py-2 px-4 font-semibold mt-8 mb-4"
+                                                    >
+                                                        Book Tour
+                                                    </button>
 
-                                                {/* Booking date field */}
-                                                <div>
-                                                    <label htmlFor="date" className="block mb-1 font-medium">
-                                                        Booking Date
-                                                    </label>
-                                                    <input
-                                                        type="date"
-                                                        {...register("date", { required: true })}
-                                                        placeholder=''
-                                                        className="w-full py-2 border-b border-gray-300 focus:outline-none  focus:border-designColor"
-
-                                                    />
-                                                    {errors.date && <p className="mt-2 text-[#CC0000]">Date field is required</p>}
-                                                </div>
-
-                                                {/* Message */}
-                                                <div>
-                                                    <label htmlFor="message" className="block mb-1 font-medium">
-                                                        Message
-                                                    </label>
-                                                    <textarea
-                                                        {...register("message")}
-                                                        placeholder='Enter Message'
-                                                        className="w-full py-2 border-b border-gray-300 focus:outline-none  focus:border-designColor"
-                                                    ></textarea>
-                                                </div>
+                                                </form>
                                             </div>
-                                            
+                                            <Link to="/dashboard/payment">
                                                 <button
                                                     type="submit"
                                                     className="bg-designColor w-full  text-white rounded py-2 px-4 font-semibold mt-8 mb-4"
                                                 >
-                                                    Book Tour
+                                                    Pay for Booking
                                                 </button>
-                                            
-                                        </form>
+                                            </Link>
+                                        </div>
                                     </div>
-                                    <Link to="/dashboard/payment">
-                                        <button
-                                            type="submit"
-                                            className="bg-designColor w-full  text-white rounded py-2 px-4 font-semibold mt-8 mb-4"
-                                        >
-                                            Pay for Booking
-                                        </button>
-                                    </Link>
-                                </div>
-                            </div>
+                                </>
+                            )}
                         </div>
                     </Container>
                 </div>

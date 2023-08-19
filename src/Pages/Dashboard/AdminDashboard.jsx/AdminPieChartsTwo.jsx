@@ -39,7 +39,7 @@ const AdminPieChartsTwo = () => {
                             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                         ))}
                     </Pie>
-                    <Tooltip formatter={(value) => `$${value}`} />
+                    <Tooltip formatter={(value) => `${value}`} />
                     <Legend verticalAlign="left" content={(props) => <CustomLegend {...props} chartData={chartData} />} />
                 </PieChart>
             </ResponsiveContainer>
