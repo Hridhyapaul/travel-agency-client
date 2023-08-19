@@ -20,7 +20,7 @@ const PopularPackage = () => {
                 </div>
                 <div className="grid grid-cols-2 gap-8">
                     {
-                        accommodations.map((accommodation, index) =>
+                        accommodations.slice(0, 5).map((accommodation, index) =>
                             <PopularPackageCard
                                 key={accommodation._id}
                                 accommodation={accommodation}

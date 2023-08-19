@@ -2,10 +2,15 @@ import React from 'react';
 import PackagesPageCard from './PackagesPageCard';
 import useAccommodation from '../../Hooks/useAccommodation';
 import Container from '../../Shared/Container';
+import Loading from '../../Shared/Loading';
 
 const PackagesPage = () => {
     const [accommodations, accommodationLoading,] = useAccommodation();
     console.log(accommodations)
+
+    if(accommodationLoading){
+        return <Loading></Loading>
+    }
     return (
         <div>
             <div className="relative">

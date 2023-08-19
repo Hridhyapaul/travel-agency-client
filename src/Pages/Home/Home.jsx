@@ -1,5 +1,6 @@
 import Banner from "../../Components/Banner/Banner";
 import About from "./About/About";
+import MostVisitedDestinations from "./PopularDestinations/MostVisitedDestinations";
 import PopularPackage from "./PopularPackage/PopularPackage";
 import Search from "./Search";
 import Special from "./Special/Special";
@@ -12,8 +13,8 @@ const Home = () => {
             <Search></Search>
             <Special></Special>
             <About></About>
-            {/* <MostVisitedPlace></MostVisitedPlace> */}
             <PopularPackage></PopularPackage>
+            <MostVisitedDestinations></MostVisitedDestinations>
         </div>
     );
 };

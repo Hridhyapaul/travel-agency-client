@@ -60,6 +60,7 @@ const AddAccommodation = () => {
                     reviews: [],
                     tourPlan: tourPlan,
                     includedServices: includedServices,
+                    sold_Tickets: 0
                 };
                 console.log(accommodationDetails);
 
