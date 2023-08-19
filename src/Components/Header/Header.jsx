@@ -13,8 +13,8 @@ const Header = ({ isStatic, isBgColor }) => {
             display: 'Home'
         },
         {
-            path: '/about',
-            display: 'About'
+            path: '/packages',
+            display: 'Packages'
         },
         {
             path: '/tours',

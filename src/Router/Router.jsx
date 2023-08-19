@@ -21,6 +21,7 @@ import AddCountry from "../Pages/Dashboard/AddCountry/AddCountry";
 import ManageAccommodation from "../Pages/Dashboard/ManageAccommodation/ManageAccommodation";
 import PrivateRoute from "./PrivateRoute";
 import ManageCountry from "../Pages/Dashboard/ManageCountry/ManageCountry";
+import PackagesPage from "../Pages/PackagesPage/PackagesPage";
 
 const router = createBrowserRouter([
     {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
             {
                 path: "/tours",
                 element: <Tours></Tours>
+            },
+            {
+                path: "/packages",
+                element: <PackagesPage></PackagesPage>
             }
         ]
     },
