@@ -14,6 +14,7 @@ import Loading from "../../../Shared/Loading";
 import useAdmin from "../../../Hooks/useAdmin";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import ReviewInput from "./ReviewInput";
 
 const Details = () => {
     const { id } = useParams();
@@ -504,6 +505,10 @@ const Details = () => {
                                                 Pay for Booking
                                             </button>
                                         </Link>
+                                    </div>
+
+                                    <div>
+                                        <ReviewInput destinationId={_id}></ReviewInput>
                                     </div>
                                 </div>
                             </>

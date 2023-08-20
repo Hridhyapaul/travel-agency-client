@@ -4,10 +4,14 @@ import { useCallback, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Avatar from './Avatar'
 import useAuth from '../Hooks/useAuth'
+import useAdmin from '../Hooks/useAdmin'
+import useNormalUser from '../Hooks/useNormalUser'
 
 const MenuDropdown = () => {
     const { user, logOut } = useAuth();
     const [isOpen, setIsOpen] = useState(false)
+    const [isAdmin] = useAdmin();
+    const [isTraveler] = useNormalUser();
     const toggleOpen = useCallback(() => {
         setIsOpen(value => !value)
     }, [])
@@ -27,19 +31,28 @@ const MenuDropdown = () => {
             {isOpen && (
                 <div className='absolute font-body rounded-xl shadow-md w-[200px] md:w-[250px] bg-white py-4 overflow-hidden right-0 top-14 md:top-12 text-sm text-black'>
                     <div className='flex flex-col cursor-pointer'>
-                        
+
                         {user ? (
                             <>
                                 <div className='px-4 py-1 space-y-2'>
                                     <p>{user.displayName}</p>
                                     <p>{user.email}</p>
                                 </div>
-                                <hr className='mx-4 my-1'/>
-                                <Link to="/dashboard/myBooking">
-                                    <div className='mx-4 px-2 py-1 hover:bg-neutral-100 hover:rounded-lg transition font-semibold cursor-pointer'>
-                                        Dashboard
-                                    </div>
-                                </Link>
+                                <hr className='mx-4 my-1' />
+                                {isAdmin && (
+                                    <Link to="/dashboard/adminDashboard">
+                                        <div className='mx-4 px-2 py-1 hover:bg-neutral-100 hover:rounded-lg transition font-semibold cursor-pointer'>
+                                            Dashboard
+                                        </div>
+                                    </Link>
+                                )}
+                                {isTraveler && (
+                                    <Link to="/dashboard/myBooking">
+                                        <div className='mx-4 px-2 py-1 hover:bg-neutral-100 hover:rounded-lg transition font-semibold cursor-pointer'>
+                                            Dashboard
+                                        </div>
+                                    </Link>
+                                )}
                                 <div
                                     onClick={logOut}
                                     className='mx-4 px-2 py-1 hover:bg-neutral-100 hover:rounded-lg transition font-semibold cursor-pointer'

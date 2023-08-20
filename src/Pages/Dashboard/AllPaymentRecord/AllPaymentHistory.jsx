@@ -1,3 +1,4 @@
+
 import useRevenue from "../../../Hooks/useRevenue";
 import AllPaymentHistoryCard from "./AllPaymentHistoryCard";
 
@@ -5,10 +6,12 @@ import AllPaymentHistoryCard from "./AllPaymentHistoryCard";
 const AllPaymentHistory = () => {
     const [allPayments] = useRevenue()
     console.log(allPayments)
+
     return (
         <div className="py-20 px-4">
 
             <h2 className='text-4xl font-body font-semibold text-center pb-4'>All Payment Record</h2>
+
             <div className='mt-8'>
                 <div className="overflow-x-auto">
                     <table className="table font-body">

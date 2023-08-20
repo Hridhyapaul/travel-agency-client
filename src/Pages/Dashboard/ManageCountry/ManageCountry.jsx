@@ -24,7 +24,7 @@ const ManageCountry = () => {
                     type="text"
                     onChange={(event) => setQuery(event.target.value)}
                     className="w-full pr-4 pl-12 py-2 border border-hoverColor rounded-md focus:ring focus:ring-designColor focus:border-designColor"
-                    placeholder="Search Accommodation Name"
+                    placeholder="Search Country Name"
                 />
                 <button className="absolute top-0 left-0 h-full px-3 flex items-center bg-designColor text-white rounded-l-md focus:outline-none focus:ring focus:ring-hoverColor">
                     <HiOutlineSearch className='text-xl'></HiOutlineSearch>
@@ -48,7 +48,7 @@ const ManageCountry = () => {
                         <tbody className='bg-white'>
                             {
                                 countries
-                                    .filter(destination => destination.country.toLowerCase().includes(query.toLowerCase()))
+                                    .filter(place => place.country.toLowerCase().includes(query.toLowerCase()))
                                     .map((country, index) => <ManageCountryCard key={country._id} country={country} index={index} refetch={refetch}></ManageCountryCard>)
                             }
                         </tbody>
