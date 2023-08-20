@@ -15,6 +15,7 @@ import useAdmin from "../../../Hooks/useAdmin";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ReviewInput from "./ReviewInput";
+import TravelerReview from "./TravelerReview";
 
 const Details = () => {
     const { id } = useParams();
@@ -348,44 +349,7 @@ const Details = () => {
                             </div>
 
                             {/* Review */}
-                            <div className="space-y-4 mt-10">
-                                <h1 className="text-3xl font-semibold">
-                                    {
-                                        reviews.length > 0 ? `Traveler Review for ${name}` : `There are no Review for ${name}`
-                                    }
-                                </h1>
-
-                                {
-                                    reviews.length > 0 ?
-                                        (<>
-                                            <div className="bg-white px-8 py-8 rounded-lg space-y-8">
-                                                {
-                                                    reviews?.map((review, index) => (
-                                                        <div key={index} className="bg-bgColor px-6 py-6 rounded-lg space-y-3">
-                                                            <div className="bg-white px-4 py-2 rounded-lg flex justify-start items-center gap-2">
-                                                                <Rating
-                                                                    style={{ maxWidth: 90 }}
-                                                                    value={review.rating}
-                                                                    itemStyles={customStyles}
-                                                                    readOnly
-                                                                    className=""
-                                                                />
-                                                                <p className="text-[14px]">({review.rating.toFixed(1)})</p>
-                                                            </div>
-                                                            <h1 className="text-xl font-semibold">{review.reviewerName}</h1>
-                                                            <p>{review.reviewText}</p>
-                                                        </div>
-                                                    ))
-                                                }
-                                            </div>
-                                        </>)
-                                        :
-                                        (<>
-
-                                        </>)
-                                }
-
-                            </div>
+                            <TravelerReview reviews={reviews} name={name}></TravelerReview>
                         </div>
                         {/* Right Column */}
                         {!isAdmin && (
@@ -508,7 +472,7 @@ const Details = () => {
                                     </div>
 
                                     <div>
-                                        <ReviewInput destinationId={_id}></ReviewInput>
+                                        <ReviewInput destinationId={_id} refetch={refetch}></ReviewInput>
                                     </div>
                                 </div>
                             </>

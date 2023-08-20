@@ -3,8 +3,9 @@ import { useForm } from 'react-hook-form';
 import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
 import useAuth from '../../../Hooks/useAuth';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
-const ReviewInput = ({ destinationId }) => {
+const ReviewInput = ({ destinationId, refetch }) => {
     const { register, handleSubmit, reset, control, formState: { errors } } = useForm();
     const [number, setNumber] = useState(0);
     const { user } = useAuth();
@@ -51,16 +52,18 @@ const ReviewInput = ({ destinationId }) => {
 
             if (res.data.modifiedCount > 0) {
                 reset();
+                refetch();
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
-                    title: 'You have successfully updated Country!',
+                    title: 'Review Submitted',
+                    text: 'You have successfully submitted your review!',
                     showConfirmButton: false,
                     timer: 1500,
                 });
             }
         } catch (error) {
-            console.error('Error adding country:', error);
+            console.error('Error adding review:', error);
         }
     }
 
