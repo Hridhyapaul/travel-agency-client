@@ -69,8 +69,8 @@ const ReviewInput = ({ destinationId, refetch }) => {
 
     return (
         <div>
-            <h1>Give Rating</h1>
-            <div className='bg-white px-10 py-6'>
+            <h1 className='text-2xl font-bold text-center mb-6'>Provide Your Feedback</h1>
+            <div className='bg-white rounded-lg shadow-lg px-10 py-6'>
                 <p className='text-center text-xl font-semibold'>{handleText()}</p>
                 <div className='flex justify-center items-center mt-4'>
                     {Array(5).fill().map((_, index) =>

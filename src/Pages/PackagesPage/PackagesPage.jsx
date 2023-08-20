@@ -18,7 +18,7 @@ const PackagesPage = () => {
                 <div className="w-full h-[500px] inset-0 bg-black bg-opacity-50 absolute"></div>
                 <p className="text-6xl font-semibold text-white font-body absolute left-1/2 top-1/2 translate-x-[-50%]">World Packages</p>
             </div>
-            <div className='mt-10'>
+            <div className='my-10'>
                 <Container>
                     <div className="grid grid-cols-3 gap-8">
                         {

@@ -470,8 +470,8 @@ const Details = () => {
                                             </button>
                                         </Link>
                                     </div>
-
-                                    <div>
+<hr className="my-6" />
+                                    <div className="mt-6">
                                         <ReviewInput destinationId={_id} refetch={refetch}></ReviewInput>
                                     </div>
                                 </div>

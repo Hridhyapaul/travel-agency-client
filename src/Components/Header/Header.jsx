@@ -6,7 +6,7 @@ import useAuth from '../../Hooks/useAuth';
 import MenuDropdown from '../../Shared/MenuDropdown';
 const Header = ({ isStatic, isBgColor }) => {
 
-    const {user} = useAuth();
+    const { user } = useAuth();
     const navLinks = [
         {
             path: '/',
@@ -68,7 +68,9 @@ const Header = ({ isStatic, isBgColor }) => {
                         <div className='lg:block hidden '>
                             <div className='flex justify-between items-center'>
                                 <div className="w-[50%]">
-                                    <h1 className='text-3xl font-bold'>Travel<span className='text-designColor'>.O</span></h1>
+                                    <Link to="/">
+                                        <h1 className='text-3xl font-bold'>Travel<span className='text-designColor'>.O</span></h1>
+                                    </Link>
                                 </div>
 
                                 <div className="flex-shrink-0">
