@@ -1,6 +1,14 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
 
 const Contact = () => {
+
+    const { register, handleSubmit, reset} = useForm();
+
+    const onSubmit = async data => {
+        console.log(data)
+    }
+
     return (
         <div>
             <div className="relative">
@@ -20,17 +28,15 @@ const Contact = () => {
                     </p>
 
                     <div className="">
-                        <form>
+                        <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="mb-4">
                                 <label htmlFor="name" className="block mb-1 font-medium">
                                     Name
                                 </label>
                                 <input
                                     type="text"
-                                    id="name"
-                                    name="name"
                                     className="w-full p-2 border rounded-md"
-                                    required
+                                    {...register("name", { required: true })}
                                 />
                             </div>
                             <div className="mb-4">
@@ -39,10 +45,8 @@ const Contact = () => {
                                 </label>
                                 <input
                                     type="email"
-                                    id="email"
-                                    name="email"
                                     className="w-full p-2 border rounded-md"
-                                    required
+                                    {...register("email", { required: true })}
                                 />
                             </div>
                             <div className="mb-4">
@@ -51,9 +55,8 @@ const Contact = () => {
                                 </label>
                                 <input
                                     type='tel'
-                                    name="phone"
                                     className="w-full p-2 border rounded-md"
-                                    required
+                                    {...register("phone", { required: true })}
                                 />
                             </div>
                             <div className="mb-4">
@@ -61,11 +64,9 @@ const Contact = () => {
                                     Message
                                 </label>
                                 <textarea
-                                    id="message"
-                                    name="message"
                                     rows="4"
                                     className="w-full p-2 border rounded-md"
-                                    required
+                                    {...register("message", { required: true })}
                                 />
                             </div>
 
