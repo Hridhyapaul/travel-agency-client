@@ -1,12 +1,61 @@
+import axios from 'axios';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import Swal from 'sweetalert2';
+import useAuth from '../../Hooks/useAuth';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Contact = () => {
-
-    const { register, handleSubmit, reset} = useForm();
+    const { user } = useAuth();
+    const location = useLocation();
+    const navigate = useNavigate();
+    const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = async data => {
         console.log(data)
+        if (user && user.email) {
+            const contactDetails = {
+                userName: data.name,
+                userEmail: data.email,
+                userPhone: data.phone,
+                userMessage: data.message
+            }
+            console.log(contactDetails)
+            try {
+                const res = await axios.post('http://localhost:5000/contactMessage', contactDetails, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+
+                if (res.data.insertedId) {
+                    reset();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Message Submitted Successfully',
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
+                }
+            } catch (error) {
+                console.error('Error sending contact message:', error.message);
+            }
+        }
+        else {
+            Swal.fire({
+                title: 'Please login to submit your message',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Login now'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/login', { state: { from: location } })
+                }
+            })
+        }
     }
 
     return (
