@@ -22,6 +22,7 @@ import ManageAccommodation from "../Pages/Dashboard/ManageAccommodation/ManageAc
 import PrivateRoute from "./PrivateRoute";
 import ManageCountry from "../Pages/Dashboard/ManageCountry/ManageCountry";
 import PackagesPage from "../Pages/PackagesPage/PackagesPage";
+import Contact from "../Pages/Contact/Contact";
 
 const router = createBrowserRouter([
     {
@@ -33,12 +34,16 @@ const router = createBrowserRouter([
                 element: <Home></Home>
             },
             {
-                path: "/tours",
+                path: "/destinations",
                 element: <Tours></Tours>
             },
             {
                 path: "/packages",
                 element: <PackagesPage></PackagesPage>
+            },
+            {
+                path: "/contact_us",
+                element: <Contact></Contact>
             }
         ]
     },
@@ -62,11 +67,11 @@ const router = createBrowserRouter([
     },
     {
         path: "/accommodation/:id",
-        element: <HotelDetails></HotelDetails>,
+        element: <PrivateRoute><HotelDetails></HotelDetails></PrivateRoute>,
         children: [
             {
                 path: "",
-                element: <Details></Details>,
+                element: <PrivateRoute><Details></Details></PrivateRoute>,
             }
         ]
     },
@@ -76,7 +81,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "payment",
-                element: <PrivateRoute><Payment></Payment></PrivateRoute>
+                element: <Payment></Payment>
             },
             {
                 path: "paymentHistory",

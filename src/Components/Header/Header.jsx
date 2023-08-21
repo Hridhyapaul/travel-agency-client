@@ -17,15 +17,15 @@ const Header = ({ isStatic, isBgColor }) => {
             display: 'Packages'
         },
         {
-            path: '/tours',
-            display: 'Tours'
+            path: '/destinations',
+            display: 'Destinations'
         },
         {
             path: '/blog',
             display: 'Blog'
         },
         {
-            path: '/contact',
+            path: '/contact_us',
             display: 'Contact'
         }
     ]

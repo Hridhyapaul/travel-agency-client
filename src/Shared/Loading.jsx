@@ -5,7 +5,7 @@ const Loading = () => {
     return (
         <div className='bg-bgColor w-full h-screen flex justify-center items-center'>
             <RotatingLines
-                strokeColor="grey"
+                strokeColor="#F43F5E"
                 strokeWidth="5"
                 animationDuration="0.75"
                 width="96"

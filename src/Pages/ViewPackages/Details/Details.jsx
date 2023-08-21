@@ -16,12 +16,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import ReviewInput from "./ReviewInput";
 import TravelerReview from "./TravelerReview";
+import useNormalUser from "../../../Hooks/useNormalUser";
 
 const Details = () => {
     const { id } = useParams();
     const { user } = useAuth();
     console.log(user)
     const [isAdmin] = useAdmin();
+    const [isTraveler] = useNormalUser();
     const navigate = useNavigate();
     const location = useLocation();
     const [rooms, refetch, loading] = useAccommodationDetails({ id })
@@ -256,7 +258,7 @@ const Details = () => {
                 </Carousel>
             </div>
 
-            <div className="mt-[600px]">
+            <div className="mt-[600px] pb-24">
                 <Container>
                     <div className={`${isAdmin ? '' : 'grid grid-cols-6 gap-8'}`}>
                         <div className="col-span-4 font-body text-bodyColor">
@@ -461,6 +463,7 @@ const Details = () => {
 
                                             </form>
                                         </div>
+
                                         <Link to="/dashboard/payment">
                                             <button
                                                 type="submit"
@@ -469,11 +472,15 @@ const Details = () => {
                                                 Pay for Booking
                                             </button>
                                         </Link>
+
                                     </div>
-<hr className="my-6" />
+
+
+                                    <hr className="my-6" />
                                     <div className="mt-6">
                                         <ReviewInput destinationId={_id} refetch={refetch}></ReviewInput>
                                     </div>
+
                                 </div>
                             </>
                         )}
