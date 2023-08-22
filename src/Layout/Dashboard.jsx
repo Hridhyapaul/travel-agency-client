@@ -5,7 +5,7 @@ import { FaHome, FaMoneyCheckAlt, FaSignOutAlt, FaUsersCog } from "react-icons/f
 import useAdmin from "../Hooks/useAdmin";
 import useNormalUser from "../Hooks/useNormalUser";
 import { HiChartPie, HiCurrencyDollar } from "react-icons/hi";
-import { BiSolidMessageAltDots, BiSolidMessageMinus } from "react-icons/bi";
+import { BiSolidMessageAltDots, BiSolidMessageDetail, BiSolidMessageMinus } from "react-icons/bi";
 
 const Dashboard = () => {
     const { user, logOut } = useAuth()
@@ -80,8 +80,8 @@ const Dashboard = () => {
                                 </NavLink></li>
 
                                 <li><NavLink to="/dashboard/user_messages">
-                                    <FaCalendarCheck size={16}></FaCalendarCheck>
-                                    <p className="ml-2">Contact Message</p>
+                                    <BiSolidMessageDetail size={18}></BiSolidMessageDetail>
+                                    <p className="ml-2">Contact Messages</p>
                                 </NavLink></li>
                             </>
                         )}
