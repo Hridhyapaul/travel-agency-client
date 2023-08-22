@@ -18,7 +18,8 @@ const Contact = () => {
                 userName: data.name,
                 userEmail: data.email,
                 userPhone: data.phone,
-                userMessage: data.message
+                userMessage: data.message,
+                date: new Date()
             }
             console.log(contactDetails)
             try {

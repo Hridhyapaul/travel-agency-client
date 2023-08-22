@@ -5,6 +5,7 @@ import { FaHome, FaMoneyCheckAlt, FaSignOutAlt, FaUsersCog } from "react-icons/f
 import useAdmin from "../Hooks/useAdmin";
 import useNormalUser from "../Hooks/useNormalUser";
 import { HiChartPie, HiCurrencyDollar } from "react-icons/hi";
+import { BiSolidMessageAltDots, BiSolidMessageMinus } from "react-icons/bi";
 
 const Dashboard = () => {
     const { user, logOut } = useAuth()
@@ -26,7 +27,7 @@ const Dashboard = () => {
                 </div>
                 <div className="drawer-side bg-white shadow-lg text-bodyColor text-[16px] font-body font-semibold">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                    <div className="py-10">
+                    <div className="py-10 w-fit mx-auto">
                         <Link to="/">
                             <div className="flex justify-center">
                                 <h1 className='text-3xl font-bold'>Travel<span className='text-designColor'>.O</span></h1>
@@ -77,6 +78,11 @@ const Dashboard = () => {
                                     <FaCalendarCheck size={16}></FaCalendarCheck>
                                     <p className="ml-2">Booking Collection</p>
                                 </NavLink></li>
+
+                                <li><NavLink to="/dashboard/user_messages">
+                                    <FaCalendarCheck size={16}></FaCalendarCheck>
+                                    <p className="ml-2">Contact Message</p>
+                                </NavLink></li>
                             </>
                         )}
 
@@ -95,7 +101,7 @@ const Dashboard = () => {
                                     <p className="ml-2">Payment History</p>
                                 </NavLink></li>
                                 <li><NavLink to="/dashboard/your_message">
-                                    <FaCreditCard size={16}></FaCreditCard>
+                                    <BiSolidMessageMinus size={18}></BiSolidMessageMinus>
                                     <p className="ml-2">Your Message</p>
                                 </NavLink></li>
                             </>
