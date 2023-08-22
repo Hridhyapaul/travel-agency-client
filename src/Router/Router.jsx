@@ -23,6 +23,7 @@ import PrivateRoute from "./PrivateRoute";
 import ManageCountry from "../Pages/Dashboard/ManageCountry/ManageCountry";
 import PackagesPage from "../Pages/PackagesPage/PackagesPage";
 import Contact from "../Pages/Contact/Contact";
+import ContactMessageByUser from "../Pages/Dashboard/ContactMessageByUser/ContactMessageByUser";
 
 const router = createBrowserRouter([
     {
@@ -122,6 +123,10 @@ const router = createBrowserRouter([
             {
                 path: "bookingCollection",
                 element: <AllBookingCollection></AllBookingCollection>
+            },
+            {
+                path: "your_message",
+                element: <ContactMessageByUser></ContactMessageByUser>
             }
         ]
     }

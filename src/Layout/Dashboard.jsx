@@ -94,6 +94,10 @@ const Dashboard = () => {
                                     <FaCreditCard size={16}></FaCreditCard>
                                     <p className="ml-2">Payment History</p>
                                 </NavLink></li>
+                                <li><NavLink to="/dashboard/your_message">
+                                    <FaCreditCard size={16}></FaCreditCard>
+                                    <p className="ml-2">Your Message</p>
+                                </NavLink></li>
                             </>
                         )}
 

@@ -69,7 +69,7 @@ const Contact = () => {
                 </div>
             </div>
 
-            <div className="bg-gray-100 min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+            <div className="bg-gray-100 min-h-screen py-20 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-[700px] mx-auto bg-white p-8 border shadow-lg rounded-lg">
                     <h2 className="text-2xl font-semibold mb-4 text-center">Get in Touch</h2>
                     <p className="text-gray-600 mb-6 text-center">
@@ -94,6 +94,7 @@ const Contact = () => {
                                 </label>
                                 <input
                                     type="email"
+                                    value={user?.email}
                                     className="w-full p-2 border rounded-md"
                                     {...register("email", { required: true })}
                                 />
