@@ -1,18 +1,35 @@
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
-import { FaBuilding, FaCalendarCheck, FaCreditCard, FaEarthAmericas, FaEarthEurope, FaListUl, FaMountainCity, FaPlaneUp } from "react-icons/fa6";
-import { FaHome, FaMoneyCheckAlt, FaSignOutAlt, FaUsersCog } from "react-icons/fa";
+import { FaBuilding, FaCalendarCheck, FaEarthAmericas, FaEarthEurope, FaListUl, FaMountainCity, FaPlaneUp } from "react-icons/fa6";
+import { FaHome, FaSignOutAlt, FaUsersCog } from "react-icons/fa";
 import useAdmin from "../Hooks/useAdmin";
 import useNormalUser from "../Hooks/useNormalUser";
 import { HiChartPie, HiCurrencyDollar } from "react-icons/hi";
-import { BiSolidMessageAltDots, BiSolidMessageDetail, BiSolidMessageMinus } from "react-icons/bi";
+import { BiBookOpen, BiHome, BiSolidMessageDetail} from "react-icons/bi";
+import Loading from "../Shared/Loading";
+import {LuContact, LuPackageSearch, LuWallet } from "react-icons/lu";
+import { RiHotelLine } from "react-icons/ri";
+import { TbBrandBlogger } from "react-icons/tb";
+import { GrContact } from "react-icons/gr";
+import { MdOutlinePayments } from "react-icons/md";
 
 const Dashboard = () => {
-    const { user, logOut } = useAuth()
+    const { user, logOut, loading } = useAuth()
     const [isAdmin] = useAdmin();
     const [isTraveler] = useNormalUser();
     console.log(isAdmin)
     console.log(isTraveler)
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        logOut(); // Call the logOut function to logout the user
+        navigate("/login"); // Navigate to the login page after logout
+    };
+
+    if(loading){
+        return <Loading></Loading>
+    }
+
     return (
         <div>
             <div className="drawer lg:drawer-open">
@@ -83,48 +100,83 @@ const Dashboard = () => {
                                     <BiSolidMessageDetail size={18}></BiSolidMessageDetail>
                                     <p className="ml-2">Contact Messages</p>
                                 </NavLink></li>
+
+
+                                <hr className="my-6" />
+
+                                <li><NavLink to="/">
+                                    <FaHome size={16}></FaHome>
+                                    <p className="ml-2">Home</p>
+                                </NavLink></li>
+                                <li><NavLink to="/destinations">
+                                    <FaPlaneUp size={16}></FaPlaneUp>
+                                    <p className="ml-2">Destinations</p>
+                                </NavLink>
+                                </li>
+                                <hr className="my-6" />
+                                <div className="px-4 ">
+                                    <p className="flex justify-start items-center gap-2 ">
+                                        <FaSignOutAlt size={16}></FaSignOutAlt>
+                                        <p onClick={handleLogout} className="ml-2 cursor-pointer">LogOut</p>
+                                    </p>
+                                </div>
                             </>
                         )}
 
                         {isTraveler && (
                             <>
                                 <li><NavLink to="/dashboard/myBooking">
-                                    <FaListUl size={16}></FaListUl>
+                                    <BiBookOpen size={20}></BiBookOpen>
                                     <p className="ml-2">My Booking</p>
                                 </NavLink></li>
                                 <li><NavLink to="/dashboard/payment">
-                                    <FaMoneyCheckAlt size={16}></FaMoneyCheckAlt>
+                                    <LuWallet size={20}></LuWallet>
                                     <p className="ml-2">Payment</p>
                                 </NavLink></li>
                                 <li><NavLink to="/dashboard/paymentHistory">
-                                    <FaCreditCard size={16}></FaCreditCard>
+                                    <MdOutlinePayments size={18}></MdOutlinePayments>
                                     <p className="ml-2">Payment History</p>
                                 </NavLink></li>
                                 <li><NavLink to="/dashboard/your_message">
-                                    <BiSolidMessageMinus size={18}></BiSolidMessageMinus>
+                                    <GrContact size={18}></GrContact>
                                     <p className="ml-2">Your Message</p>
                                 </NavLink></li>
+
+
+                                <hr className="my-6" />
+
+                                <li><NavLink to="/">
+                                    <BiHome size={20}></BiHome>
+                                    <p className="ml-2">Home</p>
+                                </NavLink></li>
+                                <li><NavLink to="/packages">
+                                    <LuPackageSearch size={20}></LuPackageSearch>
+                                    <p className="ml-2">Packages</p>
+                                </NavLink></li>
+                                <li><NavLink to="/destinations">
+                                    <RiHotelLine size={20}></RiHotelLine>
+                                    <p className="ml-2">Destinations</p>
+                                </NavLink>
+                                </li>
+                                <li><NavLink to="/blog">
+                                    <TbBrandBlogger size={20}></TbBrandBlogger>
+                                    <p className="ml-2">Blogs</p>
+                                </NavLink>
+                                </li>
+                                <li><NavLink to="/contact_us">
+                                    <LuContact size={20}></LuContact>
+                                    <p className="ml-2">Contact</p>
+                                </NavLink>
+                                </li>
+                                <hr className="my-6" />
+                                <div className="px-4 ">
+                                    <p className="flex justify-start items-center gap-2 ">
+                                        <FaSignOutAlt size={16}></FaSignOutAlt>
+                                        <p onClick={handleLogout} className="ml-2 cursor-pointer">LogOut</p>
+                                    </p>
+                                </div>
                             </>
                         )}
-
-                        <hr className="my-6" />
-
-                        <li><NavLink to="/">
-                            <FaHome size={16}></FaHome>
-                            <p className="ml-2">Home</p>
-                        </NavLink></li>
-                        <li><NavLink to="/tours">
-                            <FaPlaneUp size={16}></FaPlaneUp>
-                            <p className="ml-2">Tours</p>
-                        </NavLink>
-                        </li>
-                        <hr className="my-6" />
-                        <div className="px-4 ">
-                            <p className="flex justify-start items-center gap-2 ">
-                                <FaSignOutAlt size={16}></FaSignOutAlt>
-                                <p onClick={logOut} className="ml-2 cursor-pointer">LogOut</p>
-                            </p>
-                        </div>
                     </ul>
                 </div>
             </div>

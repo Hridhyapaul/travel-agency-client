@@ -89,7 +89,6 @@ const Details = () => {
                 }
             })
         }
-
     }
     // <===== End getting Booking data =====>
 

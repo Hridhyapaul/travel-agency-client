@@ -3,19 +3,25 @@ import { Navigate, useLocation } from 'react-router-dom';
 import Loading from '../Shared/Loading';
 import useAuth from '../Hooks/useAuth';
 
-const PrivateRoute = ({children}) => {
-    const {user, loading} = useAuth();
+const PrivateRoute = ({ children }) => {
+    const { user, loading } = useAuth();
     const location = useLocation();
 
-    // if(loading){
-    //     return <Loading></Loading>
-    // }
+    if (loading) {
+        return (  // Add the missing return statement here
+            <div>
+                <Loading></Loading>
+            </div>
+        );
+    }
 
-    if(user){
+    if (!user) {
+        return <Navigate to='/login' state={{ from: location }} replace></Navigate>
+    } else {
         return children;
     }
 
-    return <Navigate to='/login' state={{from: location}} replace></Navigate>
+
 };
 
 export default PrivateRoute;

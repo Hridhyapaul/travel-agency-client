@@ -26,6 +26,7 @@ import Contact from "../Pages/Contact/Contact";
 import ContactMessageByUser from "../Pages/Dashboard/ContactMessageByUser/ContactMessageByUser";
 import AllContactMessages from "../Pages/Dashboard/AllContactMessages/AllContactMessages";
 import Blog from "../Pages/Blog/Blog";
+import AdminRoute from "./AdminRoute";
 
 const router = createBrowserRouter([
     {
@@ -88,55 +89,58 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "payment",
-                element: <Payment></Payment>
+                element: <PrivateRoute><Payment></Payment></PrivateRoute>
             },
             {
                 path: "paymentHistory",
-                element: <PaymentHistory></PaymentHistory>
+                element: <PrivateRoute><PaymentHistory></PaymentHistory></PrivateRoute>
             },
             {
                 path: "myBooking",
-                element: <MyBooking></MyBooking>
+                element: <PrivateRoute><MyBooking></MyBooking></PrivateRoute>
             },
+            
+            {
+                path: "your_message",
+                element: <PrivateRoute><ContactMessageByUser></ContactMessageByUser></PrivateRoute>
+            },
+
+            // Admin Dashboard Route....
             {
                 path: "addAccommodation",
-                element: <AddAccommodation></AddAccommodation>
+                element: <PrivateRoute><AdminRoute><AddAccommodation></AddAccommodation></AdminRoute></PrivateRoute>
             },
             {
                 path: "manageAccommodation",
-                element: <ManageAccommodation></ManageAccommodation>
+                element: <PrivateRoute><AdminRoute><ManageAccommodation></ManageAccommodation></AdminRoute></PrivateRoute>
             },
             {
                 path: "addCountry",
-                element: <AddCountry></AddCountry>
+                element: <PrivateRoute><AdminRoute><AddCountry></AddCountry></AdminRoute></PrivateRoute>
             },
             {
                 path: "manageCountry",
-                element: <ManageCountry></ManageCountry>
+                element: <PrivateRoute><AdminRoute><ManageCountry></ManageCountry></AdminRoute></PrivateRoute>
             },
             {
                 path: "adminDashboard",
-                element: <AdminDashboard></AdminDashboard>
+                element: <PrivateRoute><AdminRoute><AdminDashboard></AdminDashboard></AdminRoute></PrivateRoute>
             },
             {
                 path: "manageUsers",
-                element: <ManageUsers></ManageUsers>
+                element: <PrivateRoute><AdminRoute><ManageUsers></ManageUsers></AdminRoute></PrivateRoute>
             },
             {
                 path: "paymentRecord",
-                element: <AllPaymentHistory></AllPaymentHistory>
+                element: <PrivateRoute><AdminRoute><AllPaymentHistory></AllPaymentHistory></AdminRoute></PrivateRoute>
             },
             {
                 path: "bookingCollection",
-                element: <AllBookingCollection></AllBookingCollection>
-            },
-            {
-                path: "your_message",
-                element: <ContactMessageByUser></ContactMessageByUser>
+                element: <PrivateRoute><AdminRoute><AllBookingCollection></AllBookingCollection></AdminRoute></PrivateRoute>
             },
             {
                 path: "user_messages",
-                element: <AllContactMessages></AllContactMessages>
+                element: <PrivateRoute><AdminRoute><AllContactMessages></AllContactMessages></AdminRoute></PrivateRoute>
             }
         ]
     }

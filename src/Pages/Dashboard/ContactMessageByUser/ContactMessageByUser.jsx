@@ -1,10 +1,15 @@
 import React from 'react';
 import useUsersContactMessage from '../../../Hooks/useUsersContactMessage';
 import ContactMessageByUserCard from './ContactMessageByUserCard';
+import Loading from '../../../Shared/Loading';
 
 const ContactMessageByUser = () => {
     const [userMessageCollection, refetch, loading] = useUsersContactMessage();
     console.log(userMessageCollection)
+
+    if(loading){
+        return <Loading></Loading>
+    }
     return (
         <div className='my-20'>
             <h1 className='text-4xl font-body font-semibold text-center pb-4'>Your Contact Messages</h1>

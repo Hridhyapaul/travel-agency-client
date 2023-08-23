@@ -1,10 +1,15 @@
 import React from 'react';
 import useAllContactMessages from '../../../Hooks/useAllContactMessages';
 import AllContactMessagesCard from './AllContactMessagesCard';
+import Loading from '../../../Shared/Loading';
 
 const AllContactMessages = () => {
     const [allContactMessages, refetch, MessagesLoading] = useAllContactMessages();
     console.log(allContactMessages)
+
+    if(MessagesLoading){
+        return <Loading></Loading>
+    }
     return (
         <div className='my-20'>
             <h1 className='text-4xl font-body font-semibold text-center pb-4'>All Contact Messages</h1>
