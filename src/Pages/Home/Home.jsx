@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import Banner from "../../Components/Banner/Banner";
 import About from "./About/About";
 import MostVisitedDestinations from "./PopularDestinations/MostVisitedDestinations";
@@ -9,6 +10,9 @@ const Home = () => {
    
     return (
         <div>
+            <Helmet>
+                <title>Travel.O | Home</title>
+            </Helmet>
             <Banner></Banner>
             <Search></Search>
             <Special></Special>

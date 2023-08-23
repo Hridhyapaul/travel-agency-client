@@ -15,6 +15,12 @@ const MenuDropdown = () => {
     const toggleOpen = useCallback(() => {
         setIsOpen(value => !value)
     }, [])
+
+    const handleLogout = () => {
+        logOut(); // Call the logOut function to logout the user
+        navigate("/"); // Navigate to the login page after logout
+    };
+
     return (
         <div className='relative'>
             <div>
@@ -54,7 +60,7 @@ const MenuDropdown = () => {
                                     </Link>
                                 )}
                                 <div
-                                    onClick={logOut}
+                                    onClick={handleLogout}
                                     className='mx-4 px-2 py-1 hover:bg-neutral-100 hover:rounded-lg transition font-semibold cursor-pointer'
                                 >
                                     Logout

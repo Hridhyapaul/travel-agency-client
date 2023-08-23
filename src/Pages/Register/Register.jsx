@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 import Container from "../../Shared/Container";
 import Header from "../../Components/Header/Header";
 import SocialLogin from "../../Shared/SocialLogin";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
 
@@ -74,6 +75,9 @@ const Register = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Travel.O | Register</title>
+            </Helmet>
             <div>
                 <div className="static">
                     <Header isStatic={true} isBgColor={true}></Header>

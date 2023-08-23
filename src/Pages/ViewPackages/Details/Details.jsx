@@ -161,6 +161,10 @@ const Details = () => {
             updatePrice = parseFloat(data.price);
         }
 
+        if (data.location !== "") {
+            updateLocation = data.location;
+        }
+
         // ===== Include Services =====
         if (data.services !== "") {
             updateIncludedServices = data.services.split(';').map(service => service.trim());

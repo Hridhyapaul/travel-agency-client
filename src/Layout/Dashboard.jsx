@@ -5,7 +5,7 @@ import { FaHome, FaSignOutAlt, FaUsersCog } from "react-icons/fa";
 import useAdmin from "../Hooks/useAdmin";
 import useNormalUser from "../Hooks/useNormalUser";
 import { HiChartPie, HiCurrencyDollar } from "react-icons/hi";
-import { BiBookOpen, BiHome, BiSolidMessageDetail} from "react-icons/bi";
+import { BiBookOpen, BiHome, BiMessageDetail, BiSolidMessageDetail} from "react-icons/bi";
 import Loading from "../Shared/Loading";
 import {LuContact, LuPackageSearch, LuWallet } from "react-icons/lu";
 import { RiHotelLine } from "react-icons/ri";
@@ -97,7 +97,7 @@ const Dashboard = () => {
                                 </NavLink></li>
 
                                 <li><NavLink to="/dashboard/user_messages">
-                                    <BiSolidMessageDetail size={18}></BiSolidMessageDetail>
+                                    <BiMessageDetail size={18}></BiMessageDetail>
                                     <p className="ml-2">Contact Messages</p>
                                 </NavLink></li>
 
@@ -138,7 +138,7 @@ const Dashboard = () => {
                                     <p className="ml-2">Payment History</p>
                                 </NavLink></li>
                                 <li><NavLink to="/dashboard/your_message">
-                                    <GrContact size={18}></GrContact>
+                                    <BiMessageDetail size={18}></BiMessageDetail>
                                     <p className="ml-2">Your Message</p>
                                 </NavLink></li>
 

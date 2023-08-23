@@ -7,6 +7,7 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import Header from "../../Components/Header/Header";
 import Container from "../../Shared/Container";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
     const { signIn } = useAuth();
@@ -44,6 +45,9 @@ const Login = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Travel.O | Login</title>
+            </Helmet>
             <div>
                 <div>
                     <Header isStatic={true} isBgColor={true}></Header>

@@ -9,6 +9,7 @@ import { BsGridFill } from "react-icons/bs";
 import { FaBarsStaggered } from "react-icons/fa6";
 import './Tours.css'
 import Loading from "../../Shared/Loading";
+import { Helmet } from "react-helmet-async";
 
 const Tours = () => {
     const [destinations, loading, refetch] = usePopularDestination();
@@ -67,6 +68,9 @@ const Tours = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>Travel.O | Destinations</title>
+            </Helmet>
             <div className="relative">
                 <img className="w-full h-[500px] object-cover object-left" src={worldTour} alt="" />
                 <div className="w-full h-[500px] inset-0 bg-black bg-opacity-30 absolute"></div>

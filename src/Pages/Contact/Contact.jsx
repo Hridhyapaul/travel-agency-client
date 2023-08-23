@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import useAuth from '../../Hooks/useAuth';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const Contact = () => {
     const { user } = useAuth();
@@ -61,6 +62,9 @@ const Contact = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Travel.O | Contact_us</title>
+            </Helmet>
             <div className="relative">
                 <img className="w-full h-[500px] object-cover object-left" src="https://i.ibb.co/V9cqGfn/sergey-zolkin-Ue-Y8a-TI6d0-unsplash.jpg" alt="" />
                 <div className="w-full h-[500px] inset-0 bg-black bg-opacity-30 absolute"></div>

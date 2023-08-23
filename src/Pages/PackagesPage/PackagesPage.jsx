@@ -3,6 +3,7 @@ import PackagesPageCard from './PackagesPageCard';
 import useAccommodation from '../../Hooks/useAccommodation';
 import Container from '../../Shared/Container';
 import Loading from '../../Shared/Loading';
+import { Helmet } from 'react-helmet-async';
 
 const PackagesPage = () => {
     const [accommodations, accommodationLoading,] = useAccommodation();
@@ -13,6 +14,9 @@ const PackagesPage = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>Travel.O | Packages</title>
+            </Helmet>
             <div className="relative">
                 <img className="w-full h-[500px] object-cover object-left" src="https://i.ibb.co/ZH8hRNz/datingscout-KFh-z-LMw-IU-unsplash.jpg" alt="" />
                 <div className="w-full h-[500px] inset-0 bg-black bg-opacity-50 absolute"></div>
