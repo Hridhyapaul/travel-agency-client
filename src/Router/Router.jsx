@@ -25,6 +25,7 @@ import PackagesPage from "../Pages/PackagesPage/PackagesPage";
 import Contact from "../Pages/Contact/Contact";
 import ContactMessageByUser from "../Pages/Dashboard/ContactMessageByUser/ContactMessageByUser";
 import AllContactMessages from "../Pages/Dashboard/AllContactMessages/AllContactMessages";
+import Blog from "../Pages/Blog/Blog";
 
 const router = createBrowserRouter([
     {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
             {
                 path: "/contact_us",
                 element: <Contact></Contact>
+            },
+            {
+                path: "/blog",
+                element: <Blog></Blog>
             }
         ]
     },
