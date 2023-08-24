@@ -7,21 +7,18 @@ const PrivateRoute = ({ children }) => {
     const { user, loading } = useAuth();
     const location = useLocation();
 
-    if (loading) {
-        return (  // Add the missing return statement here
-            <div>
-                <Loading></Loading>
-            </div>
-        );
-    }
+    // if (loading) {
+    //     return (
+    //         <div>
+    //             <Loading></Loading>
+    //         </div>
+    //     );
+    // }
 
-    if (!user) {
-        return <Navigate to='/login' state={{ from: location }} replace></Navigate>
-    } else {
+    if (user) {
         return children;
     }
-
-
+    return <Navigate state={{ from: location }} to="/login" replace></Navigate>
 };
 
 export default PrivateRoute;

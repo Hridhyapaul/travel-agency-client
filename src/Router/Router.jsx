@@ -27,11 +27,13 @@ import ContactMessageByUser from "../Pages/Dashboard/ContactMessageByUser/Contac
 import AllContactMessages from "../Pages/Dashboard/AllContactMessages/AllContactMessages";
 import Blog from "../Pages/Blog/Blog";
 import AdminRoute from "./AdminRoute";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Main></Main>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: "/",
@@ -79,7 +81,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "",
-                element: <PrivateRoute><Details></Details></PrivateRoute>,
+                element: <Details></Details>,
             }
         ]
     },
@@ -99,7 +101,7 @@ const router = createBrowserRouter([
                 path: "myBooking",
                 element: <PrivateRoute><MyBooking></MyBooking></PrivateRoute>
             },
-            
+
             {
                 path: "your_message",
                 element: <PrivateRoute><ContactMessageByUser></ContactMessageByUser></PrivateRoute>

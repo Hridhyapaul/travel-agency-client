@@ -7,7 +7,7 @@ const ErrorPage = () => {
     return (
         <div>
             <div className='my-10'>
-                <img className='w-[50%] mx-auto' src={img} alt="" />
+                <img className='w-[35%] mx-auto' src={img} alt="" />
                 <section className='flex justify-center items-center '>
                     <div >
                         <h2 className='text-5xl text-center font-semibold'>

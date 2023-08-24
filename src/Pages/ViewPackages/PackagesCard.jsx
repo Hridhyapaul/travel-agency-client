@@ -8,7 +8,11 @@ const PackagesCard = ({ item}) => {
     console.log(_id)
 
     const totalRatings = reviews.reduce((sum, review) => sum + review.rating, 0);
-    const averageRating = totalRatings / reviews?.length;
+
+    let averageRating = 0
+    if (reviews?.length > 0) {
+        averageRating = totalRatings / reviews?.length;
+    }
 
     const customStyles = {
         itemShapes: ThinRoundedStar,

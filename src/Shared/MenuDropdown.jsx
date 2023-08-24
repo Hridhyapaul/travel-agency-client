@@ -18,7 +18,6 @@ const MenuDropdown = () => {
 
     const handleLogout = () => {
         logOut(); // Call the logOut function to logout the user
-        navigate("/"); // Navigate to the login page after logout
     };
 
     return (
