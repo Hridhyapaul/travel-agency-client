@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 import Header from "../../Components/Header/Header";
 import Container from "../../Shared/Container";
 import { Helmet } from "react-helmet-async";
+import { Toaster, toast } from "react-hot-toast";
 
 const Login = () => {
     const { signIn } = useAuth();
@@ -40,6 +41,15 @@ const Login = () => {
                     }
                 });
                 navigate(from, { replace: true });
+            })
+            .catch(error => {
+                console.log(error.message)
+                if (error.message === 'Firebase: Error (auth/user-not-found).') {
+                    toast.error("We couldn't find an account with the information you provided.")
+                }
+                else if (error.message === 'Firebase: Error (auth/wrong-password).') {
+                    toast.error("The password you entered is incorrect.")
+                }
             })
     }
 
@@ -149,7 +159,10 @@ const Login = () => {
                                     <SocialLogin></SocialLogin>
                                 </div>
                             </div>
-
+                            <Toaster
+                                position="top-right"
+                                reverseOrder={false}
+                            />
                         </div>
                     </div>
                 </Container>
