@@ -3,7 +3,7 @@ import Container from "../../../Shared/Container";
 import ManageUsersCard from "./ManageUsersCard";
 
 const ManageUsers = () => {
-    const [users, , refetch] = useUsers()
+    const [allUsers, , refetch] = useUsers()
     return (
         <div className="mt-20 pb-20 mx-20">
             <Container>
@@ -25,14 +25,13 @@ const ManageUsers = () => {
                                 </thead>
                                 <tbody>
                                     {
-                                        users.map((user, index) => <ManageUsersCard key={history._id} user={user} index={index} refetch={refetch}></ManageUsersCard>)
+                                        allUsers.map((user, index) => <ManageUsersCard key={history._id} user={user} index={index} refetch={refetch}></ManageUsersCard>)
                                     }
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
-
             </Container>
         </div>
     );

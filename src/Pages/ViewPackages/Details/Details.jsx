@@ -17,13 +17,16 @@ import axios from "axios";
 import ReviewInput from "./ReviewInput";
 import TravelerReview from "./TravelerReview";
 import useNormalUser from "../../../Hooks/useNormalUser";
+import useUsers from "../../../Hooks/useUsers";
+import useTookService from "../../../Hooks/useTookService";
 
 const Details = () => {
     const { id } = useParams();
     const { user } = useAuth();
-    console.log(user)
     const [isAdmin] = useAdmin();
     const [isTraveler] = useNormalUser();
+    const [tookService] = useTookService();
+    console.log(tookService)
     const navigate = useNavigate();
     const location = useLocation();
     const [rooms, refetch, loading] = useAccommodationDetails({ id })
@@ -421,7 +424,7 @@ const Details = () => {
                                                             Number of Tickets
                                                         </label>
                                                         <input
-                                                            type="text"
+                                                            type="number"
                                                             {...register("ticket", { required: true })}
                                                             placeholder='Tickets'
                                                             className="w-full py-2 border-b border-gray-300 focus:outline-none focus:border-designColor"
@@ -479,11 +482,16 @@ const Details = () => {
                                     </div>
 
 
-                                    <hr className="my-6" />
-                                    <div className="mt-6">
-                                        <ReviewInput destinationId={_id} refetch={refetch}></ReviewInput>
-                                    </div>
-
+                                    {
+                                        tookService && (
+                                            <div>
+                                                <hr className="my-6" />
+                                                <div className="mt-6">
+                                                    <ReviewInput destinationId={_id} refetch={refetch} />
+                                                </div>
+                                            </div>
+                                        )
+                                    }
                                 </div>
                             </>
                         )}

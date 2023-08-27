@@ -9,7 +9,7 @@ import { FaBed, FaCity } from "react-icons/fa6";
 import AdminPieChartsTwo from "./AdminPieChartsTwo";
 
 const AdminDashboard = () => {
-    const [users] = useUsers()
+    const [allUsers] = useUsers()
     const [allPayments] = useRevenue()
     const [destinations] = usePopularDestination()
     const [bookings] = useAllBooking()
@@ -48,7 +48,7 @@ const AdminDashboard = () => {
                     </div>
                     <div className="w-[60%] flex justify-center items-center">
                         <div className="text-center">
-                            <p className="text-2xl font-semibold">{users.length < 10 ? `0${users.length}` : users.length}</p>
+                            <p className="text-2xl font-semibold">{allUsers.length < 10 ? `0${allUsers.length}` : allUsers.length}</p>
                             <h1 className="text-xl font-semibold text-center">Total Users</h1>
                         </div>
                     </div>
