@@ -18,13 +18,13 @@ const PackagesPage = () => {
                 <title>Travel.O | Packages</title>
             </Helmet>
             <div className="relative">
-                <img className="w-full h-[500px] object-cover object-left" src="https://i.ibb.co/ZH8hRNz/datingscout-KFh-z-LMw-IU-unsplash.jpg" alt="" />
-                <div className="w-full h-[500px] inset-0 bg-black bg-opacity-50 absolute"></div>
-                <p className="text-6xl font-semibold text-white font-body absolute left-1/2 top-1/2 translate-x-[-50%]">World Packages</p>
+                <img className="w-full lg:h-[500px] h-[300px] object-cover object-left" src="https://i.ibb.co/ZH8hRNz/datingscout-KFh-z-LMw-IU-unsplash.jpg" alt="" />
+                <div className="w-full lg:h-[500px] h-[300px] inset-0 bg-black bg-opacity-50 absolute"></div>
+                <p className="lg:text-6xl text-2xl text-center font-semibold text-white font-body absolute left-1/2 top-1/2 translate-x-[-50%]">World Packages</p>
             </div>
             <div className='my-10'>
                 <Container>
-                    <div className="grid grid-cols-3 gap-8">
+                    <div className="grid lg:grid-cols-3 grid-cols-2 lg:gap-8 gap-4">
                         {
                             accommodations.map((accommodation, index) =>
                                 <PackagesPageCard
