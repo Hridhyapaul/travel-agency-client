@@ -38,7 +38,7 @@ const MostVisitedDestinationsCard = ({ place }) => {
                             <p className="text-[14px]">{averageRating.toFixed(1)}</p>
                             <p className="text-[14px]">({reviews.length < 10 ? `0${reviews.length}` : reviews.length} Reviews)</p>
                         </div>
-                        <h1 className="text-2xl font-medium">{name}</h1>
+                        <h1 className="lg:text-2xl text-xl lg:font-medium font-semibold">{name}</h1>
                         <p>{about}</p>
                     </div>
                     <div className="bg-bgColor rounded-lg px-4 py-2 flex justify-center items-center">
