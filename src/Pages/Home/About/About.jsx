@@ -6,28 +6,36 @@ import videoPlayer from "../../../assets/Images/videoplayer.png";
 const About = () => {
     return (
         <>
-            <div className="bg-base-200 py-28">
+            <div className="bg-base-200 lg:py-28 py-10">
                 <Container>
-                    <div className="flex justify-between items-start gap-8">
-                        <div className="w-[50%] space-y-8">
-                            <div className="flex justify-end">
-                                <img className="h-[450px] w-[60%] object-cover bg-white p-3 shadow-lg rounded-lg" src="https://i.ibb.co/3CY6NC4/andreas-dress-ltj9v-R2gl-HU-unsplash.jpg" alt="" />
+
+                    {/* <--------Start Mobile Header -------> */}
+                    <div className="block lg:hidden font-body mb-10 lg:mb-0">
+                        <h5 className="text-designColor font-semibold text-center">About Travel.O</h5>
+                        <h1 className="text-bodyColor text-xl lg:text-4xl text-center font-bold mt-3">World Best Premier Travel <br /> Agency Since 2010</h1>
+                    </div>
+                    {/* <--------End Mobile Header -------> */}
+
+                    <div className="lg:flex justify-between items-start gap-8">
+                        <div className="lg:w-[50%] w-full lg:flex-col flex justify-center gap-2 lg:space-y-8">
+                            <div className="flex lg:justify-end justify-center">
+                                <img className="lg:h-[450px] lg:w-[60%] w-full object-cover bg-white lg:p-3 p-2 shadow-lg rounded-lg" src="https://i.ibb.co/3CY6NC4/andreas-dress-ltj9v-R2gl-HU-unsplash.jpg" alt="" />
                             </div>
 
-                            <div className="flex justify-between items-start gap-12">
+                            <div className="lg:flex justify-between items-start gap-12 lg:space-y-0 space-y-3">
                                 <div>
-                                    <img className="w-full h-[300px] object-cover bg-white p-3 shadow-lg rounded-lg" src="https://i.ibb.co/z8Bwyfv/yura-lytkin-q-ZBZb-G0e-EU-unsplash.jpg" alt="" />
+                                    <img className="w-full lg:h-[300px] h-[150px] object-cover lg:bg-white lg:p-3 lg:shadow-lg rounded-lg" src="https://i.ibb.co/z8Bwyfv/yura-lytkin-q-ZBZb-G0e-EU-unsplash.jpg" alt="" />
                                 </div>
                                 <div className="space-y-3">
-                                    <p className="font-body text-bodyColor text-2xl font-semibold">Find Your Best Destination</p>
+                                    <p className="font-body text-bodyColor text-xl lg:text-2xl font-semibold">Find Your Best Destination</p>
                                     <div>
-                                        <Link><img className="w-20" src={videoPlayer} alt="" /></Link>
+                                        <Link><img className="lg:w-20 w-14" src={videoPlayer} alt="" /></Link>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="w-[50%] font-body">
-                            <div className="font-body">
+                        <div className="lg:w-[50%] font-body">
+                            <div className="lg:block hidden font-body">
                                 <h5 className="text-designColor text-xl font-semibold text-center">About Travel.O</h5>
                                 <h1 className="text-bodyColor text-2xl lg:text-4xl text-center font-bold mt-3">World Best Premier Travel Agency Since 2010</h1>
                             </div>

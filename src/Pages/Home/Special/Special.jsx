@@ -39,7 +39,7 @@ const Special = () => {
                     )
                     :
                     (
-                        <div className="my-28">
+                        <div className="lg:my-28 mb-14 mt-10">
                             <Container>
                                 <div>
                                     <SectionTitle headers='Why Travel with Travel.O ?' subHeader='Travel.O Specials'></SectionTitle>

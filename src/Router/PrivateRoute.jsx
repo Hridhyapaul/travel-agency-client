@@ -7,13 +7,13 @@ const PrivateRoute = ({ children }) => {
     const { user, loading } = useAuth();
     const location = useLocation();
 
-    // if (loading) {
-    //     return (
-    //         <div>
-    //             <Loading></Loading>
-    //         </div>
-    //     );
-    // }
+    if (loading) {
+        return (
+            <div>
+                <Loading></Loading>
+            </div>
+        );
+    }
 
     if (user) {
         return children;
