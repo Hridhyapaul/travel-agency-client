@@ -44,7 +44,7 @@ const Special = () => {
                                 <div>
                                     <SectionTitle headers='Why Travel with Travel.O ?' subHeader='Travel.O Specials'></SectionTitle>
                                 </div >
-                                <div className="grid lg:grid-cols-4 grid-cols-1 gap-8">
+                                <div className="grid lg:grid-cols-4 grid-cols-1 lg:gap-8 gap-4">
                                     {
                                         travelServices.map((item, index) => <SpecialCard key={index} item={item}></SpecialCard>)
                                     }
