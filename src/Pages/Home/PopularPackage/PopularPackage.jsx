@@ -13,12 +13,12 @@ const PopularPackage = () => {
     }
 
     return (
-        <div className="mt-24 mb-28">
+        <div className="lg:mt-24 mt-10 lg:mb-28 mb-10">
             <Container>
                 <div>
                     <SectionTitle headers='Packages in Popular Destinations' subHeader='Modern & Beautiful'></SectionTitle>
                 </div>
-                <div className="grid grid-cols-2 gap-8">
+                <div className="lg:grid lg:grid-cols-2 lg:gap-8 lg:space-y-0 space-y-4">
                     {
                         accommodations.slice(0, 5).map((accommodation, index) =>
                             <PopularPackageCard

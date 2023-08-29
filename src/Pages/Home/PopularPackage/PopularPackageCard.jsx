@@ -14,7 +14,7 @@ const PopularPackageCard = ({ accommodation, isLarge }) => {
         <div className={`col-span-${isLarge ? "2" : "1"}`}>
             <Link to={`/packages/${country}`}>
                 <div className="font-body relative duration-300">
-                    <img className={`h-[${isLarge ? "300px" : "200px"}] w-full object-cover rounded-lg cursor-pointer`} src={countryImage} alt="" />
+                    <img className={`lg:h-[${isLarge ? "300px" : "200px"}] h-[200px] w-full object-cover rounded-lg cursor-pointer`} src={countryImage} alt=""/>
 
                     <div className="flex justify-start items-end absolute rounded-lg inset-0 bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition duration-500 ease-in-out">
 
