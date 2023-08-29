@@ -7,36 +7,46 @@ const Footer = () => {
     return (
         <div className="bg-bodyColor text-white font-body py-12">
             <Container>
-                <div className="flex flex-col items-center">
-                    <div className="text-3xl font-semibold mb-4">Explore the World</div>
-                    <p className="text-lg mb-4 text-center">
+                <div className="">
+                    <div className="lg:text-3xl text-2xl font-semibold text-center mb-4">Explore the World</div>
+                    <p className="lg:text-lg mb-4 text-center">
                         Discover new destinations and create unforgettable memories with us.
                     </p>
                     <div>
                         <Link to="/">
-                            <h1 className='text-3xl font-bold'>Travel<span className='text-designColor'>.O</span></h1>
+                            <h1 className='lg:text-3xl text-2xl font-bold text-center'>Travel<span className='text-designColor'>.O</span></h1>
                         </Link>
                     </div>
-                    <div className="flex space-x-6 mt-4">
-                        <Link to="" className="text-lg hover:text-gray-300 transition duration-300">
-                            About Us
-                        </Link>
-                        <Link to="/packages" className="text-lg hover:text-gray-300 transition duration-300">
-                            Packages
-                        </Link>
-                        <Link to="/tours" className="text-lg hover:text-gray-300 transition duration-300">
-                            Destinations
-                        </Link>
-                        <Link to="/blog" className="text-lg hover:text-gray-300 transition duration-300">
-                            Blog
-                        </Link>
-                        <Link to="/contact" className="text-lg hover:text-gray-300 transition duration-300">
-                            Contact
-                        </Link>
-                    </div>
+                    <ul className="lg:flex lg:text-start text-center lg:space-y-0 space-y-2 justify-center gap-6 mt-4">
+                        <li>
+                            <Link to="" className="lg:text-lg hover:text-gray-300 transition duration-300">
+                                About Us
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/packages" className="lg:text-lg hover:text-gray-300 transition duration-300">
+                                Packages
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/tours" className="lg:text-lg hover:text-gray-300 transition duration-300">
+                                Destinations
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/blog" className="lg:text-lg hover:text-gray-300 transition duration-300">
+                                Blog
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/contact" className="lg:text-lg hover:text-gray-300 transition duration-300">
+                                Contact
+                            </Link>
+                        </li>
+                    </ul>
 
                     <div className="socialIcon mt-8">
-                        <div className="flex space-x-4">
+                        <div className="flex justify-center space-x-4">
                             <a href="#" className="text-lg hover:text-gray-300 transition duration-300">
                                 <FaFacebook></FaFacebook>
                             </a>
@@ -52,7 +62,7 @@ const Footer = () => {
                 </div>
                 <div className="flex justify-center items-center">
                     <div className="travelCompany">
-                        <p className="text-center">
+                        <p className="text-center text-sm">
                             &copy; {new Date().getFullYear()} Travel.O Company. All rights reserved.
                         </p>
                     </div>
