@@ -45,6 +45,10 @@ const Header = ({ isStatic, isBgColor }) => {
     setMenuOpen(!isMenuOpen);
   };
 
+  const handleMobileNavClick = () => {
+    setMenuOpen(false);
+  };
+
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -114,7 +118,7 @@ const Header = ({ isStatic, isBgColor }) => {
               </div>
             </div>
 
-            {/* Mobile Screen */}
+            {/* Mobile Screen design Start */}
             <div className="lg:hidden block bg-[#000000] bg-opacity-30 w-screen px-5 py-3">
               <div className="flex justify-between items-center">
                 <h1 className="text-3xl font-bold">
@@ -206,7 +210,11 @@ const Header = ({ isStatic, isBgColor }) => {
                 <ul className="text-center text-lightText my-10 font-body lg:hidden block">
                   {navLinks.map((item, index) => (
                     <li key={index} className="mobileNavigation">
-                      <NavLink to={item.path} className="flex justify-center">
+                      <NavLink
+                        to={item.path}
+                        className="flex justify-center"
+                        onClick={handleMobileNavClick}
+                      >
                         {item.display}
                       </NavLink>
                     </li>
@@ -214,6 +222,7 @@ const Header = ({ isStatic, isBgColor }) => {
                 </ul>
               </div>
             </div>
+            {/* Mobile screen design End  */}
           </div>
         </div>
       </div>
