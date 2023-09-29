@@ -24,7 +24,7 @@ const Contact = () => {
             }
             console.log(contactDetails)
             try {
-                const res = await axios.post('http://localhost:5000/contactMessage', contactDetails, {
+                const res = await axios.post('https://trevel-agency-server.vercel.app/contactMessage', contactDetails, {
                     headers: {
                         'Content-Type': 'application/json',
                     },

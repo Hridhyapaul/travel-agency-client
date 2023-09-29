@@ -56,7 +56,7 @@ const ManageCountryCard = ({ country: countryName, index, refetch }) => {
         }
         console.log(updatedCountry)
         try {
-            const res = await axios.put(`http://localhost:5000/countries/${_id}`, updatedCountry, {
+            const res = await axios.put(`https://trevel-agency-server.vercel.app/countries/${_id}`, updatedCountry, {
                 headers: {
                     'Content-Type': 'application/json',
                 },

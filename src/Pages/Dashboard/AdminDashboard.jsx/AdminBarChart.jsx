@@ -24,7 +24,7 @@ const AdminBarChart = () => {
 
     return (
         <BarChart
-            width={500}
+            width={1000}
             height={300}
             data={chartData}
             margin={{

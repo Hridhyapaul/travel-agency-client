@@ -19,7 +19,7 @@ import AllPaymentHistory from "../Pages/Dashboard/AllPaymentRecord/AllPaymentHis
 import AllBookingCollection from "../Pages/Dashboard/AllBookingCollection/AllBookingCollection";
 import AddCountry from "../Pages/Dashboard/AddCountry/AddCountry";
 import ManageAccommodation from "../Pages/Dashboard/ManageAccommodation/ManageAccommodation";
-import PrivateRoute from "./PrivateRoute";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import ManageCountry from "../Pages/Dashboard/ManageCountry/ManageCountry";
 import PackagesPage from "../Pages/PackagesPage/PackagesPage";
 import Contact from "../Pages/Contact/Contact";
@@ -77,7 +77,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/accommodation/:id",
-        element: <PrivateRoute><HotelDetails></HotelDetails></PrivateRoute>,
+        element: <HotelDetails></HotelDetails>,
         children: [
             {
                 path: "",

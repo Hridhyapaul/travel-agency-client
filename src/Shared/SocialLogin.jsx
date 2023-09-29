@@ -17,7 +17,7 @@ const SocialLogin = () => {
                 console.log(loggedUser)
                 const registerUser = { name: loggedUser.displayName, email: loggedUser.email, photo: loggedUser.photoURL, role: 'Traveler' }
                 console.log(registerUser);
-                fetch('http://localhost:5000/users', {
+                fetch('https://trevel-agency-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

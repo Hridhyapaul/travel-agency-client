@@ -43,7 +43,7 @@ const ReviewInput = ({ destinationId, refetch }) => {
         console.log("URL:", `/destinations/${destinationId}/addReview`);
 
         try {
-            const res = await axios.post(`http://localhost:5000/destinations/${destinationId}/addReview`, newReviews, {
+            const res = await axios.post(`https://trevel-agency-server.vercel.app/destinations/${destinationId}/addReview`, newReviews, {
                 headers: {
                     'Content-Type': 'application/json',
                 },

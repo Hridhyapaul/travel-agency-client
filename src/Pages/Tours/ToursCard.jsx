@@ -1,7 +1,10 @@
 import { Rating, ThinRoundedStar } from "@smastrom/react-rating";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const ToursCard = ({ destination, isBoxCard }) => {
+    const {user} = useAuth();
     console.log(destination)
     const { _id, about, image, name, countryName, numberOfDay, price, reviews } = destination;
 
@@ -18,8 +21,31 @@ const ToursCard = ({ destination, isBoxCard }) => {
         inactiveFillColor: '#ECEEEF',
     };
 
+    // <------ Details page ------>
+    const navigate = useNavigate();
+    const location = useLocation();
+    const handleDetailsPage = () => {
+        if (user && user.email) {
+            navigate(`/accommodation/${_id}`);
+        }
+        else {
+            Swal.fire({
+                title: 'Please login to see details',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Login now'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/login', { state: { from: location } })
+                }
+            })
+        }
+    }
+
     return (
-        <div className="col-span-1">
+        <div className="lg:col-span-1">
             <div className="shadow-md rounded-lg">
                 {
                     isBoxCard ?
@@ -56,9 +82,9 @@ const ToursCard = ({ destination, isBoxCard }) => {
                                         <p><span className="font-medium text-[18px] text-designColor">${price}</span>{" "} / Per person</p>
                                     </div>
                                     <div>
-                                        <Link to={`/accommodation/${_id}`}>
+                                        <div onClick={handleDetailsPage}>
                                             <button className="px-4 py-2 bg-designColor text-white rounded-lg">See Details</button>
-                                        </Link>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -68,14 +94,14 @@ const ToursCard = ({ destination, isBoxCard }) => {
                         // Vertical Card...
                         (
                             <div className="flex justify-start items-center">
-                                <div className="w-[45%] h-[100%]">
+                                <div className="leftDiv w-[45%] h-[100%]">
                                     {image && image[0] ? (
-                                        <img className="h-[273px] w-full object-cover rounded-l-lg" src={image[0]} alt="" />
+                                        <img className="image h-[273px] w-full object-cover rounded-l-lg" src={image[0]} alt="" />
                                     ) : (
                                         <div className="h-[200px] w-full bg-gray-300 rounded-l-lg"></div> // Default image or fallback UI
                                     )}
                                 </div>
-                                <div className="w-[55%] text-bodyColor bg-white rounded-r-lg font-body px-6 py-5 space-y-4">
+                                <div className="rightDiv w-[55%] text-bodyColor bg-white rounded-r-lg font-body px-6 py-5 space-y-4">
                                     <div className="space-y-[1px]">
                                         <div className="flex justify-start items-center gap-2">
                                             <Rating
@@ -99,15 +125,14 @@ const ToursCard = ({ destination, isBoxCard }) => {
                                         <p><span className="font-medium text-[18px] text-designColor">${price}</span>{" "} / Per person</p>
                                     </div>
                                     <div>
-                                        <Link to={`/accommodation/${_id}`}>
-                                            <button className="px-4 py-2 bg-designColor text-white rounded-lg">See Details</button>
-                                        </Link>
+                                        <button
+                                        onClick={handleDetailsPage}
+                                        className="px-4 py-2 bg-designColor text-white rounded-lg">See Details</button>
                                     </div>
                                 </div>
                             </div>
                         )
                 }
-
             </div>
         </div>
     );

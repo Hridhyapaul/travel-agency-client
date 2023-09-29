@@ -5,9 +5,9 @@ import { FaHome, FaSignOutAlt, FaUsersCog } from "react-icons/fa";
 import useAdmin from "../Hooks/useAdmin";
 import useNormalUser from "../Hooks/useNormalUser";
 import { HiChartPie, HiCurrencyDollar } from "react-icons/hi";
-import { BiBookOpen, BiHome, BiMessageDetail, BiSolidMessageDetail} from "react-icons/bi";
+import { BiBookOpen, BiHome, BiMessageDetail, BiSolidMessageDetail } from "react-icons/bi";
 import Loading from "../Shared/Loading";
-import {LuContact, LuPackageSearch, LuWallet } from "react-icons/lu";
+import { LuContact, LuPackageSearch, LuWallet } from "react-icons/lu";
 import { RiHotelLine } from "react-icons/ri";
 import { TbBrandBlogger } from "react-icons/tb";
 import { GrContact } from "react-icons/gr";
@@ -26,7 +26,7 @@ const Dashboard = () => {
         navigate("/login"); // Navigate to the login page after logout
     };
 
-    if(loading){
+    if (loading) {
         return <Loading></Loading>
     }
 
@@ -51,7 +51,7 @@ const Dashboard = () => {
                             </div>
                         </Link>
                     </div>
-                    <ul className="menu px-4 w-80">
+                    <ul className="menu px-4 w-80 pb-20">
                         {/* Sidebar content here */}
 
                         {isAdmin && (
@@ -105,14 +105,29 @@ const Dashboard = () => {
                                 <hr className="my-6" />
 
                                 <li><NavLink to="/">
-                                    <FaHome size={16}></FaHome>
+                                    <BiHome size={20}></BiHome>
                                     <p className="ml-2">Home</p>
                                 </NavLink></li>
+                                <li><NavLink to="/packages">
+                                    <LuPackageSearch size={20}></LuPackageSearch>
+                                    <p className="ml-2">Packages</p>
+                                </NavLink></li>
                                 <li><NavLink to="/destinations">
-                                    <FaPlaneUp size={16}></FaPlaneUp>
+                                    <RiHotelLine size={20}></RiHotelLine>
                                     <p className="ml-2">Destinations</p>
                                 </NavLink>
                                 </li>
+                                <li><NavLink to="/blog">
+                                    <TbBrandBlogger size={20}></TbBrandBlogger>
+                                    <p className="ml-2">Blogs</p>
+                                </NavLink>
+                                </li>
+                                <li><NavLink to="/contact_us">
+                                    <LuContact size={20}></LuContact>
+                                    <p className="ml-2">Contact</p>
+                                </NavLink>
+                                </li>
+
                                 <hr className="my-6" />
                                 <div className="px-4 ">
                                     <p className="flex justify-start items-center gap-2 ">

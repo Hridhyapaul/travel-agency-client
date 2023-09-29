@@ -4,7 +4,7 @@ const useAccommodationDetails = ({id}) => {
     // const {user} = useAuth();
     const [axiosSecure] = useAxiosSecure();
 
-    const { data: rooms = [], isLoading: loading, refetch } = useQuery({
+    const { data: rooms = [], isLoading: roomLoading, refetch } = useQuery({
         queryKey: ['rooms'],
         // enabled: !!user?.email && !! localStorage.getItem("access-token"),
         queryFn: async () => {
@@ -13,7 +13,7 @@ const useAccommodationDetails = ({id}) => {
         }
     })
 
-    return [rooms, refetch, loading]
+    return [rooms, refetch, roomLoading]
 };
 
 export default useAccommodationDetails;

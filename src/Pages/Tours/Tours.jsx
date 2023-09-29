@@ -79,9 +79,9 @@ const Tours = () => {
 
             <div className="bg-bgColor py-20">
                 <Container>
-                    <div className="grid grid-cols-6 gap-12">
+                    <div className="lg:grid lg:grid-cols-6 flex flex-col-reverse gap-12">
 
-                        <div className="col-span-4">
+                        <div className="lg:col-span-4">
                             <div className="w-full px-5 py-2 rounded-lg bg-white">
                                 <p className="font-body font-semibold">{destinations.length} Captivating Tours Awaits Your Exploration</p>
                             </div>
@@ -122,7 +122,7 @@ const Tours = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className={`grid ${isBoxCard ? "grid-cols-2" : "grid-cols-1"} gap-6 mt-5`}>
+                            <div className={`grid ${isBoxCard ? "lg:grid-cols-2 grid-cols-1" : "grid-cols-1"} gap-6 mt-5`}>
                                 {
                                     destinations
                                         .filter(destination => destination.countryName.toLowerCase().includes(value.toLowerCase()))
@@ -140,37 +140,39 @@ const Tours = () => {
 
                         <div className="col-span-2">
                             <div className="space-y-8">
-                                {/* Search Input */}
-                                <div className="font-body bg-white shadow-md px-6 py-6 rounded-lg">
-                                    <label className="text-2xl font-semibold">Search Packages</label>
-                                    <input
-                                        onChange={(event) => setQuery(event.target.value)}
-                                        className="h-14 w-full rounded-lg border-2 outline-none border-bgColor pl-4 mt-4 focus:border-designColor"
-                                        type="text"
-                                        placeholder="Search Package"
+                                <div className="space-y-8 flex lg:block">
+                                    {/* Search Input */}
+                                    <div className="w-[50%] lg:w-full font-body bg-white shadow-md px-6 py-6 rounded-lg">
+                                        <label className="text-2xl font-semibold">Search Packages</label>
+                                        <input
+                                            onChange={(event) => setQuery(event.target.value)}
+                                            className="h-14 w-full rounded-lg border-2 outline-none border-bgColor pl-4 mt-4 focus:border-designColor"
+                                            type="text"
+                                            placeholder="Search Package"
 
-                                    />
-                                </div>
+                                        />
+                                    </div>
 
-                                {/* Price Range */}
-                                <div className="font-body bg-white shadow-md px-6 py-6 rounded-lg space-y-4">
-                                    <p className="text-2xl font-semibold">Price Range</p>
-                                    <div>
+                                    {/* Price Range */}
+                                    <div className="w-[50%] lg:w-full font-body bg-white shadow-md px-6 py-6 rounded-lg space-y-4">
+                                        <p className="text-2xl font-semibold">Price Range</p>
                                         <div>
-                                            <p>${values[0]} - ${values[1]}</p>
-                                            <p>Current Range: ${values[1] - values[0]}</p>
-                                        </div>
-                                        <div className="mt-4 bg-bgColor px-4 py-6 flex justify-center items-center">
-                                            <ReactSlider
-                                                onChange={setValues}
-                                                className="slider"
-                                                value={values}
-                                                step={50}
-                                                min={min}
-                                                max={max}
-                                            >
+                                            <div>
+                                                <p>${values[0]} - ${values[1]}</p>
+                                                <p>Current Range: ${values[1] - values[0]}</p>
+                                            </div>
+                                            <div className="mt-4 bg-bgColor px-4 py-6 flex justify-center items-center">
+                                                <ReactSlider
+                                                    onChange={setValues}
+                                                    className="slider"
+                                                    value={values}
+                                                    step={50}
+                                                    min={min}
+                                                    max={max}
+                                                >
 
-                                            </ReactSlider>
+                                                </ReactSlider>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -248,7 +250,7 @@ const Tours = () => {
                                 </div>
                             </div>
 
-                            <div className="mt-8">
+                            <div className="lg:block hidden mt-8">
                                 <img src="https://i.ibb.co/JmzFQtt/7459907d-251d-4c0f-b545-a2ac744e0382-1024.jpg" alt="" />
                             </div>
                         </div>

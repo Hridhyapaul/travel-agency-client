@@ -65,7 +65,7 @@ const AddAccommodation = () => {
                 console.log(accommodationDetails);
 
                 try {
-                    const res = await axios.post('http://localhost:5000/destinations', accommodationDetails, {
+                    const res = await axios.post('https://trevel-agency-server.vercel.app/destinations', accommodationDetails, {
                         headers: {
                             'Content-Type': 'application/json',
                         },

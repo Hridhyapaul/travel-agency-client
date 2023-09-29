@@ -13,7 +13,7 @@ const ManageUsersCard = ({ user, index, refetch }) => {
         console.log(id)
         setIsMadeAdmin(true);
         setIsMadeUser(true)
-        fetch(`http://localhost:5000/users/admin/${id}`, {
+        fetch(`https://trevel-agency-server.vercel.app/users/admin/${id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -39,7 +39,7 @@ const ManageUsersCard = ({ user, index, refetch }) => {
         setIsMadeUser(true)
         setIsMadeAdmin(true)
         console.log(id)
-        fetch(`http://localhost:5000/users/admin/${id}`, {
+        fetch(`https://trevel-agency-server.vercel.app/users/admin/${id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'

@@ -22,14 +22,14 @@ import useTookService from "../../../Hooks/useTookService";
 
 const Details = () => {
     const { id } = useParams();
-    const { user } = useAuth();
+    const { user, loading } = useAuth();
     const [isAdmin] = useAdmin();
     const [isTraveler] = useNormalUser();
     const [tookService] = useTookService();
     console.log(tookService)
     const navigate = useNavigate();
     const location = useLocation();
-    const [rooms, refetch, loading] = useAccommodationDetails({ id })
+    const [rooms, refetch, roomLoading] = useAccommodationDetails({ id })
     console.log(rooms)
     const { _id, countryName, image, name, numberOfDay, price, reviews, details, location: place, includedServices, tourPlan, about } = rooms;
 
@@ -56,7 +56,7 @@ const Details = () => {
             const bookingInput = { country: countryName, accommodation: name, accommodation_id: _id, price: price, name: data.name, email: data.email, phoneNumber: data.phone, tickets: parseInt(data.ticket), date: data.date, message: data.message }
 
             console.log(bookingInput)
-            fetch('http://localhost:5000/booking', {
+            fetch('https://trevel-agency-server.vercel.app/booking', {
                 method: 'POST',
                 headers: {
                     "content-type": "application/json"
@@ -207,7 +207,7 @@ const Details = () => {
             console.log(accommodationDetails);
 
             try {
-                const res = await axios.put(`http://localhost:5000/destinations/${_id}`, accommodationDetails, {
+                const res = await axios.put(`https://trevel-agency-server.vercel.app/destinations/${_id}`, accommodationDetails, {
                     headers: {
                         'Content-Type': 'application/json',
                     },
@@ -246,9 +246,10 @@ const Details = () => {
             document.body.style.overflow = 'auto';
         };
     }, [showEditModal]);
+
     // <===== End getting update accommodation data =====>
 
-    if (loading) {
+    if (roomLoading) {
         return <Loading></Loading>; // or display an error message
     }
 
